@@ -40,14 +40,14 @@ a{color:inherit}
 .topbar{
   position:fixed;top:0;left:0;right:0;z-index:300;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;height:80px;
+  padding:0 2.5rem;height:84px;overflow:visible;
   background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.0) 100%);
   transition:background .35s,height .35s,box-shadow .35s;
 }
 .topbar.solid{background:#fff;height:70px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .logo{text-decoration:none;display:flex;align-items:center;line-height:0}
-.logo-white{height:56px;width:auto;display:block}
-.logo-black{height:56px;width:auto;display:none}
+.logo-white{height:100px;width:auto;display:block;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))}
+.logo-black{height:100px;width:auto;display:none}
 .topbar.solid .logo-white{display:none}
 .topbar.solid .logo-black{display:block}
 .menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
