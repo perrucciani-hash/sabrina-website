@@ -46,10 +46,10 @@ a{color:inherit}
 }
 .topbar.solid{background:#fff;height:70px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .logo{text-decoration:none;display:flex;align-items:center;line-height:0}
-.logo-img{height:56px;width:auto;display:block;
-  mix-blend-mode:screen;
-  transition:filter .35s,mix-blend-mode .35s}
-.topbar.solid .logo-img{mix-blend-mode:multiply;filter:none}
+.logo-white{height:56px;width:auto;display:block}
+.logo-black{height:56px;width:auto;display:none}
+.topbar.solid .logo-white{display:none}
+.topbar.solid .logo-black{display:block}
 .menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
 .menu a{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:400;letter-spacing:.02em;
   color:#fff;text-decoration:none;transition:color .25s;position:relative;padding-bottom:3px}
@@ -280,7 +280,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 
 <!-- HEADER -->
 <header class="topbar" id="topbar">
-  <a href="/" class="logo"><img src="bewerbungsfoto.jpg" alt="Sabrina Fiechter Photography" class="logo-img"></a>
+  <a href="/" class="logo"><img src="logo-white.png" alt="SF Photography" class="logo-white"><img src="logo-black.png" alt="SF Photography" class="logo-black"></a>
   <ul class="menu">
     <li><a href="/portfolio/">Portfolio</a></li>
     <li><a href="/shooting/">Shooting</a></li>
@@ -525,7 +525,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 <footer>
   <div class="foot-grid">
     <div>
-      <a href="/" class="foot-logo"><img src="ueber-mich.jpg" alt="Sabrina Fiechter Photography" style="height:48px;width:auto;filter:brightness(0) invert(1)"></a>
+      <a href="/" class="foot-logo"><img src="logo-white.png" alt="SF Photography" style="height:48px;width:auto"></a>
       <div class="foot-tag">Portraitfotografin in Zürich<br>Hardturmstrasse 124a, 8005 Zürich<br>+41 76 270 11 17 · info@sabrinafiechter.ch</div>
     </div>
     <div>
