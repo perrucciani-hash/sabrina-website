@@ -617,6 +617,17 @@ async function loadPartial(url, targetId) {
 document.addEventListener('DOMContentLoaded', async () => {
   await loadPartial('header.html', 'sf-header');
   await loadPartial('footer.html', 'sf-footer');
+  // Sprache initialisieren
+  if(typeof applyLang === 'function'){
+    const lang = localStorage.getItem('sf_lang') || 'de';
+    const de = document.getElementById('btnDE');
+    const en = document.getElementById('btnEN');
+    if(de && en && lang === 'en'){
+      de.classList.remove('active');
+      en.classList.add('active');
+    }
+    applyLang(lang);
+  }
   // Reveal-Animation nach dem Laden der Partials starten
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px'});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
