@@ -1,1 +1,19 @@
-
+{
+  "hero": {
+    "image": "/images/assets/hero.jpg",
+    "kicker_de": "Portraitfotografin · Zürich",
+    "kicker_en": "Portrait photographer · Zurich",
+    "title": "Sabrina Fiechter",
+    "sub_de": "Dein Studio in Zürich-West für authentische Portraits:\nBusiness Portraits, Personal Branding & Bewerbungsfotos.",
+    "sub_en": "Your studio in Zurich-West for authentic portraits:\nBusiness portraits, personal branding & application photos."
+  },
+  "about": {
+    "image": "/images/assets/sabrina-fiechter.jpg",
+    "title_de": "Authentische Portraits entstehen, wenn du dich wohl fühlst",
+    "title_en": "Authentic portraits emerge when you feel comfortable",
+    "p1_de": "Mit Feingefühl und Klarheit fotografiere ich Menschen als Privatpersonen oder im Business-Kontext in Zürich. Im Mittelpunkt stehen authentische Bilder, die Persönlichkeit zeigen, entstanden in einer entspannten Atmosphäre.",
+    "p1_en": "With sensitivity and clarity I photograph people in Zurich. The focus is on authentic images that show personality, created in a relaxed atmosphere.",
+    "p2_de": "Ein Shooting bei mir ist kein Pflichttermin. Es ist ein Moment nur für dich. Ich nehme den Druck raus, gebe dir Orientierung und begleite dich — egal ob du Kameras liebst oder eigentlich meidest. Die meisten sagen hinterher: das hat sogar Spass gemacht.",
+    "p2_en": "A shoot with me is not an obligation. It is a moment just for you. I take the pressure off and guide you — whether you love cameras or usually avoid them. Most say afterwards: that was actually fun."
+  }
+}
