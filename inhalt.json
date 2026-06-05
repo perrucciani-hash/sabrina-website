@@ -1,35 +1,126 @@
 {
   "hero": {
     "image": "/images/assets/hero.jpg",
-    "title": "Fotografie mit Herz",
-    "sub_de": "Willkommen auf meiner Website."
+    "kicker_de": "Portraitfotografin · Zürich",
+    "kicker_en": "Portrait photographer · Zurich",
+    "title": "Sabrina Fiechter",
+    "sub_de": "Dein Studio in Zürich-West für authentische Portraits:\nBusiness Portraits, Personal Branding & Bewerbungsfotos.",
+    "sub_en": "Your studio in Zurich-West for authentic portraits:\nBusiness portraits, personal branding & headshots."
   },
   "about": {
-    "image": "/images/assets/about.jpg",
-    "title_de": "Über mich",
-    "p1_de": "Ich bin Sabrina.",
-    "p2_de": "Fotografie ist meine Leidenschaft."
+    "image": "/images/assets/sabrina-fiechter.jpg",
+    "title_de": "Authentische Portraits entstehen, wenn du dich wohl fühlst",
+    "title_en": "Authentic portraits emerge when you feel comfortable",
+    "p1_de": "Mit Feingefühl und Klarheit fotografiere ich Menschen als Privatpersonen oder im Business-Kontext in Zürich. Im Mittelpunkt stehen authentische Bilder, die Persönlichkeit zeigen, entstanden in einer entspannten Atmosphäre.",
+    "p1_en": "With sensitivity and clarity I photograph people in Zurich. The focus is on authentic images that show personality, created in a relaxed atmosphere.",
+    "p2_de": "Ein Shooting bei mir ist kein Pflichttermin. Es ist ein Moment nur für dich. Ich nehme den Druck raus, gebe dir Orientierung und begleite dich — egal ob du Kameras liebst oder eigentlich meidest. Die meisten sagen hinterher: das hat sogar Spass gemacht.",
+    "p2_en": "A shoot with me is not an obligation. It is a moment just for you. I take the pressure off and guide you — whether you love cameras or usually avoid them. Most say afterwards: that was actually fun."
   },
   "angebote": [
     {
-      "image": "/images/assets/angebot1.jpg",
-      "cat": "Fotos",
-      "title": "Bewerbung",
-      "text": "Professionelle Aufnahmen."
+      "image": "/images/assets/bewerbungsfoto.jpg",
+      "cat_de": "Privatkunden",
+      "cat_en": "Private clients",
+      "title_de": "Bewerbungsfotos",
+      "title_en": "Application photos",
+      "text_de": "Es gibt keine zweite Chance auf den ersten Eindruck. Überzeuge mit professionellen, sympathischen und selbstsicheren Bewerbungsfotos — für Lebenslauf, LinkedIn und mehr.",
+      "text_en": "You never get a second chance to make a first impression. Convince with professional, likeable headshots — for your CV, LinkedIn and more.",
+      "link": "/bewerbungsfotos/"
+    },
+    {
+      "image": "/images/assets/business-portrait.jpg",
+      "cat_de": "Business & Privat",
+      "cat_en": "Business & Private",
+      "title_de": "Business Portrait",
+      "title_en": "Business Portrait",
+      "text_de": "Authentische Headshots, die Persönlichkeit zeigen — klar, sympathisch und auf dich abgestimmt. Ideal für Website, LinkedIn und Team-Auftritte.",
+      "text_en": "Authentic headshots that show personality — clear, likeable and tailored to you.",
+      "link": "/shooting/"
+    },
+    {
+      "image": "/images/assets/personal-branding.jpg",
+      "cat_de": "Branding",
+      "cat_en": "Branding",
+      "title_de": "Personal Branding",
+      "title_en": "Personal Branding",
+      "text_de": "Ein vollständiges Bildpaket, das deine Persönlichkeit und Geschichte erzählt — für deine Marke, deinen Auftritt und deine Social-Media-Kanäle.",
+      "text_en": "A complete image package that tells your personality and story — for your brand and social media channels.",
+      "link": "/shooting/"
+    },
+    {
+      "image": "/images/assets/kreativ-portrait.jpg",
+      "cat_de": "Privatkunden",
+      "cat_en": "Private clients",
+      "title_de": "Kreativ-Portrait",
+      "title_en": "Creative Portrait",
+      "text_de": "Ausdrucksstarke Portraits mit Konzept — lebendig, frisch, manchmal ein bisschen mutig. Zeit, dich so zu zeigen, wie du wirklich bist.",
+      "text_en": "Expressive portraits with concept — vibrant, fresh, sometimes bold. Time to show yourself as you truly are.",
+      "link": "/shooting/"
+    },
+    {
+      "image": "/images/assets/studio-portrait.jpg",
+      "cat_de": "Studio Zürich-West",
+      "cat_en": "Studio Zurich-West",
+      "title_de": "Studio-Portrait",
+      "title_en": "Studio Portrait",
+      "text_de": "Im Studio entstehen ruhige, konzentrierte Portraits — entspannt, mit voller Aufmerksamkeit für dich und in gleichbleibend hoher Qualität.",
+      "text_en": "In the studio we create calm, focused portraits — relaxed, with full attention and consistently high quality.",
+      "link": "/portfolio/"
     }
   ],
   "referenzen": [
     {
-      "text": "Tolle Erfahrung!",
-      "name": "Max",
-      "rolle": "Kunde"
+      "text_de": "«Ich hatte nie ein professionelles Foto — jetzt habe ich 30 Bilder, bei denen ich wirklich ich selbst bin.»",
+      "text_en": "\"I'd never had a professional photo — now I have 30 images where I truly look like myself.\"",
+      "name": "Miriam K.",
+      "rolle_de": "Unternehmerin, Zürich",
+      "rolle_en": "Entrepreneur, Zurich"
+    },
+    {
+      "text_de": "«Sabrina schafft es, dass man sich komplett vergisst — und genau das sieht man den Bildern an.»",
+      "text_en": "\"Sabrina makes you forget yourself — and that's exactly what you see in the photos.\"",
+      "name": "Thomas R.",
+      "rolle_de": "Führungskraft, Basel",
+      "rolle_en": "Executive, Basel"
+    },
+    {
+      "text_de": "«Das Shooting hat Spass gemacht — die Bilder überzeugten meinen Arbeitgeber auf LinkedIn sofort.»",
+      "text_en": "\"The shoot was fun — the photos convinced my employer on LinkedIn straight away.\"",
+      "name": "Laura M.",
+      "rolle_de": "Marketingleiterin, Zürich",
+      "rolle_en": "Marketing director, Zurich"
     }
   ],
   "preise": [
     {
-      "name": "Basic",
-      "betrag": 100,
-      "leistungen": ["Bild 1", "Bild 2"]
+      "cat_de": "Bewerbung",
+      "cat_en": "Headshot",
+      "name_de": "Bewerbungsfoto",
+      "name_en": "Headshot",
+      "betrag": 180,
+      "featured": false,
+      "leistungen_de": ["30–45 Min. Shooting", "5 bearbeitete Bilder", "Online-Galerie zum Download", "Stil-Beratung vorab"],
+      "leistungen_en": ["30–45 min. shoot", "5 edited images", "Online gallery for download", "Style consultation beforehand"]
+    },
+    {
+      "cat_de": "Business · beliebt",
+      "cat_en": "Business · popular",
+      "name_de": "Business Portrait",
+      "name_en": "Business Portrait",
+      "betrag": 280,
+      "featured": true,
+      "leistungen_de": ["60 Min. Shooting", "15 bearbeitete Bilder", "Online-Galerie zum Download", "Outfit-Beratung inklusive"],
+      "leistungen_en": ["60 min. shoot", "15 edited images", "Online gallery for download", "Outfit consultation included"]
+    },
+    {
+      "cat_de": "Branding",
+      "cat_en": "Branding",
+      "name_de": "Personal Branding",
+      "name_en": "Personal Branding",
+      "betrag": 490,
+      "featured": false,
+      "leistungen_de": ["90 Min. Shooting", "30 bearbeitete Bilder", "2 verschiedene Looks", "Konzept-Gespräch vorab"],
+      "leistungen_en": ["90 min. shoot", "30 edited images", "2 different looks", "Concept discussion beforehand"]
     }
   ]
 }
