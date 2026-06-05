@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: main # Oder 'master', je nach deinem Repository
+  branch: main # Falls dein Haupt-Branch 'master' heisst, hier 'master' eintragen
 
 media_folder: "images/assets"
 public_folder: "/images/assets"
@@ -9,7 +9,7 @@ collections:
   - name: "pages"
     label: "Seiten"
     files:
-      - file: "inhalt.json" # ← Hier speichert das CMS alle Texte und Bilder ab
+      - file: "inhalt.json"
         label: "Startseite Inhalte"
         name: "index"
         fields:
