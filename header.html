@@ -131,11 +131,6 @@ function applyLang(l){
     el.setAttribute('placeholder',l==='en'?el.getAttribute('data-placeholder-en'):el.getAttribute('data-placeholder-de'));
   });
 }
-document.addEventListener('DOMContentLoaded',()=>{
-  const de=document.getElementById('btnDE');
-  const en=document.getElementById('btnEN');
-  if(!de||!en)return;
-  if(sfLang==='en'){de.classList.remove('active');en.classList.add('active');applyLang('en');}
-});
+// applyLang wird nach loadPartial aufgerufen
 
 </script>
