@@ -7,11 +7,13 @@
 </head>
 <body>
     <section id="hero">
+        <img id="hero-img" src="" alt="Hero Bild" style="width:100%">
         <h1 id="hero-title"></h1>
         <p id="hero-sub"></p>
     </section>
 
     <section id="about">
+        <img id="about-img" src="" alt="Über mich Bild" style="max-width:400px">
         <h2 id="about-title"></h2>
         <p id="about-p1"></p>
         <p id="about-p2"></p>
@@ -24,10 +26,14 @@
     <script>
     async function loadData() {
         try {
-            const res = await fetch('inhalt.json');
+            const res = await fetch('/inhalt.json');
             const data = await res.json();
+
+            document.getElementById('hero-img').src = data.hero.image || '';
             document.getElementById('hero-title').innerText = data.hero.title;
             document.getElementById('hero-sub').innerText = data.hero.sub_de;
+
+            document.getElementById('about-img').src = data.about.image || '';
             document.getElementById('about-title').innerText = data.about.title_de;
             document.getElementById('about-p1').innerText = data.about.p1_de;
             document.getElementById('about-p2').innerText = data.about.p2_de;
@@ -35,7 +41,11 @@
             const angContainer = document.getElementById('angebote-container');
             angContainer.innerHTML = '';
             data.angebote.forEach(item => {
-                angContainer.innerHTML += `<div class="card"><h3>${item.cat} - ${item.title}</h3><p>${item.text}</p></div>`;
+                angContainer.innerHTML += `<div class="card">
+                    <img src="${item.image || ''}" alt="${item.title}" style="width:100%">
+                    <h3>${item.cat} - ${item.title}</h3>
+                    <p>${item.text}</p>
+                </div>`;
             });
 
             const refContainer = document.getElementById('refs-container');
