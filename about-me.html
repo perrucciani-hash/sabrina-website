@@ -372,6 +372,17 @@ async function loadPartial(url, targetId) {
 document.addEventListener('DOMContentLoaded', async () => {
   await loadPartial('header.html', 'sf-header');
   await loadPartial('footer.html', 'sf-footer');
+  // Sprache initialisieren
+  if(typeof applyLang === 'function'){
+    const lang = localStorage.getItem('sf_lang') || 'de';
+    const de = document.getElementById('btnDE');
+    const en = document.getElementById('btnEN');
+    if(de && en && lang === 'en'){
+      de.classList.remove('active');
+      en.classList.add('active');
+    }
+    applyLang(lang);
+  }
 });
 </script>
 </body>
