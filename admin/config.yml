@@ -13,27 +13,35 @@ collections:
         name: "startseite"
         file: "inhalt.json"
         fields:
-          # Hero Bereich
-          - label: "Hero Bereich"
-            name: "hero"
-            widget: "object"
-            fields:
-              - {label: "Hintergrundbild", name: "image", widget: "image"}
-              - {label: "Titel", name: "title", widget: "string"}
-              - {label: "Kicker (DE)", name: "kicker_de", widget: "string"}
-              - {label: "Kicker (EN)", name: "kicker_en", widget: "string"}
-              - {label: "Untertitel (DE)", name: "sub_de", widget: "text"}
-              - {label: "Untertitel (EN)", name: "sub_en", widget: "text"}
+          # Hero
+          - {label: "Hero", name: "hero", widget: "object", fields: [
+              {label: "Bild", name: "image", widget: "image"},
+              {label: "Titel", name: "title", widget: "string"},
+              {label: "Kicker (DE)", name: "kicker_de", widget: "string"},
+              {label: "Untertitel (DE)", name: "sub_de", widget: "text"}
+            ]}
+          
+          # Über mich
+          - {label: "Über mich", name: "about", widget: "object", fields: [
+              {label: "Bild", name: "image", widget: "image"},
+              {label: "Titel (DE)", name: "title_de", widget: "string"},
+              {label: "Text 1 (DE)", name: "p1_de", widget: "text"}
+            ]}
 
-          # Über mich Bereich
-          - label: "Über mich Bereich"
-            name: "about"
-            widget: "object"
+          # Referenzen (als Liste)
+          - label: "Referenzen"
+            name: "referenzen"
+            widget: "list"
             fields:
-              - {label: "Bild", name: "image", widget: "image"}
-              - {label: "Titel (DE)", name: "title_de", widget: "string"}
-              - {label: "Titel (EN)", name: "title_en", widget: "string"}
-              - {label: "Text 1 (DE)", name: "p1_de", widget: "text"}
-              - {label: "Text 1 (EN)", name: "p1_en", widget: "text"}
-              - {label: "Text 2 (DE)", name: "p2_de", widget: "text"}
-              - {label: "Text 2 (EN)", name: "p2_en", widget: "text"}
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Text", name: "text", widget: "text"}
+              - {label: "Rolle", name: "rolle", widget: "string"}
+
+          # Preise (als Liste)
+          - label: "Preis-Pakete"
+            name: "preise"
+            widget: "list"
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Betrag", name: "betrag", widget: "number"}
+              - {label: "Leistungen (kommasepariert)", name: "leistungen", widget: "text"}
