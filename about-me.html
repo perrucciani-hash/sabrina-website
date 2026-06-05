@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Über mich — Sabrina Fiechter Photography | Portraitfotografin Zürich</title>
+<meta name="description" content="Lerne Sabrina Fiechter kennen — Portraitfotografin in Zürich, zertifizierte Gallup CliftonStrengths Coach und Gründerin von TalentSoul.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#1a1a1a;
+  --text:#333333;
+  --grey:#6b6b6b;
+  --line:#e6e6e6;
+  --bg:#ffffff;
+  --bg-soft:#f6f5f3;
+  --accent:#1f7a72;
+  --gold:#e0a83d;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;
+  font-size:18px;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);line-height:1.15}
+a{color:inherit}
+
+/* NAV — identisch mit index.html */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:84px;
+  background:var(--bg);border-bottom:1px solid var(--line);
+  box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.logo{text-decoration:none;display:flex;align-items:center;line-height:0}
+.logo-img{height:80px;width:auto;display:block;mix-blend-mode:multiply}
+.menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.menu a{font-family:'Jost';font-size:.95rem;color:var(--black);text-decoration:none;
+  transition:color .25s;position:relative;padding-bottom:3px}
+.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;
+  background:var(--accent);transition:width .3s}
+.menu a:hover::after,.menu a.active::after{width:100%}
+.menu a.active{color:var(--accent)}
+.menu li a.termin{background:var(--black);color:#fff;
+  padding:.6rem 1.4rem;border-radius:2px;font-weight:500;transition:background .25s}
+.menu .termin::after{display:none}
+.menu .termin:hover{background:var(--accent)}
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
+.burger span{width:26px;height:2px;background:var(--black);display:block}
+.mobile{position:fixed;inset:0;z-index:290;background:#fff;display:none;
+  flex-direction:column;justify-content:center;padding:3rem;gap:.4rem}
+.mobile.open{display:flex}
+.mobile a{font-family:'Jost';font-size:1.6rem;color:var(--black);text-decoration:none;
+  padding:.7rem 0;border-bottom:1px solid var(--line)}
+.mobile .close{position:absolute;top:1.8rem;right:2.5rem;font-size:2rem;background:none;border:none;cursor:pointer}
+
+/* PAGE HERO */
+.page-hero{padding:8rem 2.5rem 5rem;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.page-hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.page-hero-text .eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1rem;display:block}
+.page-hero-text h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:300;margin-bottom:1.5rem}
+.page-hero-text .lead{font-size:1.15rem;color:var(--grey);line-height:1.8;margin-bottom:2rem}
+.page-hero-text .lead strong{color:var(--black);font-weight:600}
+.page-hero-img{aspect-ratio:4/5;overflow:hidden;background:var(--line);border-radius:4px}
+.page-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.page-hero-img .ph{width:100%;height:100%;min-height:400px;display:flex;align-items:center;
+  justify-content:center;background:#e8e5e0}
+.page-hero-img .ph span{font-family:'Jost';font-size:.82rem;letter-spacing:.14em;
+  text-transform:uppercase;color:#a8a39a}
+
+/* SECTION */
+.sec{padding:6rem 2.5rem;max-width:1280px;margin:0 auto}
+.sec-full{padding:6rem 0;background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-full-inner{max-width:1280px;margin:0 auto;padding:0 2.5rem}
+.eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1rem;display:block}
+.section-title{font-family:'Jost';font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;
+  margin-bottom:1.5rem;color:var(--black)}
+
+/* ZWEI WELTEN */
+.worlds{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.world{padding:3rem;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
+.world-icon{width:56px;height:56px;border-radius:50%;border:1.5px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem}
+.world-icon svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.5}
+.world h3{font-size:1.4rem;font-weight:400;margin-bottom:.75rem}
+.world p{font-size:.98rem;color:var(--grey);line-height:1.75;margin-bottom:1.25rem}
+.world .tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;
+  border-bottom:1px solid var(--accent);padding-bottom:2px;transition:gap .25s}
+.world .tag:hover{gap:.85rem}
+
+/* WERTE */
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.value{text-align:center;padding:2.5rem 1.5rem}
+.value-top{display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.value .n{display:none}
+.value-icon{color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.value h3{font-size:1.1rem;font-weight:500;margin-bottom:.5rem}
+.value p{font-size:.92rem;color:var(--grey);line-height:1.65;text-align:center}
+
+/* QUOTE */
+.quote{background:var(--black);padding:6rem 2.5rem;text-align:center}
+.quote q{font-family:'Jost';font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;
+  color:#fff;line-height:1.35;max-width:800px;margin:0 auto;display:block;quotes:none}
+.quote .attr{margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.45);
+  letter-spacing:.08em;text-transform:uppercase}
+
+/* FACTS */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.fact{padding:2.5rem 2rem;border-right:1px solid var(--line);text-align:center}
+.fact:last-child{border-right:none}
+.fact .num{font-family:'Jost';font-size:2.8rem;font-weight:300;color:var(--accent);
+  line-height:1;margin-bottom:.4rem}
+.fact .label{font-size:.88rem;color:var(--grey);line-height:1.5}
+
+/* CTA */
+.cta{text-align:center;padding:6rem 2.5rem;background:var(--bg-soft);
+  border-top:1px solid var(--line)}
+.cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;margin-bottom:1rem}
+.cta p{font-size:1.05rem;color:var(--grey);max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
+.btn-dark{display:inline-flex;align-items:center;gap:.6rem;background:var(--black);
+  color:#fff;padding:.95rem 2.4rem;border-radius:2px;font-family:'Jost';font-weight:500;
+  font-size:.95rem;text-decoration:none;border:1.5px solid var(--black);transition:all .3s}
+.btn-dark:hover{background:var(--accent);border-color:var(--accent)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-family:'Jost';
+  font-weight:500;font-size:.95rem;color:var(--black);text-decoration:none;
+  border-bottom:1.5px solid var(--black);padding-bottom:2px;transition:all .25s}
+.btn-ghost:hover{color:var(--accent);border-color:var(--accent);gap:.85rem}
+
+/* FOOTER */
+footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem}
+.foot-logo-img{height:64px;width:auto;display:block}
+.foot-tag{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7;margin-top:.75rem}
+.foot-ct{font-family:'Jost';font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.4);margin-bottom:1rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.foot-links a{font-size:.96rem;color:rgba(255,255,255,.85);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--accent)}
+.foot-copy{max-width:1280px;margin:2.5rem auto 0;padding-top:2rem;
+  border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(255,255,255,.35)}
+
+/* MOBILE */
+@media(max-width:900px){
+  .topbar{padding:0 1.3rem}
+  .menu{display:none}
+  .burger{display:flex}
+  .page-hero{padding:6rem 1.3rem 3.5rem}
+  .page-hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .page-hero-img{order:-1;aspect-ratio:16/9}
+  .sec{padding:4rem 1.3rem}
+  .sec-full{padding:4rem 0}
+  .sec-full-inner{padding:0 1.3rem}
+  .worlds{grid-template-columns:1fr}
+  .values{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact{border-bottom:1px solid var(--line)}
+  .quote{padding:4rem 1.3rem}
+  .cta{padding:4rem 1.3rem}
+  footer{padding:2.5rem 1.3rem}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
+}
+
+/* Validation Styles */
+
+
+
+
+
+  20%,80%{transform:translateX(3px)}
+  30%,50%,70%{transform:translateX(-4px)}
+  40%,60%{transform:translateX(4px)}
+}
+/* Valid state */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:600px){}
+
+/* LANGUAGE TOGGLE */
+.lang-toggle{display:flex;align-items:center;gap:4px}
+.lang-li{list-style:none;display:flex;align-items:center;margin-left:.5rem}
+.lang-btn{padding:.35rem .65rem;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;
+  letter-spacing:.08em;cursor:pointer;border:1.5px solid #d0d0d0;
+  border-radius:2px;background:#fff;color:#666;transition:all .2s;line-height:1}
+.lang-btn.active{background:var(--black);color:#fff;border-color:var(--black)}
+.lang-btn:not(.active):hover{border-color:var(--accent);color:var(--accent)}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="sf-header"></div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-text">
+      <span class="eyebrow" data-de="Über mich" data-en="About me">Über mich</span>
+      <h1 data-de="Hallo, ich bin Sabrina." data-en="Hello, I'm Sabrina.">Hallo, ich bin Sabrina.</h1>
+      <p class="lead">
+        Portraitfotografin mit Leidenschaft für kreative, konzeptionelle Bilder — und zertifizierte <strong>CliftonStrengths® Coach</strong>. Zwei Welten, eine Leidenschaft: <strong>Menschen zum Strahlen bringen.</strong>
+      </p>
+      <p class="lead" style="margin-bottom:2.5rem">
+        Mit meinem Studio in Zürich-West schaffe ich einen Raum, in dem du dich wohlfühlst — egal ob du viel oder wenig Erfahrung vor der Kamera hast.
+      </p>
+      <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center">
+        <a href="#" onclick="openFormModal();return false;"  class="btn-dark" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+      </div>
+    </div>
+    <div class="page-hero-img">
+      <img src="/images/assets/hero.jpg" alt="Sabrina Fiechter – Portraitfotografin Zürich" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="sec">
+  <div class="facts">
+    <div class="fact">
+      <div class="num">∞</div>
+      <div class="label">Neugier auf Menschen & ihre Geschichten</div>
+    </div>
+    <div class="fact">
+      <div class="num">☀</div>
+      <div class="label" data-de="Licht einfangen ist meine Sprache" data-en="Capturing light is my language">Licht einfangen ist meine Sprache</div>
+    </div>
+    <div class="fact">
+      <div class="num">CH</div>
+      <div class="label" data-de="Schweizweit für dich unterwegs" data-en="Available throughout Switzerland">Schweizweit für dich unterwegs</div>
+    </div>
+    <div class="fact">
+      <div class="num">∞</div>
+      <div class="label">Leidenschaft für Menschen & Momente</div>
+    </div>
+  </div>
+</section>
+
+<!-- ZWEI WELTEN -->
+<section class="sec-full" id="meine-welt">
+  <section class="sec-full-inner">
+    <span class="eyebrow" data-de="Meine zwei Welten" data-en="My two worlds">Meine zwei Welten</span>
+    <h2 class="section-title">Fotografie & Coaching — zwei Leidenschaften, ein Ziel</h2>
+    <section class="worlds" style="margin-top:3rem;margin-bottom:3rem">
+      <div class="world">
+        <img src="/images/logos/logo-schwarz.png" alt="SF Photography Logo" style="height:56px;width:auto;margin-bottom:1.5rem;display:block">
+        <h3>SF Photography</h3>
+        <p>Ich bin Sabrina — Fotografin mit einer Leidenschaft für kreative, konzeptionelle Portraits. Was mich antreibt: Menschen vor der Kamera zum Strahlen zu bringen und Bilder zu schaffen, die wirklich zu ihnen passen. Farbenfroh, ausdrucksstark und alles andere als gewöhnlich.</p>
+        <p>Ich lebe es, Momente festzuhalten, neue Orte zu entdecken und mit Menschen in Kontakt zu kommen. Ich weiss wie es sich anfühlt vor der Kamera zu stehen — aber ich stehe lieber dahinter.</p>
+        <a href="index.html#angebot" class="tag" data-de="Meine Angebote →" data-en="My services →">Meine Angebote →</a>
+      </div>
+      <div class="world">
+        <img src="/images/logos/Talent-soul.avif" alt="TalentSoul Logo" style="height:56px;width:auto;margin-bottom:1.5rem;display:block">
+        <h3>TalentSoul</h3>
+        <p>Als zertifizierte Gallup CliftonStrengths Coach und Experience Consultant mit mehr als 15 Jahren Erfahrung in der Wirtschaft unterstütze ich Menschen und Unternehmen bei der stärkenorientierten Persönlichkeits- und Organisationsentwicklung.</p>
+        <p>Mein Fokus: nachhaltige Veränderungen in Teamdynamik, Kommunikation und Arbeitsweisen — mit Methoden aus Design Thinking, Ideation und dem Gallup StrengthsFinder.</p>
+        <a href="https://www.talentsoul.ch/" target="_blank" rel="noopener" class="tag" data-de="TalentSoul besuchen →" data-en="Visit TalentSoul →">TalentSoul besuchen →</a>
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <q data-de="Ich liebe es, besondere Momente festzuhalten, neue Orte zu entdecken und Menschen kennenzulernen – genau diese Leidenschaft macht die Fotografie für mich so einzigartig." data-en="I love capturing special moments, discovering new places and meeting people — it is precisely this passion that makes photography so unique for me.">Ich liebe es, besondere Momente festzuhalten, neue Orte zu entdecken und Menschen kennenzulernen – genau diese Leidenschaft macht die Fotografie für mich so einzigartig.</q>
+  <div class="attr">— Sabrina Fiechter</div>
+</section>
+
+<!-- WERTE -->
+<section class="sec">
+  <span class="eyebrow" data-de="Meine Werte" data-en="My values">Meine Werte</span>
+  <h2 class="section-title" data-de="Was mich antreibt" data-en="What drives me">Was mich antreibt</h2>
+  <div class="values" style="margin-top:3rem">
+    <div class="value">
+      <div class="value-top"><div class="value-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="8" rx="5" ry="6"/><path d="M12 14v4"/><path d="M9 18h6"/><path d="M10 21h4"/></svg></div></div>
+      <h3 data-de="Authentizität" data-en="Authenticity">Authentizität</h3>
+      <p data-de="Keine gestellten Posen, keine Masken. Bilder die zeigen wer du wirklich bist — das ist mein Anspruch bei jedem Shooting." data-en="No staged poses, no masks. Images that show who you truly are — that is my standard at every shoot.">Keine gestellten Posen, keine Masken. Bilder die zeigen wer du wirklich bist — das ist mein Anspruch bei jedem Shooting.</p>
+    </div>
+    <div class="value">
+      <div class="value-top"><div class="value-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div></div>
+      <h3 data-de="Leichtigkeit" data-en="Lightness">Leichtigkeit</h3>
+      <p data-de="Ich nehme den Druck raus und begleite dich durch den gesamten Prozess. So entstehen natürliche Bilder in einer entspannten Atmosphäre." data-en="I take the pressure off and guide you through the entire process. This is how natural images are created in a relaxed atmosphere.">Ich nehme den Druck raus und begleite dich durch den gesamten Prozess. So entstehen natürliche Bilder in einer entspannten Atmosphäre.</p>
+    </div>
+    <div class="value">
+      <div class="value-top"><div class="value-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div></div>
+      <h3 data-de="Potenzial" data-en="Potential">Potenzial</h3>
+      <p data-de="Ich sehe, was Menschen besonders macht, und helfe dabei, genau das sichtbar zu machen – authentisch, selbstbewusst und echt." data-en="I see what makes people special and help to make exactly that visible — authentic, confident and real.">Ich sehe, was Menschen besonders macht, und helfe dabei, genau das sichtbar zu machen – authentisch, selbstbewusst und echt.</p>
+    </div>
+    <div class="value">
+      <div class="value-top"><div class="value-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div></div>
+      <h3 data-de="Kreativität" data-en="Creativity">Kreativität</h3>
+      <p data-de="Kreativ, ausdrucksstark und individuell. Jedes Shooting ist einzigartig und erzählt seine eigene Geschichte." data-en="Creative, expressive and individual. Every shoot is unique and tells its own story.">Kreativ, ausdrucksstark und individuell. Jedes Shooting ist einzigartig und erzählt seine eigene Geschichte.</p>
+    </div>
+    <div class="value">
+      <div class="value-top"><div class="value-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div></div>
+      <h3 data-de="Verbindung" data-en="Connection">Verbindung</h3>
+      <p data-de="Fotografie bedeutet für mich Begegnung. Neue Menschen kennenlernen, Geschichten hören und Vertrauen aufbauen – daraus entstehen die stärksten Bilder." data-en="For me photography means encounter. Meeting new people, hearing stories and building trust — that is where the strongest images come from.">Fotografie bedeutet für mich Begegnung. Neue Menschen kennenlernen, Geschichten hören und Vertrauen aufbauen – daraus entstehen die stärksten Bilder.</p>
+    </div>
+    <div class="value">
+      <div class="value-top"><div class="value-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div></div>
+      <h3 data-de="Perspektiven" data-en="Perspectives">Perspektiven</h3>
+      <p data-de="Jede Person und jede Geschichte verdient einen individuellen Blickwinkel. Genau diesen suche ich bei jedem Shooting." data-en="Every person and every story deserves an individual perspective. That is exactly what I look for at every shoot.">Jede Person und jede Geschichte verdient einen individuellen Blickwinkel. Genau diesen suche ich bei jedem Shooting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM INSPIRATION -->
+<section class="sec-full">
+  <section class="sec-full-inner" style="text-align:center">
+    <span class="eyebrow">Inspiration</span>
+    <h2 class="section-title" data-de="Folge mir auf Instagram" data-en="Follow me on Instagram">Folge mir auf Instagram</h2>
+    <p style="font-size:1.05rem;color:var(--grey);max-width:520px;margin:0 auto 2.5rem;line-height:1.7">
+      Hinter den Kulissen, neue Projekte, Shooting-Einblicke und mehr — auf Instagram teile ich was mich täglich inspiriert.
+    </p>
+    <a href="https://www.instagram.com/sabrinafiechter.photography/" target="_blank" rel="noopener" class="btn-dark">
+      @ sabrinafiechter.photography ↗
+    </a>
+  </section>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <span class="eyebrow" style="display:block;text-align:center" data-de="Bereit?" data-en="Ready?">Bereit?</span>
+  <h2 data-de="Lass uns gemeinsam etwas schaffen." data-en="Let's create something together.">Lass uns gemeinsam etwas schaffen.</h2>
+  <p data-de="Ob Portrait-Shooting oder Coaching — ich freue mich darauf, dich kennenzulernen." data-en="Whether portrait shoot or coaching — I look forward to meeting you.">Ob Portrait-Shooting oder Coaching — ich freue mich darauf, dich kennenzulernen.</p>
+  <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;align-items:center">
+    <a href="#" onclick="openFormModal();return false;"  class="btn-dark">Termin anfragen</a>
+    <a href="https://www.talentsoul.ch/" target="_blank" rel="noopener" class="btn-ghost" data-de="TalentSoul besuchen →" data-en="Visit TalentSoul →">TalentSoul besuchen →</a>
+  </div>
+  <p style="margin-top:1.5rem;font-size:.85rem;color:#aaa">Studio Zürich-West · Hardturmstrasse 124a, 8005 Zürich · Schweizweit verfügbar</p>
+</section>
+
+<!-- FOOTER -->
+<div id="sf-footer"></div>
+
+
+
+<script>
+async function loadPartial(url, targetId) {
+  try {
+    const res = await fetch(url);
+    const html = await res.text();
+    document.getElementById(targetId).outerHTML = html;
+    if (targetId === 'sf-header') {
+      // Aktive Seite markieren
+      document.querySelectorAll('.menu a').forEach(a => {
+        if (a.getAttribute('href') === 'ueber-mich.html') a.classList.add('active');
+      });
+      // Reveal-Animation starten
+      const io = new IntersectionObserver(es => {
+        es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+      }, {threshold: .12, rootMargin: '0px 0px -40px'});
+      document.querySelectorAll('.rv').forEach(el => io.observe(el));
+    }
+  } catch(e) { console.error('Partial load error:', url, e); }
+}
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadPartial('header.html', 'sf-header');
+  await loadPartial('footer.html', 'sf-footer');
+});
+</script>
+</body>
+</html>
