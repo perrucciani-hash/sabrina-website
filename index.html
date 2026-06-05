@@ -6,73 +6,51 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
-
-    <!-- HERO -->
     <section id="hero">
         <h1 id="hero-title"></h1>
         <p id="hero-sub"></p>
     </section>
 
-    <!-- ÜBER MICH -->
     <section id="about">
         <h2 id="about-title"></h2>
         <p id="about-p1"></p>
         <p id="about-p2"></p>
     </section>
 
-    <!-- ANGEBOTE -->
     <div id="angebote-container" class="grid"></div>
-
-    <!-- REFERENZEN -->
     <div id="refs-container"></div>
-
-    <!-- PREISE -->
     <div id="preise-container"></div>
 
     <script>
     async function loadData() {
-        const res = await fetch('inhalt.json');
-        const data = await res.json();
+        try {
+            const res = await fetch('inhalt.json');
+            const data = await res.json();
+            document.getElementById('hero-title').innerText = data.hero.title;
+            document.getElementById('hero-sub').innerText = data.hero.sub_de;
+            document.getElementById('about-title').innerText = data.about.title_de;
+            document.getElementById('about-p1').innerText = data.about.p1_de;
+            document.getElementById('about-p2').innerText = data.about.p2_de;
 
-        // 1. Hero & About
-        document.getElementById('hero-title').innerText = data.hero.title;
-        document.getElementById('hero-sub').innerText = data.hero.sub_de;
-        document.getElementById('about-title').innerText = data.about.title_de;
-        document.getElementById('about-p1').innerText = data.about.p1_de;
-        document.getElementById('about-p2').innerText = data.about.p2_de;
+            const angContainer = document.getElementById('angebote-container');
+            angContainer.innerHTML = '';
+            data.angebote.forEach(item => {
+                angContainer.innerHTML += `<div class="card"><h3>${item.cat} - ${item.title}</h3><p>${item.text}</p></div>`;
+            });
 
-        // 2. Angebote
-        const angContainer = document.getElementById('angebote-container');
-        data.angebote.forEach(item => {
-            angContainer.innerHTML += `
-                <div class="card">
-                    <h3>${item.cat} - ${item.title}</h3>
-                    <p>${item.text}</p>
-                </div>`;
-        });
+            const refContainer = document.getElementById('refs-container');
+            refContainer.innerHTML = '';
+            data.referenzen.forEach(item => {
+                refContainer.innerHTML += `<div class="ref"><p>"${item.text}"</p><strong>${item.name}, ${item.rolle}</strong></div>`;
+            });
 
-        // 3. Referenzen
-        const refContainer = document.getElementById('refs-container');
-        data.referenzen.forEach(item => {
-            refContainer.innerHTML += `
-                <div class="ref">
-                    <p>"${item.text}"</p>
-                    <strong>${item.name}, ${item.rolle}</strong>
-                </div>`;
-        });
-
-        // 4. Preise
-        const preisContainer = document.getElementById('preise-container');
-        data.preise.forEach(item => {
-            preisContainer.innerHTML += `
-                <div class="preis">
-                    <h3>${item.name}</h3>
-                    <p>${item.betrag} CHF</p>
-                    <ul>${item.leistungen.map(l => `<li>${l}</li>`).join('')}</ul>
-                </div>`;
-        });
+            const preisContainer = document.getElementById('preise-container');
+            preisContainer.innerHTML = '';
+            data.preise.forEach(item => {
+                preisContainer.innerHTML += `<div class="preis"><h3>${item.name}</h3><p>${item.betrag} CHF</p><ul>${item.leistungen.map(l => `<li>${l}</li>`).join('')}</ul></div>`;
+            });
+        } catch (err) { console.error("Daten konnten nicht geladen werden:", err); }
     }
-
     document.addEventListener('DOMContentLoaded', loadData);
     </script>
 </body>
