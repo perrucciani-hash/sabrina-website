@@ -1,13 +1,7 @@
 {
-  "hero": { "image": "...", "title": "...", "kicker_de": "...", "sub_de": "..." },
-  "about": { "image": "...", "title_de": "...", "p1_de": "..." },
-  "angebote": [
-    { "image": "...", "cat": "...", "title": "...", "text": "..." }
-  ],
-  "referenzen": [
-    { "text": "...", "name": "...", "rolle": "..." }
-  ],
-  "preise": [
-    { "name": "...", "betrag": 200, "leistungen": ["A", "B", "C"] }
-  ]
+  "hero": { "title": "Dein Titel", "sub_de": "Dein Untertitel" },
+  "about": { "title_de": "Über mich", "p1_de": "Text...", "p2_de": "Text..." },
+  "angebote": [ { "cat": "Fotos", "title": "Bewerbung", "text": "Beschreibung" } ],
+  "referenzen": [ { "text": "Super!", "name": "Max", "rolle": "Kunde" } ],
+  "preise": [ { "name": "Basic", "betrag": 100, "leistungen": ["Bild 1", "Bild 2"] } ]
 }
