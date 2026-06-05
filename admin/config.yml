@@ -1,39 +1,39 @@
 backend:
   name: git-gateway
-  branch: main # Falls dein Haupt-Branch 'master' heisst, hier 'master' eintragen
+  branch: main
 
 media_folder: "images/assets"
 public_folder: "/images/assets"
 
 collections:
-  - name: "pages"
-    label: "Seiten"
+  - name: "seiten"
+    label: "Seiteninhalte"
     files:
-      - file: "inhalt.json"
-        label: "Startseite Inhalte"
-        name: "index"
+      - label: "Hauptinhalte"
+        name: "startseite"
+        file: "inhalt.json"
         fields:
-          # ── HERO ABSCHNITT ──
+          # Hero Bereich
           - label: "Hero Bereich"
             name: "hero"
             widget: "object"
             fields:
-              - { label: "Hintergrundbild", name: "image", widget: "image" }
-              - { label: "Kicker Text (DE)", name: "kicker_de", widget: "string" }
-              - { label: "Kicker Text (EN)", name: "kicker_en", widget: "string" }
-              - { label: "Hauptüberschrift (Titel)", name: "title", widget: "string" }
-              - { label: "Untertext (DE)", name: "sub_de", widget: "text" }
-              - { label: "Untertext (EN)", name: "sub_en", widget: "text" }
+              - {label: "Hintergrundbild", name: "image", widget: "image"}
+              - {label: "Titel", name: "title", widget: "string"}
+              - {label: "Kicker (DE)", name: "kicker_de", widget: "string"}
+              - {label: "Kicker (EN)", name: "kicker_en", widget: "string"}
+              - {label: "Untertitel (DE)", name: "sub_de", widget: "text"}
+              - {label: "Untertitel (EN)", name: "sub_en", widget: "text"}
 
-          # ── ÜBER MICH ABSCHNITT ──
-          - label: "Über mich"
+          # Über mich Bereich
+          - label: "Über mich Bereich"
             name: "about"
             widget: "object"
             fields:
-              - { label: "Foto", name: "image", widget: "image" }
-              - { label: "Überschrift (DE)", name: "title_de", widget: "string" }
-              - { label: "Überschrift (EN)", name: "title_en", widget: "string" }
-              - { label: "Text Block 1 (DE)", name: "p1_de", widget: "text" }
-              - { label: "Text Block 1 (EN)", name: "p1_en", widget: "text" }
-              - { label: "Text Block 2 (DE)", name: "p2_de", widget: "text" }
-              - { label: "Text Block 2 (EN)", name: "p2_en", widget: "text" }
+              - {label: "Bild", name: "image", widget: "image"}
+              - {label: "Titel (DE)", name: "title_de", widget: "string"}
+              - {label: "Titel (EN)", name: "title_en", widget: "string"}
+              - {label: "Text 1 (DE)", name: "p1_de", widget: "text"}
+              - {label: "Text 1 (EN)", name: "p1_en", widget: "text"}
+              - {label: "Text 2 (DE)", name: "p2_de", widget: "text"}
+              - {label: "Text 2 (EN)", name: "p2_en", widget: "text"}
