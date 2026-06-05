@@ -66,6 +66,16 @@
       "text_de": "Im Studio entstehen ruhige, konzentrierte Portraits — entspannt, mit voller Aufmerksamkeit für dich und in gleichbleibend hoher Qualität.",
       "text_en": "In the studio we create calm, focused portraits — relaxed, with full attention and consistently high quality.",
       "link": "/portfolio/"
+    },
+    {
+      "image": "/images/assets/portfolio.jpg",
+      "title_de": "Portfolio",
+      "title_en": "Portolio",
+      "cat_de": "Studio Zürich-West",
+      "cat_en": "Studio Zurich-West",
+      "link": "portfolio/",
+      "text_de": "Test",
+      "text_en": "Test"
     }
   ],
   "referenzen": [
@@ -99,8 +109,18 @@
       "name_en": "Headshot",
       "betrag": 180,
       "featured": false,
-      "leistungen_de": ["30–45 Min. Shooting", "5 bearbeitete Bilder", "Online-Galerie zum Download", "Stil-Beratung vorab"],
-      "leistungen_en": ["30–45 min. shoot", "5 edited images", "Online gallery for download", "Style consultation beforehand"]
+      "leistungen_de": [
+        "30–45 Min. Shooting",
+        "5 bearbeitete Bilder",
+        "Online-Galerie zum Download",
+        "Stil-Beratung vorab"
+      ],
+      "leistungen_en": [
+        "30–45 min. shoot",
+        "5 edited images",
+        "Online gallery for download",
+        "Style consultation beforehand"
+      ]
     },
     {
       "cat_de": "Business · beliebt",
@@ -109,8 +129,18 @@
       "name_en": "Business Portrait",
       "betrag": 280,
       "featured": true,
-      "leistungen_de": ["60 Min. Shooting", "15 bearbeitete Bilder", "Online-Galerie zum Download", "Outfit-Beratung inklusive"],
-      "leistungen_en": ["60 min. shoot", "15 edited images", "Online gallery for download", "Outfit consultation included"]
+      "leistungen_de": [
+        "60 Min. Shooting",
+        "15 bearbeitete Bilder",
+        "Online-Galerie zum Download",
+        "Outfit-Beratung inklusive"
+      ],
+      "leistungen_en": [
+        "60 min. shoot",
+        "15 edited images",
+        "Online gallery for download",
+        "Outfit consultation included"
+      ]
     },
     {
       "cat_de": "Branding",
@@ -119,8 +149,18 @@
       "name_en": "Personal Branding",
       "betrag": 490,
       "featured": false,
-      "leistungen_de": ["90 Min. Shooting", "30 bearbeitete Bilder", "2 verschiedene Looks", "Konzept-Gespräch vorab"],
-      "leistungen_en": ["90 min. shoot", "30 edited images", "2 different looks", "Concept discussion beforehand"]
+      "leistungen_de": [
+        "90 Min. Shooting",
+        "30 bearbeitete Bilder",
+        "2 verschiedene Looks",
+        "Konzept-Gespräch vorab"
+      ],
+      "leistungen_en": [
+        "90 min. shoot",
+        "30 edited images",
+        "2 different looks",
+        "Concept discussion beforehand"
+      ]
     }
   ]
 }
