@@ -1,7 +1,6 @@
 backend:
-  name: github
-  repo: DEIN_GITHUB_NAME/DEIN_REPO_NAME # ← Hier deinen GitHub-Pfad eintragen
-  branch: main
+  name: git-gateway
+  branch: main # Oder 'master', je nach deinem Repository
 
 media_folder: "images/assets"
 public_folder: "/images/assets"
@@ -10,95 +9,31 @@ collections:
   - name: "pages"
     label: "Seiten"
     files:
-      - file: "index.html"
-        label: "Startseite (Index)"
+      - file: "inhalt.json" # ← Hier speichert das CMS alle Texte und Bilder ab
+        label: "Startseite Inhalte"
         name: "index"
         fields:
-          - { label: "Layout", name: "layout", widget: "hidden", default: "index" }
-          
-          # ── HEADER & NAVIGATION ──
-          - label: "Header & Logo"
-            name: "header"
-            widget: "object"
-            fields:
-              - { label: "Logo Bild (Weiss)", name: "logo_white", widget: "image" }
-
           # ── HERO ABSCHNITT ──
           - label: "Hero Bereich"
             name: "hero"
             widget: "object"
             fields:
               - { label: "Hintergrundbild", name: "image", widget: "image" }
-              - { label: "Kicker (DE)", name: "kicker_de", widget: "string" }
-              - { label: "Kicker (EN)", name: "kicker_en", widget: "string" }
+              - { label: "Kicker Text (DE)", name: "kicker_de", widget: "string" }
+              - { label: "Kicker Text (EN)", name: "kicker_en", widget: "string" }
               - { label: "Hauptüberschrift (Titel)", name: "title", widget: "string" }
               - { label: "Untertext (DE)", name: "sub_de", widget: "text" }
               - { label: "Untertext (EN)", name: "sub_en", widget: "text" }
-              - { label: "Button Text (DE)", name: "btn_de", widget: "string" }
-              - { label: "Button Text (EN)", name: "btn_en", widget: "string" }
 
-          # ── ANGEBOTE (GRID) ──
-          - label: "Angebote Grid"
-            name: "offers_section"
-            widget: "object"
-            fields:
-              - { label: "Titel (DE)", name: "title_de", widget: "string" }
-              - { label: "Titel (EN)", name: "title_en", widget: "string" }
-              - { label: "Einleitungstext (DE)", name: "lead_de", widget: "text" }
-              - { label: "Einleitungstext (EN)", name: "lead_en", widget: "text" }
-              - label: "Angebote Karten"
-                name: "items"
-                widget: "list"
-                fields:
-                  - { label: "Bild", name: "image", widget: "image", required: false }
-                  - { label: "Kategorie (DE)", name: "cat_de", widget: "string" }
-                  - { label: "Kategorie (EN)", name: "cat_en", widget: "string" }
-                  - { label: "Titel (DE)", name: "title_de", widget: "string" }
-                  - { label: "Titel (EN)", name: "title_en", widget: "string" }
-                  - { label: "Beschreibung (DE)", name: "desc_de", widget: "text" }
-                  - { label: "Beschreibung (EN)", name: "desc_en", widget: "text" }
-                  - { label: "Link Ziel", name: "link", widget: "string" }
-
-          # ── ÜBER MICH ──
-          - label: "Über mich Abschnitt"
+          # ── ÜBER MICH ABSCHNITT ──
+          - label: "Über mich"
             name: "about"
             widget: "object"
             fields:
               - { label: "Foto", name: "image", widget: "image" }
               - { label: "Überschrift (DE)", name: "title_de", widget: "string" }
               - { label: "Überschrift (EN)", name: "title_en", widget: "string" }
-              - { label: "Text Block 1 (DE)", name: "p1_de", widget: "markdown" }
-              - { label: "Text Block 1 (EN)", name: "p1_en", widget: "markdown" }
-              - { label: "Text Block 2 (DE)", name: "p2_de", widget: "markdown" }
-              - { label: "Text Block 2 (EN)", name: "p2_en", widget: "markdown" }
-              - { label: "Name für Signatur", name: "signature_name", widget: "string" }
-
-          # ── PREISE & PAKETE ──
-          - label: "Preise & Pakete"
-            name: "pricing"
-            widget: "object"
-            fields:
-              - { label: "Titel (DE)", name: "title_de", widget: "string" }
-              - { label: "Titel (EN)", name: "title_en", widget: "string" }
-              - label: "Preispakete"
-                name: "packages"
-                widget: "list"
-                max: 3
-                fields:
-                  - { label: "Kategorie/Kicker", name: "badge_de", widget: "string" }
-                  - { label: "Kategorie/Kicker (EN)", name: "badge_en", widget: "string" }
-                  - { label: "Paketname", name: "name_de", widget: "string" }
-                  - { label: "Paketname (EN)", name: "name_en", widget: "string" }
-                  - { label: "Preis (Zahl ohne CHF)", name: "amount", widget: "string" }
-                  - { label: "Hervorgehobenes Paket?", name: "featured", widget: "boolean", default: false }
-                  - { label: "Leistungen (Eine pro Zeile)", name: "features_de", widget: "list" }
-                  - { label: "Leistungen EN (Eine pro Zeile)", name: "features_en", widget: "list" }
-
-          # ── STUDIO STANDORT & FOOTER INFOS ──
-          - label: "Studio & Kontakt Infos"
-            name: "contact_info"
-            widget: "object"
-            fields:
-              - { label: "Studio Adresse", name: "address", widget: "string" }
-              - { label: "Telefonnummer", name: "phone", widget: "string" }
-              - { label: "E-Mail-Adresse", name: "email", widget: "string" }
+              - { label: "Text Block 1 (DE)", name: "p1_de", widget: "text" }
+              - { label: "Text Block 1 (EN)", name: "p1_en", widget: "text" }
+              - { label: "Text Block 2 (DE)", name: "p2_de", widget: "text" }
+              - { label: "Text Block 2 (EN)", name: "p2_en", widget: "text" }
