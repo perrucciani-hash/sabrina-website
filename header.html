@@ -77,12 +77,12 @@
 
 const tb=document.getElementById('topbar');
 addEventListener('scroll',()=>{tb.classList.toggle('solid',scrollY>60)},{passive:true});
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px'});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
 
 </script>
 
 <script>
+
 function openFormModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
 function closeFormModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
 function validateField(f){
@@ -112,7 +112,6 @@ async function handleSubmit(e){
     setTimeout(closeFormModal,3000);
   }catch(err){alert('Fehler beim Senden. Bitte versuche es nochmals.')}
 }
-
 // Language Toggle — SICHER: nur data-de/data-en Elemente
 let sfLang = localStorage.getItem('sf_lang') || 'de';
 function setLang(l){
@@ -132,14 +131,11 @@ function applyLang(l){
     el.setAttribute('placeholder',l==='en'?el.getAttribute('data-placeholder-en'):el.getAttribute('data-placeholder-de'));
   });
 }
-
 document.addEventListener('DOMContentLoaded',()=>{
   const de=document.getElementById('btnDE');
   const en=document.getElementById('btnEN');
-  if(de && en && sfLang==='en'){
-    de.classList.remove('active');en.classList.add('active');applyLang('en');
-  } else {
-    applyLang('de');
-  }
+  if(!de||!en)return;
+  if(sfLang==='en'){de.classList.remove('active');en.classList.add('active');applyLang('en');}
 });
+
 </script>
