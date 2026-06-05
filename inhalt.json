@@ -1,7 +1,35 @@
 {
-  "hero": { "title": "Fotografie mit Herz", "sub_de": "Willkommen auf meiner Website." },
-  "about": { "title_de": "Über mich", "p1_de": "Ich bin Sabrina.", "p2_de": "Fotografie ist meine Leidenschaft." },
-  "angebote": [ { "cat": "Fotos", "title": "Bewerbung", "text": "Professionelle Aufnahmen." } ],
-  "referenzen": [ { "text": "Tolle Erfahrung!", "name": "Max", "rolle": "Kunde" } ],
-  "preise": [ { "name": "Basic", "betrag": 100, "leistungen": ["Bild 1", "Bild 2"] } ]
+  "hero": {
+    "image": "/images/assets/hero.jpg",
+    "title": "Fotografie mit Herz",
+    "sub_de": "Willkommen auf meiner Website."
+  },
+  "about": {
+    "image": "/images/assets/about.jpg",
+    "title_de": "Über mich",
+    "p1_de": "Ich bin Sabrina.",
+    "p2_de": "Fotografie ist meine Leidenschaft."
+  },
+  "angebote": [
+    {
+      "image": "/images/assets/angebot1.jpg",
+      "cat": "Fotos",
+      "title": "Bewerbung",
+      "text": "Professionelle Aufnahmen."
+    }
+  ],
+  "referenzen": [
+    {
+      "text": "Tolle Erfahrung!",
+      "name": "Max",
+      "rolle": "Kunde"
+    }
+  ],
+  "preise": [
+    {
+      "name": "Basic",
+      "betrag": 100,
+      "leistungen": ["Bild 1", "Bild 2"]
+    }
+  ]
 }
