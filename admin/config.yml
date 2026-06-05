@@ -15,6 +15,7 @@ collections:
         name: "hero"
         widget: "object"
         fields:
+          - {label: "Hintergrundbild", name: "image", widget: "image"}
           - {label: "Titel", name: "title", widget: "string"}
           - {label: "Subtext", name: "sub_de", widget: "text"}
 
@@ -22,6 +23,7 @@ collections:
         name: "about"
         widget: "object"
         fields:
+          - {label: "Bild", name: "image", widget: "image"}
           - {label: "Titel", name: "title_de", widget: "string"}
           - {label: "Text Absatz 1", name: "p1_de", widget: "text"}
           - {label: "Text Absatz 2", name: "p2_de", widget: "text"}
@@ -30,6 +32,7 @@ collections:
         name: "angebote"
         widget: "list"
         fields:
+          - {label: "Bild", name: "image", widget: "image"}
           - {label: "Kategorie", name: "cat", widget: "string"}
           - {label: "Titel", name: "title", widget: "string"}
           - {label: "Beschreibung", name: "text", widget: "text"}
