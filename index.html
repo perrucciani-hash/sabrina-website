@@ -1,67 +1,549 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Sabrina Fiechter | Fotografie</title>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portraitfotografin Zürich — Business, Personal Branding & Bewerbungsfotos | Sabrina Fiechter</title>
+<meta name="description" content="Portraitfotografin mit Studio in Zürich-West. Authentische Business Portraits, Personal Branding und Bewerbungsfotos — entspannt, persönlich, du selbst.">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --black:#1a1a1a;--text:#333333;--grey:#6b6b6b;--line:#e6e6e6;
+  --bg:#ffffff;--bg-soft:#f6f5f3;--accent:#1f7a72;--accent-dark:#15605a;--gold:#e0a83d;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-size:18px;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);line-height:1.15}
+img{display:block;max-width:100%}
+a{color:inherit}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:80px;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.0) 100%);transition:background .35s,height .35s,box-shadow .35s}
+.topbar.solid{background:#fff;height:70px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.logo{text-decoration:none;display:flex;align-items:center;line-height:0}
+.logo-img{height:56px;width:auto;display:block;mix-blend-mode:screen;transition:filter .35s,mix-blend-mode .35s}
+.topbar.solid .logo-img{mix-blend-mode:multiply;filter:none}
+.menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.menu a{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:400;letter-spacing:.02em;color:#fff;text-decoration:none;transition:color .25s;position:relative;padding-bottom:3px}
+.topbar.solid .menu a{color:var(--black)}
+.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:currentColor;transition:width .3s}
+.menu a:hover::after{width:100%}
+.menu .termin{background:#fff;color:var(--black) !important;padding:.6rem 1.4rem;border-radius:2px;font-weight:500;transition:background .25s,color .25s}
+.menu .termin::after{display:none}
+.topbar.solid .menu .termin{background:var(--black);color:#fff !important}
+.menu .termin:hover{background:var(--accent);color:#fff !important}
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
+.burger span{width:26px;height:2px;background:#fff;display:block;transition:background .35s}
+.topbar.solid .burger span{background:var(--black)}
+.mobile{position:fixed;inset:0;z-index:290;background:#fff;display:none;flex-direction:column;justify-content:center;padding:3rem;gap:.4rem}
+.mobile.open{display:flex}
+.mobile a{font-family:'Jost';font-size:1.6rem;color:var(--black);text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.mobile .close{position:absolute;top:1.8rem;right:2.5rem;font-size:2rem;background:none;border:none;cursor:pointer}
+.hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:center;justify-content:flex-start;text-align:left;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.45) 40%,rgba(0,0,0,.1) 70%,transparent 100%)}
+.hero-inner{position:relative;z-index:2;color:#fff;padding:2rem 2rem 2rem 5vw;max-width:520px}
+.hero-kicker{font-family:'Jost';font-size:1rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:1.2rem;opacity:.9;font-weight:300;white-space:nowrap}
+.hero h1{font-size:clamp(3rem,7vw,6rem);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.02;margin-bottom:1.4rem}
+.hero-sub{font-size:1.15rem;line-height:1.6;max-width:560px;margin:0 auto 2.2rem;color:rgba(255,255,255,.92);font-weight:400}
+.hero-cta{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--black);font-family:'Jost';font-size:1rem;font-weight:500;letter-spacing:.04em;padding:1rem 2.4rem;text-decoration:none;border-radius:2px;transition:background .3s,color .3s;border:1.5px solid #fff}
+.hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.hero-badges{display:flex;align-items:center;justify-content:flex-start;gap:2rem;margin-top:2.6rem;flex-wrap:wrap}
+.hero-badge{display:flex;align-items:center;gap:.6rem;color:#fff}
+.hero-badge .stars{display:flex;gap:2px}
+.hero-badge .stars i{width:15px;height:15px;background:var(--gold);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.hero-badge .bt{font-size:.85rem;font-weight:500;letter-spacing:.04em;text-align:left;line-height:1.3}
+.hero-badge .bt b{font-weight:700}
+.hero-badge .div{width:1px;height:30px;background:rgba(255,255,255,.3)}
+.scroll-hint{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);z-index:2;color:#fff;font-family:'Jost';font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;opacity:.8;animation:bob 2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+.section{padding:6rem 2.5rem;max-width:1280px;margin:0 auto}
+.section-bg{background:var(--bg-soft)}
+.center{text-align:center;max-width:680px;margin:0 auto 3.5rem}
+.eyebrow{font-family:'Jost';font-size:.85rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.section h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:300;margin-bottom:1.2rem}
+.section-lead{font-size:1.1rem;color:var(--grey);line-height:1.7}
+.offers{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.offer{display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.offer-img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg-soft);margin-bottom:1.5rem}
+.offer-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.offer:hover .offer-img img{transform:scale(1.06)}
+.offer-cat{font-family:'Jost';font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
+.offer h3{font-size:1.5rem;font-weight:400;margin-bottom:.8rem;transition:color .25s}
+.offer:hover h3{color:var(--accent)}
+.offer p{font-size:.98rem;color:var(--grey);line-height:1.65;margin-bottom:1.1rem;flex:1}
+.offer-link{font-family:'Jost';font-size:.92rem;font-weight:500;letter-spacing:.03em;color:var(--black);display:inline-flex;align-items:center;gap:.45rem;transition:gap .25s,color .25s}
+.offer:hover .offer-link{gap:.8rem;color:var(--accent)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
+.about-img{aspect-ratio:4/5;overflow:hidden;background:var(--bg-soft)}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.about-text .eyebrow{color:var(--accent)}
+.about-text h2{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:300;margin-bottom:1.5rem}
+.about-text p{font-size:1.05rem;color:var(--text);line-height:1.8;margin-bottom:1.2rem}
+.about-sign{margin-top:2rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+.about-sign .nm{font-family:'Jost';font-size:1.4rem;color:var(--black)}
+.about-sign .rl{font-size:.9rem;color:var(--grey)}
+.about-text .btn-line{margin-top:1.8rem;display:inline-flex;align-items:center;gap:.5rem;font-family:'Jost';font-weight:500;color:var(--black);text-decoration:none;border-bottom:1.5px solid var(--black);padding-bottom:2px;transition:gap .25s,color .25s,border-color .25s}
+.about-text .btn-line:hover{gap:.85rem;color:var(--accent);border-color:var(--accent)}
+.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.ref{background:#fff;border:1px solid var(--line);padding:2.4rem;border-radius:2px}
+.ref .stars{display:flex;gap:3px;margin-bottom:1.3rem}
+.ref .stars i{width:16px;height:16px;background:var(--gold);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+.ref p{font-size:1.05rem;color:var(--text);line-height:1.65;margin-bottom:1.6rem}
+.ref-who{display:flex;align-items:center;gap:.9rem}
+.ref-av{width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Jost';font-size:1.1rem;flex-shrink:0}
+.ref-nm{font-family:'Jost';font-size:1.05rem;color:var(--black)}
+.ref-rl{font-size:.88rem;color:var(--grey)}
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.price{border:1px solid var(--line);padding:2.6rem 2.2rem;background:#fff;display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s}
+.price:hover{box-shadow:0 16px 40px rgba(0,0,0,.08);transform:translateY(-4px)}
+.price.feat{background:var(--black);border-color:var(--black)}
+.price .pc{font-family:'Jost';font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.price.feat .pc{color:var(--gold)}
+.price h3{font-size:1.5rem;font-weight:400;margin-bottom:1.2rem}
+.price.feat h3{color:#fff}
+.price .amt{font-family:'Jost';font-size:3rem;font-weight:300;color:var(--black);line-height:1;margin-bottom:1.4rem}
+.price.feat .amt{color:#fff}
+.price .amt .c{font-size:1rem;vertical-align:super;color:var(--grey)}
+.price.feat .amt .c{color:rgba(255,255,255,.6)}
+.price ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;flex:1}
+.price li{font-size:.98rem;color:var(--text);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
+.price.feat li{color:rgba(255,255,255,.8)}
+.price li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+.price.feat li::before{color:var(--gold)}
+.price .pb{text-align:center;padding:.9rem;font-family:'Jost';font-weight:500;letter-spacing:.04em;text-decoration:none;border-radius:2px;border:1.5px solid var(--black);color:var(--black);transition:all .25s}
+.price .pb:hover{background:var(--black);color:#fff}
+.price.feat .pb{background:#fff;color:var(--black);border-color:#fff}
+.price.feat .pb:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;position:relative}
+.step{cursor:pointer;perspective:800px;position:relative;z-index:1;padding:0 1rem}
+.step-inner{position:relative;height:220px;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .7s cubic-bezier(.4,0,.2,1)}
+.step.flipped .step-inner,.step:hover .step-inner{transform:rotateY(180deg)}
+.step-front,.step-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:1.5rem 1rem;border:1px solid var(--line)}
+.step-front{background:#fff;transition:background .25s}
+.step:hover .step-front,.step.flipped .step-front{background:var(--accent-light,#e4f2f0)}
+.step-back{background:var(--bg-soft);transform:rotateY(180deg);border-color:var(--accent)}
+.step-icon-wrap{width:64px;height:64px;border-radius:50%;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;background:#fff;color:var(--accent);transition:background .25s,color .25s}
+.step:hover .step-icon-wrap,.step.flipped .step-icon-wrap{background:var(--accent);color:#fff}
+.step h3{font-size:1rem;font-weight:500;color:var(--black);text-align:center;margin-top:.25rem}
+.step-back h3{color:var(--black);margin-bottom:.5rem}
+.step-back p{font-size:.85rem;color:var(--text);line-height:1.6;text-align:center;margin-top:.25rem}
+.loc{display:grid;grid-template-columns:1fr 1fr;min-height:480px;background:#f6f5f3}
+.loc-map{position:relative;min-height:480px;width:100%}
+.loc-map iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.loc-info{padding:4.5rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
+.loc-info h2{font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:300;margin-bottom:2rem;color:#1a1a1a}
+.loc-info .eyebrow{color:var(--accent)}
+.loc-row{display:flex;gap:1rem;margin-bottom:1.4rem;align-items:flex-start}
+.loc-row svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5;flex-shrink:0;margin-top:4px}
+.loc-row .l{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6b6b6b;margin-bottom:.15rem}
+.loc-row .v{font-size:1.05rem;color:#1a1a1a;font-weight:500}
+.loc-row .v a{color:#1a1a1a;text-decoration:none;transition:color .2s}
+.loc-row .v a:hover{color:var(--accent)}
+.loc-info .hero-cta{background:var(--black);color:#fff;border-color:var(--black);align-self:flex-start;margin-top:1rem}
+.loc-info .hero-cta:hover{background:var(--accent);border-color:var(--accent)}
+.cta{text-align:center;padding:7rem 2.5rem;background:var(--black);color:#fff}
+.cta h2{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:300;color:#fff;margin-bottom:1.2rem;max-width:760px;margin-left:auto;margin-right:auto}
+.cta p{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
+.cta .hero-cta{background:#fff;color:var(--black);border-color:#fff}
+.cta .hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.cta-detail{margin-top:2rem;font-family:'Jost';font-size:.85rem;letter-spacing:.08em;color:rgba(255,255,255,.4);text-transform:uppercase}
+footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem}
+.foot-tag{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7}
+.foot-ct{font-family:'Jost';font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.foot-links a{font-size:.96rem;color:rgba(255,255,255,.85);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--accent)}
+.foot-copy{max-width:1280px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(255,255,255,.35)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .35s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;width:100%;max-width:520px;padding:3rem;border-radius:4px;position:relative;transform:translateY(24px);transition:transform .35s;max-height:90vh;overflow-y:auto}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#999;line-height:1}
+.modal h2{font-family:'Jost',sans-serif;font-size:1.8rem;font-weight:300;color:#1a1a1a;margin-bottom:.5rem}
+.modal .sub{font-size:.95rem;color:#6b6b6b;margin-bottom:2rem;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-group label{font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#333}
+.form-group input,.form-group textarea{border:1.5px solid #e6e6e6;border-radius:2px;padding:.85rem 1rem;font-family:'Manrope',sans-serif;font-size:1rem;color:#1a1a1a;background:#fff;transition:border-color .25s;outline:none}
+.form-group input:focus,.form-group textarea:focus{border-color:#1f7a72}
+.form-group input.invalid,.form-group textarea.invalid{border-color:#e53e3e;background:#fff8f8}
+.form-group input.valid,.form-group textarea.valid{border-color:#1f7a72}
+.field-error{font-size:.78rem;color:#e53e3e;margin-top:.3rem;display:none}
+.form-group.has-error .field-error{display:block}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{width:100%;background:#1a1a1a;color:#fff;border:none;font-family:'Jost',sans-serif;font-size:1rem;font-weight:500;padding:1.1rem;border-radius:2px;cursor:pointer;transition:background .3s;margin-top:.5rem}
+.form-submit:hover{background:#1f7a72}
+.form-success{text-align:center;padding:2rem 0;display:none}
+.form-success .check{font-size:3rem;margin-bottom:1rem}
+.lang-toggle{display:flex;align-items:center;gap:4px}
+.lang-li{list-style:none;display:flex;align-items:center;margin-left:.5rem}
+.lang-btn{padding:.35rem .65rem;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;cursor:pointer;border:1.5px solid rgba(255,255,255,.5);border-radius:2px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);transition:all .2s;line-height:1}
+.lang-btn.active{background:#fff;color:#1a1a1a;border-color:#fff}
+.topbar.solid .lang-btn{border-color:#d0d0d0;background:#fff;color:#666}
+.topbar.solid .lang-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+@media(max-width:920px){
+  .topbar{padding:0 1.3rem}.menu{display:none}.burger{display:flex}
+  .hero{height:78vh}.section{padding:4rem 1.3rem}
+  .offers{grid-template-columns:1fr;gap:2.5rem}
+  .about{grid-template-columns:1fr;gap:2.5rem}.about-img{order:-1}
+  .refs{grid-template-columns:1fr}.prices{grid-template-columns:1fr}
+  .cta{padding:4.5rem 1.3rem}.foot-grid{grid-template-columns:1fr;gap:2rem}
+  .loc{grid-template-columns:1fr}.loc-map{height:350px;min-height:350px}
+  .loc-info{padding:3rem 1.3rem}.steps{grid-template-columns:1fr 1fr;gap:1.5rem}
+}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}.steps{grid-template-columns:1fr}}
+</style>
 </head>
 <body>
-    <section id="hero">
-        <img id="hero-img" src="" alt="Hero Bild" style="width:100%">
-        <h1 id="hero-title"></h1>
-        <p id="hero-sub"></p>
-    </section>
 
-    <section id="about">
-        <img id="about-img" src="" alt="Über mich Bild" style="max-width:400px">
+<header class="topbar" id="topbar">
+  <a href="/" class="logo"><img src="/images/logos/logo-weiss.png" alt="Sabrina Fiechter Photography" class="logo-img"></a>
+  <ul class="menu">
+    <li><a href="/portfolio/">Portfolio</a></li>
+    <li><a href="/shooting/">Shooting</a></li>
+    <li><a href="ueber-mich.html">Über mich</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li class="lang-li"><div class="lang-toggle"><button class="lang-btn active" onclick="setLang('de')" id="btnDE">DE</button><button class="lang-btn" onclick="setLang('en')" id="btnEN">EN</button></div></li>
+    <li><a href="#" onclick="openFormModal();return false;" class="termin">Termin anfragen</a></li>
+  </ul>
+  <button class="burger" onclick="document.querySelector('.mobile').classList.add('open')" aria-label="Menü"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile">
+  <button class="close" onclick="document.querySelector('.mobile').classList.remove('open')">✕</button>
+  <a href="/portfolio/">Portfolio</a>
+  <a href="/shooting/">Shooting</a>
+  <a href="ueber-mich.html">Über mich</a>
+  <a href="/blog/">Blog</a>
+  <a href="#" onclick="openFormModal();return false;">Termin anfragen</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero-section">
+  <img id="hero-img" src="/images/assets/hero.jpg" alt="Portraitfotografin Zürich – Sabrina Fiechter">
+  <div class="hero-inner">
+    <div class="hero-kicker" id="hero-kicker">Portraitfotografin · Zürich</div>
+    <h1 id="hero-title">Sabrina Fiechter</h1>
+    <p class="hero-sub" id="hero-sub"></p>
+    <a href="#" onclick="openFormModal();return false;" class="hero-cta">Termin anfragen</a>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="bt"><b>5,0</b> Google<br>Bewertungen</div>
+      </div>
+      <div class="div"></div>
+      <a href="#standort" class="hero-badge" style="text-decoration:none;color:#fff">
+        <div class="bt">Studio Zürich-West<br><b>8 Min. vom HB ↓</b></div>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ Scroll</div>
+</section>
+
+<!-- ANGEBOT -->
+<section class="section">
+  <div class="center rv">
+    <span class="eyebrow" id="angebote-eyebrow">Angebot Fotografie</span>
+    <h2 id="angebote-title">Was ich für dich anbiete</h2>
+    <p class="section-lead" id="angebote-lead">Jedes Shooting ist ein Moment nur für dich.</p>
+  </div>
+  <div class="offers" id="angebote-container"></div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-bg">
+  <div class="section">
+    <div class="about">
+      <div class="about-img rv">
+        <img id="about-img" src="/images/assets/sabrina-fiechter.jpg" alt="Sabrina Fiechter – Portraitfotografin Zürich" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+      </div>
+      <div class="about-text rv d1">
+        <span class="eyebrow">Über mich</span>
         <h2 id="about-title"></h2>
         <p id="about-p1"></p>
         <p id="about-p2"></p>
-    </section>
+        <div class="about-sign">
+          <div class="nm">Sabrina Fiechter</div>
+          <div class="rl">Portraitfotografin, Zürich</div>
+        </div>
+        <a href="ueber-mich.html" class="btn-line" id="about-link">Mehr über mich →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div id="angebote-container" class="grid"></div>
-    <div id="refs-container"></div>
-    <div id="preise-container"></div>
+<!-- REFERENZEN -->
+<section class="section">
+  <div class="center rv">
+    <span class="eyebrow">Referenzen</span>
+    <h2 id="refs-title">Was Kund:innen sagen</h2>
+  </div>
+  <div class="refs" id="refs-container"></div>
+</section>
 
-    <script>
-    async function loadData() {
-        try {
-            const res = await fetch('/inhalt.json');
-            const data = await res.json();
+<!-- PREISE -->
+<section class="section-bg">
+  <div class="section">
+    <div class="center rv">
+      <span class="eyebrow">Pakete & Preise</span>
+      <h2 id="preise-title">Transparent, ohne Überraschungen</h2>
+      <p class="section-lead" id="preise-lead">Klare Pakete für jeden Anlass.</p>
+    </div>
+    <div class="prices" id="preise-container"></div>
+  </div>
+</section>
 
-            document.getElementById('hero-img').src = data.hero.image || '';
-            document.getElementById('hero-title').innerText = data.hero.title;
-            document.getElementById('hero-sub').innerText = data.hero.sub_de;
+<!-- ABLAUF -->
+<section class="section">
+  <div class="center rv">
+    <span class="eyebrow">Ablauf</span>
+    <h2>So läuft dein Shooting ab</h2>
+  </div>
+  <div class="steps">
+    <div class="step rv" onclick="this.classList.toggle('flipped')">
+      <div class="step-inner">
+        <div class="step-front"><div class="step-icon-wrap"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Erstkontakt</h3></div>
+        <div class="step-back"><div class="step-icon-wrap" style="width:48px;height:48px;min-width:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><h3>Erstkontakt</h3><p>Kurzes Gespräch über deine Wünsche, Ziele und Stil — per Telefon oder E-Mail.</p></div>
+      </div>
+    </div>
+    <div class="step rv d1" onclick="this.classList.toggle('flipped')">
+      <div class="step-inner">
+        <div class="step-front"><div class="step-icon-wrap"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div><h3>Konzept</h3></div>
+        <div class="step-back"><div class="step-icon-wrap" style="width:48px;height:48px;min-width:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div><h3>Konzept</h3><p>Gemeinsam planen wir Outfit, Atmosphäre und Stimmung deines Shootings.</p></div>
+      </div>
+    </div>
+    <div class="step rv d2" onclick="this.classList.toggle('flipped')">
+      <div class="step-inner">
+        <div class="step-front"><div class="step-icon-wrap"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h3>Shooting</h3></div>
+        <div class="step-back"><div class="step-icon-wrap" style="width:48px;height:48px;min-width:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div><h3>Shooting</h3><p>Im Studio in Zürich-West — entspannt, ich begleite dich durch alles.</p></div>
+      </div>
+    </div>
+    <div class="step rv d3" onclick="this.classList.toggle('flipped')">
+      <div class="step-inner">
+        <div class="step-front"><div class="step-icon-wrap"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><h3>Lieferung</h3></div>
+        <div class="step-back"><div class="step-icon-wrap" style="width:48px;height:48px;min-width:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div><h3>Lieferung</h3><p>Deine bearbeiteten Bilder per Online-Galerie — zum Download.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            document.getElementById('about-img').src = data.about.image || '';
-            document.getElementById('about-title').innerText = data.about.title_de;
-            document.getElementById('about-p1').innerText = data.about.p1_de;
-            document.getElementById('about-p2').innerText = data.about.p2_de;
+<!-- STANDORT -->
+<section class="loc" id="standort">
+  <div class="loc-map">
+    <iframe src="https://www.google.com/maps?q=Hardturmstrasse+124a,+8005+Z%C3%BCrich&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Studio Sabrina Fiechter"></iframe>
+  </div>
+  <div class="loc-info">
+    <span class="eyebrow">Standort</span>
+    <h2>Mein Studio in Zürich-West</h2>
+    <div class="loc-row">
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <div><div class="l">Adresse</div><div class="v">Hardturmstrasse 124a, 8005 Zürich</div></div>
+    </div>
+    <div class="loc-row">
+      <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+      <div><div class="l">Telefon</div><div class="v"><a href="tel:+41762701117">+41 76 270 11 17</a></div></div>
+    </div>
+    <div class="loc-row">
+      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+      <div><div class="l">E-Mail</div><div class="v"><a href="mailto:info@sabrinafiechter.ch">info@sabrinafiechter.ch</a></div></div>
+    </div>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Hardturmstrasse+124a,+8005+Z%C3%BCrich" target="_blank" rel="noopener" class="hero-cta">Route planen →</a>
+  </div>
+</section>
 
-            const angContainer = document.getElementById('angebote-container');
-            angContainer.innerHTML = '';
-            data.angebote.forEach(item => {
-                angContainer.innerHTML += `<div class="card">
-                    <img src="${item.image || ''}" alt="${item.title}" style="width:100%">
-                    <h3>${item.cat} - ${item.title}</h3>
-                    <p>${item.text}</p>
-                </div>`;
-            });
+<!-- CTA -->
+<section class="cta">
+  <h2>Bereit für dein Shooting?</h2>
+  <p>Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt.</p>
+  <a href="#" onclick="openFormModal();return false;" class="hero-cta">Termin anfragen</a>
+  <div class="cta-detail">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
+</section>
 
-            const refContainer = document.getElementById('refs-container');
-            refContainer.innerHTML = '';
-            data.referenzen.forEach(item => {
-                refContainer.innerHTML += `<div class="ref"><p>"${item.text}"</p><strong>${item.name}, ${item.rolle}</strong></div>`;
-            });
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <a href="https://www.sabrinafiechter.ch/" style="display:inline-block;line-height:0"><img src="/images/logos/logo-weiss.png" alt="SF Photography" style="height:80px;width:auto;display:block"></a>
+      <div class="foot-tag" style="margin-top:.75rem">
+        SF Photography<br>Hardturmstrasse 124a<br>8005 Zürich<br><br>
+        <a href="mailto:info@sabrinafiechter.ch" style="color:rgba(255,255,255,.55);text-decoration:none">info@sabrinafiechter.ch</a><br>
+        <a href="tel:+41762701117" style="color:rgba(255,255,255,.55);text-decoration:none">+41 76 270 11 17</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-ct">Navigation</div>
+      <ul class="foot-links">
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/shooting/">Shooting & Preise</a></li>
+        <li><a href="/bewerbungsfotos/">Bewerbungsfotos</a></li>
+        <li><a href="ueber-mich.html">Über mich</a></li>
+        <li><a href="/blog/">Blog</a></li>
+        <li><a href="/kontakt/">Kontakt</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="foot-ct">Folge mir</div>
+      <div style="display:flex;gap:1.2rem;align-items:center;margin-top:.5rem">
+        <a href="https://www.instagram.com/sabrinafiechter.photography/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.65);text-decoration:none;display:flex" onmouseover="this.style.color='#1f7a72'" onmouseout="this.style.color='rgba(255,255,255,.65)'">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/sabrina-fiechter-524530a8/" target="_blank" rel="noopener" style="color:rgba(255,255,255,.65);text-decoration:none;display:flex" onmouseover="this.style.color='#1f7a72'" onmouseout="this.style.color='rgba(255,255,255,.65)'">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M12 10v7M12 13a3 3 0 0 1 6 0v4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-copy">© 2026 Sabrina Fiechter · Portraitfotografin Zürich &nbsp;·&nbsp; <a href="/impressum/" style="color:rgba(255,255,255,.35);text-decoration:none">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz/" style="color:rgba(255,255,255,.35);text-decoration:none">Datenschutz</a></div>
+</footer>
 
-            const preisContainer = document.getElementById('preise-container');
-            preisContainer.innerHTML = '';
-            data.preise.forEach(item => {
-                preisContainer.innerHTML += `<div class="preis"><h3>${item.name}</h3><p>${item.betrag} CHF</p><ul>${item.leistungen.map(l => `<li>${l}</li>`).join('')}</ul></div>`;
-            });
-        } catch (err) { console.error("Daten konnten nicht geladen werden:", err); }
-    }
-    document.addEventListener('DOMContentLoaded', loadData);
-    </script>
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeFormModal()">✕</button>
+    <h2>Termin anfragen</h2>
+    <p class="sub">Ich melde mich so schnell wie möglich bei dir — versprochen.</p>
+    <div id="formContent">
+      <form name="termin-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="termin-anfrage">
+        <p style="display:none"><input name="bot-field"></p>
+        <div class="form-row">
+          <div class="form-group"><label>Vorname</label><input type="text" name="vorname" placeholder="Sabrina" required><span class="field-error">Bitte gib deinen Vornamen ein.</span></div>
+          <div class="form-group"><label>Nachname</label><input type="text" name="nachname" placeholder="Fiechter" required><span class="field-error">Bitte gib deinen Nachnamen ein.</span></div>
+        </div>
+        <div class="form-group"><label>E-Mail-Adresse</label><input type="email" name="email" placeholder="hallo@beispiel.ch" required><span class="field-error">Bitte gib eine gültige E-Mail-Adresse ein.</span></div>
+        <div class="form-group"><label>Telefonnummer</label><input type="tel" name="telefon" placeholder="+41 76 000 00 00" required><span class="field-error">Bitte gib deine Telefonnummer ein.</span></div>
+        <div class="form-group"><label>Deine Nachricht</label><textarea name="nachricht" placeholder="Erzähl mir von deinem Wunsch-Shooting..." required></textarea><span class="field-error">Bitte schreib mir eine kurze Nachricht.</span></div>
+        <button type="submit" class="form-submit">Los geht's →</button>
+      </form>
+    </div>
+    <div class="form-success" id="formSuccess"><div class="check">✉️</div><h3>Nachricht gesendet!</h3><p>Danke — ich melde mich bald bei dir.</p></div>
+  </div>
+</div>
+
+<script>
+// ── Sprache ──
+let sfLang = localStorage.getItem('sf_lang') || 'de';
+function t(de, en){ return sfLang === 'en' ? (en || de) : de; }
+function setLang(l){
+  sfLang = l;
+  localStorage.setItem('sf_lang', l);
+  document.getElementById('btnDE').classList.toggle('active', l==='de');
+  document.getElementById('btnEN').classList.toggle('active', l==='en');
+  renderAll();
+}
+
+// ── Daten laden & rendern ──
+let DATA = null;
+async function loadData(){
+  const res = await fetch('/inhalt.json');
+  DATA = await res.json();
+  renderAll();
+}
+function renderAll(){
+  if(!DATA) return;
+  const d = DATA;
+  const l = sfLang;
+
+  // Hero
+  document.getElementById('hero-img').src = d.hero.image || '';
+  document.getElementById('hero-kicker').textContent = t(d.hero.kicker_de, d.hero.kicker_en);
+  document.getElementById('hero-title').textContent = d.hero.title;
+  document.getElementById('hero-sub').textContent = t(d.hero.sub_de, d.hero.sub_en);
+
+  // About
+  document.getElementById('about-img').src = d.about.image || '';
+  document.getElementById('about-title').textContent = t(d.about.title_de, d.about.title_en);
+  document.getElementById('about-p1').textContent = t(d.about.p1_de, d.about.p1_en);
+  document.getElementById('about-p2').textContent = t(d.about.p2_de, d.about.p2_en);
+
+  // Angebote
+  const delays = ['','d1','d2','','d1','d2'];
+  document.getElementById('angebote-container').innerHTML = d.angebote.map((a,i) => `
+    <a href="${a.link}" class="offer rv ${delays[i]||''}">
+      <div class="offer-img"><img src="${a.image||''}" alt="${t(a.title_de,a.title_en)}"></div>
+      <span class="offer-cat">${t(a.cat_de,a.cat_en)}</span>
+      <h3>${t(a.title_de,a.title_en)}</h3>
+      <p>${t(a.text_de,a.text_en)}</p>
+      <span class="offer-link">${t('Zum Angebot →','Learn more →')}</span>
+    </a>`).join('');
+
+  // Referenzen
+  const rdelays = ['rv','rv d1','rv d2'];
+  document.getElementById('refs-container').innerHTML = d.referenzen.map((r,i) => `
+    <div class="${rdelays[i]||'rv'} ref">
+      <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
+      <p>${t(r.text_de,r.text_en)}</p>
+      <div class="ref-who">
+        <div class="ref-av">${r.name.charAt(0)}</div>
+        <div><div class="ref-nm">${r.name}</div><div class="ref-rl">${t(r.rolle_de,r.rolle_en)}</div></div>
+      </div>
+    </div>`).join('');
+
+  // Preise
+  document.getElementById('preise-container').innerHTML = d.preise.map(p => `
+    <div class="price${p.featured?' feat':''} rv">
+      <div class="pc">${t(p.cat_de,p.cat_en)}</div>
+      <h3>${t(p.name_de,p.name_en)}</h3>
+      <div class="amt"><span class="c">CHF</span> ${p.betrag}</div>
+      <ul>${(t(p.leistungen_de,p.leistungen_en)||[]).map(li=>`<li>${li}</li>`).join('')}</ul>
+      <a href="/kontakt/" class="pb">${t('Anfragen','Enquire')}</a>
+    </div>`).join('');
+
+  // Sprach-Buttons
+  document.getElementById('btnDE').classList.toggle('active', l==='de');
+  document.getElementById('btnEN').classList.toggle('active', l==='en');
+
+  // Reveal-Animation neu triggern
+  document.querySelectorAll('.rv').forEach(el => {
+    el.classList.remove('vis');
+    io.observe(el);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  if(sfLang==='en'){ document.getElementById('btnDE').classList.remove('active'); document.getElementById('btnEN').classList.add('active'); }
+  loadData();
+});
+
+// ── Scroll ──
+const tb = document.getElementById('topbar');
+addEventListener('scroll', ()=>{ tb.classList.toggle('solid', scrollY>60); }, {passive:true});
+const io = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px'});
+
+// ── Modal ──
+function openFormModal(){ document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeFormModal(){ document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow=''; }
+function validateField(f){
+  const g=f.closest('.form-group');
+  const v=f.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()):f.value.trim().length>0;
+  f.classList.toggle('invalid',!v); f.classList.toggle('valid',v); g.classList.toggle('has-error',!v); return v;
+}
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(f=>{
+    f.addEventListener('blur',()=>validateField(f));
+    f.addEventListener('input',()=>{ if(f.classList.contains('invalid')) validateField(f); });
+  });
+});
+async function handleSubmit(e){
+  e.preventDefault();
+  const form=e.target;
+  const fields=form.querySelectorAll('input[required],textarea[required]');
+  let ok=true,first=null;
+  fields.forEach(f=>{if(!validateField(f)){ok=false;if(!first)first=f}});
+  if(!ok){first.focus();return;}
+  try{
+    await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});
+    document.getElementById('formContent').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+    setTimeout(closeFormModal,3000);
+  } catch(err){ alert('Fehler beim Senden. Bitte versuche es nochmals.'); }
+}
+</script>
 </body>
 </html>
