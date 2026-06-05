@@ -8,43 +8,44 @@ public_folder: "/images/assets"
 collections:
   - name: "startseite"
     label: "Startseite bearbeiten"
+    format: json
     file: "inhalt.json"
     fields:
-      - {label: "Hero Sektion", name: "hero", widget: "object", fields: [
-          {label: "Bild", name: "image", widget: "image"},
-          {label: "Titel", name: "title", widget: "string"},
-          {label: "Kicker", name: "kicker_de", widget: "string"},
-          {label: "Subtext", name: "sub_de", widget: "text"}
-        ]}
-      
-      - {label: "Über mich Sektion", name: "about", widget: "object", fields: [
-          {label: "Bild", name: "image", widget: "image"},
-          {label: "Titel", name: "title_de", widget: "string"},
-          {label: "Text Absatz 1", name: "p1_de", widget: "text"},
-          {label: "Text Absatz 2", name: "p2_de", widget: "text"}
-        ]}
+      - label: "Hero Sektion"
+        name: "hero"
+        widget: "object"
+        fields:
+          - {label: "Titel", name: "title", widget: "string"}
+          - {label: "Subtext", name: "sub_de", widget: "text"}
+
+      - label: "Über mich Sektion"
+        name: "about"
+        widget: "object"
+        fields:
+          - {label: "Titel", name: "title_de", widget: "string"}
+          - {label: "Text Absatz 1", name: "p1_de", widget: "text"}
+          - {label: "Text Absatz 2", name: "p2_de", widget: "text"}
 
       - label: "Angebote (Grid)"
         name: "angebote"
         widget: "list"
         fields:
-          - {label: "Bild", name: "image", widget: "image"},
-          - {label: "Kategorie", name: "cat", widget: "string"},
-          - {label: "Titel", name: "title", widget: "string"},
+          - {label: "Kategorie", name: "cat", widget: "string"}
+          - {label: "Titel", name: "title", widget: "string"}
           - {label: "Beschreibung", name: "text", widget: "text"}
 
       - label: "Referenzen"
         name: "referenzen"
         widget: "list"
         fields:
-          - {label: "Bewertungstext", name: "text", widget: "text"},
-          - {label: "Name", name: "name", widget: "string"},
+          - {label: "Bewertungstext", name: "text", widget: "text"}
+          - {label: "Name", name: "name", widget: "string"}
           - {label: "Rolle", name: "rolle", widget: "string"}
 
       - label: "Preis-Pakete"
         name: "preise"
         widget: "list"
         fields:
-          - {label: "Paket-Name", name: "name", widget: "string"},
-          - {label: "Preis (CHF)", name: "betrag", widget: "number"},
+          - {label: "Paket-Name", name: "name", widget: "string"}
+          - {label: "Preis (CHF)", name: "betrag", widget: "number"}
           - {label: "Leistungen (Liste)", name: "leistungen", widget: "list"}
