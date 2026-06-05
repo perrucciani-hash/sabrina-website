@@ -14,44 +14,62 @@ collections:
         file: "inhalt.json"
         format: json
         fields:
+
           - label: "Hero Sektion"
             name: "hero"
             widget: "object"
             fields:
               - {label: "Hintergrundbild", name: "image", widget: "image"}
+              - {label: "Kicker DE", name: "kicker_de", widget: "string"}
+              - {label: "Kicker EN", name: "kicker_en", widget: "string"}
               - {label: "Titel", name: "title", widget: "string"}
-              - {label: "Subtext", name: "sub_de", widget: "text"}
+              - {label: "Subtext DE", name: "sub_de", widget: "text"}
+              - {label: "Subtext EN", name: "sub_en", widget: "text"}
 
-          - label: "Über mich Sektion"
+          - label: "Über mich"
             name: "about"
             widget: "object"
             fields:
               - {label: "Bild", name: "image", widget: "image"}
-              - {label: "Titel", name: "title_de", widget: "string"}
-              - {label: "Text Absatz 1", name: "p1_de", widget: "text"}
-              - {label: "Text Absatz 2", name: "p2_de", widget: "text"}
+              - {label: "Titel DE", name: "title_de", widget: "string"}
+              - {label: "Titel EN", name: "title_en", widget: "string"}
+              - {label: "Text 1 DE", name: "p1_de", widget: "text"}
+              - {label: "Text 1 EN", name: "p1_en", widget: "text"}
+              - {label: "Text 2 DE", name: "p2_de", widget: "text"}
+              - {label: "Text 2 EN", name: "p2_en", widget: "text"}
 
-          - label: "Angebote (Grid)"
+          - label: "Angebote"
             name: "angebote"
             widget: "list"
             fields:
               - {label: "Bild", name: "image", widget: "image"}
-              - {label: "Kategorie", name: "cat", widget: "string"}
-              - {label: "Titel", name: "title", widget: "string"}
-              - {label: "Beschreibung", name: "text", widget: "text"}
+              - {label: "Kategorie DE", name: "cat_de", widget: "string"}
+              - {label: "Kategorie EN", name: "cat_en", widget: "string"}
+              - {label: "Titel DE", name: "title_de", widget: "string"}
+              - {label: "Titel EN", name: "title_en", widget: "string"}
+              - {label: "Text DE", name: "text_de", widget: "text"}
+              - {label: "Text EN", name: "text_en", widget: "text"}
+              - {label: "Link", name: "link", widget: "string"}
 
           - label: "Referenzen"
             name: "referenzen"
             widget: "list"
             fields:
-              - {label: "Bewertungstext", name: "text", widget: "text"}
+              - {label: "Text DE", name: "text_de", widget: "text"}
+              - {label: "Text EN", name: "text_en", widget: "text"}
               - {label: "Name", name: "name", widget: "string"}
-              - {label: "Rolle", name: "rolle", widget: "string"}
+              - {label: "Rolle DE", name: "rolle_de", widget: "string"}
+              - {label: "Rolle EN", name: "rolle_en", widget: "string"}
 
           - label: "Preis-Pakete"
             name: "preise"
             widget: "list"
             fields:
-              - {label: "Paket-Name", name: "name", widget: "string"}
+              - {label: "Kategorie DE", name: "cat_de", widget: "string"}
+              - {label: "Kategorie EN", name: "cat_en", widget: "string"}
+              - {label: "Paket-Name DE", name: "name_de", widget: "string"}
+              - {label: "Paket-Name EN", name: "name_en", widget: "string"}
               - {label: "Preis (CHF)", name: "betrag", widget: "number"}
-              - {label: "Leistungen (Liste)", name: "leistungen", widget: "list"}
+              - {label: "Highlight (schwarz)", name: "featured", widget: "boolean", default: false}
+              - {label: "Leistungen DE", name: "leistungen_de", widget: "list"}
+              - {label: "Leistungen EN", name: "leistungen_en", widget: "list"}
