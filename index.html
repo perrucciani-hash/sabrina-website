@@ -8,7 +8,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Netlify Identity (nur für CMS-Login nötig) -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
 <style>
+/* ── RESET & BASIS ── */
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --black:#1a1a1a;
@@ -36,44 +41,6 @@ h1,h2,h3,h4{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);lin
 img{display:block;max-width:100%}
 a{color:inherit}
 
-/* ── HEADER ── */
-.topbar{
-  position:fixed;top:0;left:0;right:0;z-index:300;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;height:80px;
-  background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.0) 100%);
-  transition:background .35s,height .35s,box-shadow .35s;
-}
-.topbar.solid{background:#fff;height:70px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
-.logo{text-decoration:none;display:flex;align-items:center;line-height:0}
-.logo-img{height:56px;width:auto;display:block;
-  mix-blend-mode:screen;
-  transition:filter .35s,mix-blend-mode .35s}
-.topbar.solid .logo-img{mix-blend-mode:multiply;filter:none}
-.menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
-.menu a{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:400;letter-spacing:.02em;
-  color:#fff;text-decoration:none;transition:color .25s;position:relative;padding-bottom:3px}
-.topbar.solid .menu a{color:var(--black)}
-.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;
-  background:currentColor;transition:width .3s}
-.menu a:hover::after{width:100%}
-.menu .termin{
-  background:#fff;color:var(--black) !important;
-  padding:.6rem 1.4rem;border-radius:2px;font-weight:500;
-  transition:background .25s,color .25s}
-.menu .termin::after{display:none}
-.topbar.solid .menu .termin{background:var(--black);color:#fff !important}
-.menu .termin:hover{background:var(--accent);color:#fff !important}
-.burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
-.burger span{width:26px;height:2px;background:#fff;display:block;transition:background .35s}
-.topbar.solid .burger span{background:var(--black)}
-.mobile{position:fixed;inset:0;z-index:290;background:#fff;display:none;
-  flex-direction:column;justify-content:center;padding:3rem;gap:.4rem}
-.mobile.open{display:flex}
-.mobile a{font-family:'Jost';font-size:1.6rem;color:var(--black);text-decoration:none;
-  padding:.7rem 0;border-bottom:1px solid var(--line)}
-.mobile .close{position:absolute;top:1.8rem;right:2.5rem;font-size:2rem;background:none;border:none;cursor:pointer}
-
 /* ── HERO ── */
 .hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:center;
   justify-content:flex-start;text-align:left;overflow:hidden}
@@ -100,13 +67,12 @@ a{color:inherit}
 .hero-badge .bt{font-size:.85rem;font-weight:500;letter-spacing:.04em;text-align:left;line-height:1.3}
 .hero-badge .bt b{font-weight:700}
 .hero-badge .div{width:1px;height:30px;background:rgba(255,255,255,.3)}
-
 .scroll-hint{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);z-index:2;
   color:#fff;font-family:'Jost';font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
   opacity:.8;animation:bob 2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
 
-/* ── SECTION ── */
+/* ── SECTIONS ── */
 .section{padding:6rem 2.5rem;max-width:1280px;margin:0 auto}
 .section-bg{background:var(--bg-soft)}
 .center{text-align:center;max-width:680px;margin:0 auto 3.5rem}
@@ -138,8 +104,6 @@ a{color:inherit}
 .about{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
 .about-img{aspect-ratio:4/5;overflow:hidden;background:var(--bg-soft)}
 .about-img img{width:100%;height:100%;object-fit:cover}
-.about-ph{width:100%;height:100%;min-height:440px;display:flex;align-items:center;justify-content:center;background:#eceae6}
-.about-ph span{font-family:'Jost';font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:#a8a39a}
 .about-text .eyebrow{color:var(--accent)}
 .about-text h2{font-size:clamp(1.9rem,3.5vw,2.8rem);font-weight:300;margin-bottom:1.5rem}
 .about-text p{font-size:1.05rem;color:var(--text);line-height:1.8;margin-bottom:1.2rem}
@@ -164,7 +128,6 @@ a{color:inherit}
   display:flex;align-items:center;justify-content:center;font-family:'Jost';font-size:1.1rem;flex-shrink:0}
 .ref-nm{font-family:'Jost';font-size:1.05rem;color:var(--black)}
 .ref-rl{font-size:.88rem;color:var(--grey)}
-.refs-foot{text-align:center;margin-top:3rem}
 
 /* ── PREISE ── */
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
@@ -192,7 +155,57 @@ a{color:inherit}
 .price.feat .pb{background:#fff;color:var(--black);border-color:#fff}
 .price.feat .pb:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
-/* ── ABLAUF ── */
+/* ── ABLAUF STEPS ── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;position:relative}
+.step{cursor:pointer;perspective:800px;position:relative;z-index:1;padding:0 1rem}
+.step-inner{
+  position:relative;height:220px;
+  transform-style:preserve-3d;
+  -webkit-transform-style:preserve-3d;
+  transition:transform .7s cubic-bezier(.4,0,.2,1);
+}
+.step.flipped .step-inner,
+.step:hover .step-inner{transform:rotateY(180deg)}
+.step-front,.step-back{
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border-radius:8px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:1.5rem 1rem;
+  border:1px solid var(--line);
+}
+.step-front{background:#fff;transition:background .25s}
+.step:hover .step-front,.step.flipped .step-front{background:#e4f2f0}
+.step-back{background:var(--bg-soft);transform:rotateY(180deg);border-color:var(--accent)}
+.step-icon-wrap{
+  width:64px;height:64px;border-radius:50%;
+  border:1.5px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1rem;background:#fff;color:var(--accent);
+  transition:background .25s,color .25s;
+}
+.step:hover .step-icon-wrap,.step.flipped .step-icon-wrap{background:var(--accent);color:#fff}
+.step h3{font-size:1rem;font-weight:500;color:var(--black);text-align:center;margin-top:.25rem}
+.step-back h3{color:var(--black);margin-bottom:.5rem}
+.step-back p{font-size:.85rem;color:var(--text);line-height:1.6;text-align:center;margin-top:.25rem}
+
+/* ── STANDORT ── */
+.loc{display:grid;grid-template-columns:1fr 1fr;min-height:480px;background:#f6f5f3}
+.loc-map{position:relative;min-height:480px;width:100%}
+.loc-map iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.loc-info{padding:4.5rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
+.loc-info h2{font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:300;margin-bottom:2rem;color:#1a1a1a}
+.loc-info .eyebrow{color:var(--accent)}
+.loc-row{display:flex;gap:1rem;margin-bottom:1.4rem;align-items:flex-start}
+.loc-row svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5;flex-shrink:0;margin-top:4px}
+.loc-row .l{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6b6b6b;margin-bottom:.15rem}
+.loc-row .v{font-size:1.05rem;color:#1a1a1a;font-weight:500}
+.loc-row .v a{color:#1a1a1a;text-decoration:none;transition:color .2s}
+.loc-row .v a:hover{color:var(--accent)}
+.loc-info .hero-cta{background:var(--black);color:#fff;border-color:var(--black);align-self:flex-start;margin-top:1rem}
+.loc-info .hero-cta:hover{background:var(--accent);border-color:var(--accent)}
 
 /* ── CTA ── */
 .cta{text-align:center;padding:7rem 2.5rem;background:var(--black);color:#fff}
@@ -202,49 +215,7 @@ a{color:inherit}
 .cta .hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .cta-detail{margin-top:2rem;font-family:'Jost';font-size:.85rem;letter-spacing:.08em;color:rgba(255,255,255,.4);text-transform:uppercase}
 
-/* ── FOOTER ── */
-footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
-.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem}
-.foot-logo{font-family:'Jost';font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;display:block;margin-bottom:1rem}
-.foot-tag{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7}
-.foot-ct{font-family:'Jost';font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
-.foot-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
-.foot-links a{font-size:.96rem;color:rgba(255,255,255,.85);text-decoration:none;transition:color .2s}
-.foot-links a:hover{color:var(--accent)}
-.foot-copy{max-width:1280px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);
-  font-size:.82rem;color:rgba(255,255,255,.35)}
-
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
-.rv.vis{opacity:1;transform:none}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-
-/* ── MOBILE ── */
-@media(max-width:920px){
-  .topbar{padding:0 1.3rem}
-  .menu{display:none}
-  .burger{display:flex}
-  .hero{height:78vh}
-  .hero-badges{gap:1.2rem}
-  .section{padding:4rem 1.3rem}
-  .offers{grid-template-columns:1fr;gap:2.5rem}
-  .about{grid-template-columns:1fr;gap:2.5rem}
-  .about-img{order:-1}
-  .refs{grid-template-columns:1fr}
-  .prices{grid-template-columns:1fr}
-
-  .cta{padding:4.5rem 1.3rem}
-  .foot-grid{grid-template-columns:1fr;gap:2rem}
-
-  /* Standort Mobile */
-
-  .loc{grid-template-columns:1fr}
-  .loc-map{height:350px;min-height:350px}
-  .loc-info{padding:3rem 1.3rem}
-
-}
-
-/* MODAL */
+/* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);
   display:flex;align-items:center;justify-content:center;padding:1.5rem;
   opacity:0;pointer-events:none;transition:opacity .35s}
@@ -278,105 +249,63 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 .form-success .check{font-size:3rem;margin-bottom:1rem}
 .form-success h3{font-family:'Jost';font-weight:300;font-size:1.5rem;color:#1a1a1a;margin-bottom:.5rem}
 .form-success p{color:#6b6b6b;font-size:.95rem}
-@media(max-width:600px){.form-row{grid-template-columns:1fr}}
-/* LANG TOGGLE */
-.lang-toggle{display:flex;align-items:center;gap:4px}
-.lang-li{list-style:none;display:flex;align-items:center;margin-left:.5rem}
-.lang-btn{padding:.35rem .65rem;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;
-  letter-spacing:.08em;cursor:pointer;border:1.5px solid rgba(255,255,255,.5);
-  border-radius:2px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);
-  transition:all .2s;line-height:1}
-.lang-btn.active{background:#fff;color:#1a1a1a;border-color:#fff}
-.topbar.solid .lang-btn{border-color:#d0d0d0;background:#fff;color:#666}
-.topbar.solid .lang-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
 
-/* ABLAUF STEPS */
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;position:relative}
-.steps::before{display:none}
-.step{cursor:pointer;perspective:800px;position:relative;z-index:1;padding:0 1rem}
-.step-inner{
-  position:relative;height:220px;
-  transform-style:preserve-3d;
-  -webkit-transform-style:preserve-3d;
-  transition:transform .7s cubic-bezier(.4,0,.2,1);
-}
-.step.flipped .step-inner,
-.step:hover .step-inner{transform:rotateY(180deg)}
-.step-front,.step-back{
-  position:absolute;inset:0;
-  backface-visibility:hidden;
-  -webkit-backface-visibility:hidden;
-  border-radius:8px;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:1.5rem 1rem;
-  border:1px solid var(--line);
-}
-.step-front{background:#fff;transition:background .25s}
-.step:hover .step-front,.step.flipped .step-front{background:var(--accent-light,#e4f2f0)}
-.step-back{background:var(--bg-soft);transform:rotateY(180deg);border-color:var(--accent)}
-.step-icon-wrap{
-  width:64px;height:64px;border-radius:50%;
-  border:1.5px solid var(--accent);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1rem;background:#fff;color:var(--accent);
-  transition:background .25s,color .25s;
-}
-.step:hover .step-icon-wrap,.step.flipped .step-icon-wrap{background:var(--accent);color:#fff}
-.step h3{font-size:1rem;font-weight:500;color:var(--black);text-align:center;margin-top:.25rem}
-.step-back h3{color:var(--black);margin-bottom:.5rem}
-.step-back p{font-size:.85rem;color:var(--text);line-height:1.6;text-align:center;margin-top:.25rem}
-.step-connector{
-  display:none;
-  position:absolute;top:60px;right:-1rem;
-  width:2rem;height:2px;background:var(--accent);opacity:.4;z-index:2;
-}
+/* ── REVEAL ANIMATION ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
-.loc{display:grid;grid-template-columns:1fr 1fr;min-height:480px;background:#f6f5f3}
-.loc-map{position:relative;min-height:480px;width:100%}
-.loc-map iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-.loc-info{padding:4.5rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
-.loc-info h2{font-size:clamp(1.9rem,3.5vw,2.6rem);font-weight:300;margin-bottom:2rem;color:#1a1a1a}
-.loc-info .eyebrow{color:var(--accent)}
-.loc-row{display:flex;gap:1rem;margin-bottom:1.4rem;align-items:flex-start}
-.loc-row svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5;flex-shrink:0;margin-top:4px}
-.loc-row .l{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#6b6b6b;margin-bottom:.15rem}
-.loc-row .v{font-size:1.05rem;color:#1a1a1a;font-weight:500}
-.loc-row .v a{color:#1a1a1a;text-decoration:none;transition:color .2s}
-.loc-row .v a:hover{color:var(--accent)}
-.loc-info .hero-cta{background:var(--black);color:#fff;border-color:var(--black);align-self:flex-start;margin-top:1rem}
-.loc-info .hero-cta:hover{background:var(--accent);border-color:var(--accent)}
-
+/* ── MOBILE ── */
+@media(max-width:920px){
+  .hero{height:78vh}
+  .hero-badges{gap:1.2rem}
+  .section{padding:4rem 1.3rem}
+  .offers{grid-template-columns:1fr;gap:2.5rem}
+  .about{grid-template-columns:1fr;gap:2.5rem}
+  .about-img{order:-1}
+  .refs{grid-template-columns:1fr}
+  .prices{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr;gap:1.5rem}
+  .cta{padding:4.5rem 1.3rem}
+  .loc{grid-template-columns:1fr}
+  .loc-map{height:350px;min-height:350px}
+  .loc-info{padding:3rem 1.3rem}
+}
+@media(max-width:600px){
+  .steps{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<div id="sf-header"></div>
+<!-- ── HEADER (Web Component — gepflegt in header.js) ── -->
+<sf-header></sf-header>
+<script src="/header.js"></script>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section class="hero">
-  <img src="/images/assets/hero.jpg" alt="Portraitfotografin Zürich – Sabrina Fiechter">
+  <img id="hero-bg" src="/images/assets/hero.jpg" alt="Portraitfotografin Zürich – Sabrina Fiechter">
   <div class="hero-inner">
-    <div class="hero-kicker" data-de="Portraitfotografin · Zürich" data-en="Portrait photographer · Zurich">Portraitfotografin · Zürich</div>
-    <h1>Sabrina Fiechter</h1>
-    <p class="hero-sub">Dein Studio in Zürich-West für authentische Portraits:<br>Business Portraits, Personal Branding & Bewerbungsfotos.</p>
-    <a href="#" onclick="openFormModal();return false;" class="hero-cta">Termin anfragen</a>
+    <div class="hero-kicker" id="hero-kicker" data-de="Portraitfotografin · Zürich" data-en="Portrait photographer · Zurich">Portraitfotografin · Zürich</div>
+    <h1 id="hero-title">Sabrina Fiechter</h1>
+    <p class="hero-sub" id="hero-sub" data-de="Dein Studio in Zürich-West für authentische Portraits:<br>Business Portraits, Personal Branding & Bewerbungsfotos." data-en="Your studio in Zurich-West for authentic portraits:<br>Business portraits, personal branding & headshots.">Dein Studio in Zürich-West für authentische Portraits:<br>Business Portraits, Personal Branding & Bewerbungsfotos.</p>
+    <a href="#" onclick="openFormModal();return false;" class="hero-cta" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
     <div class="hero-badges">
       <div class="hero-badge">
         <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="bt"><b>5,0</b> Google<br>Bewertungen</div>
+        <div class="bt"><b>5,0</b> Google<br><span data-de="Bewertungen" data-en="Reviews">Bewertungen</span></div>
       </div>
       <div class="div"></div>
       <a href="#standort" class="hero-badge" style="text-decoration:none;color:#fff">
-        <div class="bt">Studio Zürich-West<br><b>8 Min. vom HB ↓</b></div>
+        <div class="bt"><span data-de="Studio Zürich-West" data-en="Studio Zurich-West">Studio Zürich-West</span><br><b data-de="8 Min. vom HB ↓" data-en="8 min. from main station ↓">8 Min. vom HB ↓</b></div>
       </a>
     </div>
   </div>
   <div class="scroll-hint">↓ Scroll</div>
 </section>
 
-<!-- ANGEBOT -->
+<!-- ── ANGEBOT ── -->
 <section class="section">
   <div class="center rv">
     <span class="eyebrow" data-de="Angebot Fotografie" data-en="Photography services">Angebot Fotografie</span>
@@ -386,137 +315,175 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   <div class="offers">
     <a href="/bewerbungsfotos/" class="offer rv">
       <div class="offer-img"><img src="/images/assets/bewerbungsfoto.jpg" alt="Bewerbungsfoto Zürich – Sabrina Fiechter" style="object-position:center top"></div>
-      <span class="offer-cat" data-de="Privatkunden" data-en="Private clients" data-de="Privatkunden" data-en="Private clients">Privatkunden</span>
-      <h3 data-de="Bewerbungsfotos" data-en="Application photos" data-de="Bewerbungsfotos" data-en="Application photos">Bewerbungsfotos</h3>
+      <span class="offer-cat" data-de="Privatkunden" data-en="Private clients">Privatkunden</span>
+      <h3 data-de="Bewerbungsfotos" data-en="Application photos">Bewerbungsfotos</h3>
       <p data-de="Es gibt keine zweite Chance auf den ersten Eindruck. Überzeuge mit professionellen, sympathischen und selbstsicheren Bewerbungsfotos — für Lebenslauf, LinkedIn und mehr." data-en="You never get a second chance to make a first impression. Convince with professional, likeable headshots — for your CV, LinkedIn and more.">Es gibt keine zweite Chance auf den ersten Eindruck. Überzeuge mit professionellen, sympathischen und selbstsicheren Bewerbungsfotos — für Lebenslauf, LinkedIn und mehr.</p>
-      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
+      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
     </a>
     <a href="/shooting/" class="offer rv d1">
       <div class="offer-img"><img src="/images/assets/business-portrait.jpg" alt="Business Portrait Zürich – Sabrina Fiechter" style="object-position:center top"></div>
-      <span class="offer-cat">Business & Privat</span>
+      <span class="offer-cat" data-de="Business & Privat" data-en="Business & private">Business & Privat</span>
       <h3>Business Portrait</h3>
       <p data-de="Authentische Headshots, die Persönlichkeit zeigen — klar, sympathisch und auf dich abgestimmt. Ideal für Website, LinkedIn und Team-Auftritte." data-en="Authentic headshots that show personality — clear, likeable and tailored to you.">Authentische Headshots, die Persönlichkeit zeigen — klar, sympathisch und auf dich abgestimmt. Ideal für Website, LinkedIn und Team-Auftritte.</p>
-      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
+      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
     </a>
     <a href="/shooting/" class="offer rv d2">
       <div class="offer-img"><img src="/images/assets/personal-branding.jpg" alt="Personal Branding Fotografie Zürich – Sabrina Fiechter"></div>
       <span class="offer-cat">Branding</span>
       <h3>Personal Branding</h3>
       <p data-de="Ein vollständiges Bildpaket, das deine Persönlichkeit und Geschichte erzählt — für deine Marke, deinen Auftritt und deine Social-Media-Kanäle." data-en="A complete image package that tells your personality and story — for your brand and social media channels.">Ein vollständiges Bildpaket, das deine Persönlichkeit und Geschichte erzählt — für deine Marke, deinen Auftritt und deine Social-Media-Kanäle.</p>
-      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
+      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
     </a>
     <a href="/shooting/" class="offer rv">
-      <div class="offer-img"><img src="/images/assets/kreativ-portrait.jpg" alt="Kreativ-Portrait Haute Couture Zürich – Sabrina Fiechter" style="object-position:center top"></div>
-      <span class="offer-cat" data-de="Privatkunden" data-en="Private clients" data-de="Privatkunden" data-en="Private clients">Privatkunden</span>
+      <div class="offer-img"><img src="/images/assets/kreativ-portrait.jpg" alt="Kreativ-Portrait Zürich – Sabrina Fiechter" style="object-position:center top"></div>
+      <span class="offer-cat" data-de="Privatkunden" data-en="Private clients">Privatkunden</span>
       <h3>Kreativ-Portrait</h3>
       <p data-de="Ausdrucksstarke Portraits mit Konzept — lebendig, frisch, manchmal ein bisschen mutig. Zeit, dich so zu zeigen, wie du wirklich bist." data-en="Expressive portraits with concept — vibrant, fresh, sometimes bold. Time to show yourself as you truly are.">Ausdrucksstarke Portraits mit Konzept — lebendig, frisch, manchmal ein bisschen mutig. Zeit, dich so zu zeigen, wie du wirklich bist.</p>
-      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
+      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
     </a>
     <a href="/portfolio/" class="offer rv d1">
       <div class="offer-img"><img src="/images/assets/studio-portrait.jpg" alt="Studio Portrait Zürich-West – Sabrina Fiechter"></div>
       <span class="offer-cat" data-de="Studio Zürich-West" data-en="Studio Zurich-West">Studio Zürich-West</span>
       <h3>Studio-Portrait</h3>
       <p data-de="Im Studio entstehen ruhige, konzentrierte Portraits — entspannt, mit voller Aufmerksamkeit für dich und in gleichbleibend hoher Qualität." data-en="In the studio we create calm, focused portraits — relaxed, with full attention and consistently high quality.">Im Studio entstehen ruhige, konzentrierte Portraits — entspannt, mit voller Aufmerksamkeit für dich und in gleichbleibend hoher Qualität.</p>
-      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
+      <span class="offer-link" data-de="Zum Angebot →" data-en="Learn more →">Zum Angebot →</span>
     </a>
     <a href="/portfolio/" class="offer rv d2">
-      <div class="offer-img"><div class="offer-ph"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Dein Foto hier</span></div></div>
+      <div class="offer-img">
+        <div class="offer-ph">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span data-de="Dein Foto hier" data-en="Your photo here">Dein Foto hier</span>
+        </div>
+      </div>
       <span class="offer-cat" data-de="Alle Arbeiten" data-en="All works">Alle Arbeiten</span>
-      <h3>Portfolio ansehen</h3>
+      <h3 data-de="Portfolio ansehen" data-en="View portfolio">Portfolio ansehen</h3>
       <p data-de="Einen Eindruck meiner Arbeit gewinnen: Personal Branding, Studio-Portraits, freie Projekte und mehr — schau dich in Ruhe um." data-en="Get an impression of my work: personal branding, studio portraits, free projects and more.">Einen Eindruck meiner Arbeit gewinnen: Personal Branding, Studio-Portraits, freie Projekte und mehr — schau dich in Ruhe um.</p>
-      <span class="offer-link" data-de="Zum Portfolio →" data-en="View portfolio →" data-de="Zum Portfolio →" data-en="View portfolio →">Zum Portfolio →</span>
+      <span class="offer-link" data-de="Zum Portfolio →" data-en="View portfolio →">Zum Portfolio →</span>
     </a>
   </div>
 </section>
 
-<!-- ABOUT -->
+<!-- ── ABOUT ── -->
 <section class="section-bg">
   <div class="section">
     <div class="about">
       <div class="about-img rv">
-        <img src="/images/assets/sabrina-fiechter.jpg" alt="Sabrina Fiechter – Portraitfotografin Zürich" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+        <img id="about-image" src="/images/assets/sabrina-fiechter.jpg" alt="Sabrina Fiechter – Portraitfotografin Zürich" style="width:100%;height:100%;object-fit:cover;object-position:center top">
       </div>
       <div class="about-text rv d1">
-        <span class="eyebrow">Über mich</span>
-        <h2 data-de="Authentische Portraits entstehen, wenn du dich wohl fühlst" data-en="Authentic portraits emerge when you feel comfortable">Authentische Portraits entstehen, wenn du dich wohl fühlst</h2>
-        <p data-de="Mit Feingefühl und Klarheit fotografiere ich Menschen als Privatpersonen oder im Business-Kontext in Zürich. Im Mittelpunkt stehen <strong>authentische Bilder, die Persönlichkeit zeigen</strong>, entstanden in einer entspannten Atmosphäre." data-en="With sensitivity and clarity I photograph people in Zurich. The focus is on <strong>authentic images that show personality</strong>, created in a relaxed atmosphere.">Mit Feingefühl und Klarheit fotografiere ich Menschen als Privatpersonen oder im Business-Kontext in Zürich. Im Mittelpunkt stehen <strong>authentische Bilder, die Persönlichkeit zeigen</strong>, entstanden in einer entspannten Atmosphäre.</p>
-        <p data-de="Ein Shooting bei mir ist kein Pflichttermin. Es ist ein Moment nur für dich. Ich nehme den Druck raus, gebe dir Orientierung und begleite dich — egal ob du Kameras liebst oder eigentlich meidest. Die meisten sagen hinterher: <strong>das hat sogar Spass gemacht.</strong>" data-en="A shoot with me is not an obligation. It is a moment just for you. I take the pressure off and guide you — whether you love cameras or usually avoid them. Most say afterwards: <strong>that was actually fun.</strong>">Ein Shooting bei mir ist kein Pflichttermin. Es ist ein Moment nur für dich. Ich nehme den Druck raus, gebe dir Orientierung und begleite dich — egal ob du Kameras liebst oder eigentlich meidest. Die meisten sagen hinterher: <strong>das hat sogar Spass gemacht.</strong></p>
+        <span class="eyebrow" data-de="Über mich" data-en="About me">Über mich</span>
+        <h2 id="about-title" data-de="Authentische Portraits entstehen, wenn du dich wohl fühlst" data-en="Authentic portraits emerge when you feel comfortable">Authentische Portraits entstehen, wenn du dich wohl fühlst</h2>
+        <p id="about-p1" data-de="Mit Feingefühl und Klarheit fotografiere ich Menschen als Privatpersonen oder im Business-Kontext in Zürich. Im Mittelpunkt stehen <strong>authentische Bilder, die Persönlichkeit zeigen</strong>, entstanden in einer entspannten Atmosphäre." data-en="With sensitivity and clarity I photograph people in Zurich. The focus is on <strong>authentic images that show personality</strong>, created in a relaxed atmosphere.">Mit Feingefühl und Klarheit fotografiere ich Menschen als Privatpersonen oder im Business-Kontext in Zürich. Im Mittelpunkt stehen <strong>authentische Bilder, die Persönlichkeit zeigen</strong>, entstanden in einer entspannten Atmosphäre.</p>
+        <p id="about-p2" data-de="Ein Shooting bei mir ist kein Pflichttermin. Es ist ein Moment nur für dich. Ich nehme den Druck raus, gebe dir Orientierung und begleite dich — egal ob du Kameras liebst oder eigentlich meidest. Die meisten sagen hinterher: <strong>das hat sogar Spass gemacht.</strong>" data-en="A shoot with me is not an obligation. It is a moment just for you. I take the pressure off and guide you — whether you love cameras or usually avoid them. Most say afterwards: <strong>that was actually fun.</strong>">Ein Shooting bei mir ist kein Pflichttermin. Es ist ein Moment nur für dich. Ich nehme den Druck raus, gebe dir Orientierung und begleite dich — egal ob du Kameras liebst oder eigentlich meidest. Die meisten sagen hinterher: <strong>das hat sogar Spass gemacht.</strong></p>
         <div class="about-sign">
           <div class="nm">Sabrina Fiechter</div>
-          <div class="rl">Portraitfotografin, Zürich</div>
+          <div class="rl" data-de="Portraitfotografin, Zürich" data-en="Portrait photographer, Zurich">Portraitfotografin, Zürich</div>
         </div>
-        <a href="ueber-mich.html" class="btn-line" data-de="Mehr über mich →" data-en="More about me →">Mehr über mich →</a>
+        <a href="/ueber-mich/" class="btn-line" data-de="Mehr über mich →" data-en="More about me →">Mehr über mich →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REFERENZEN -->
+<!-- ── REFERENZEN ── -->
 <section class="section">
   <div class="center rv">
-    <span class="eyebrow">Referenzen</span>
+    <span class="eyebrow" data-de="Referenzen" data-en="Testimonials">Referenzen</span>
     <h2 data-de="Was Kund:innen sagen" data-en="What clients say">Was Kund:innen sagen</h2>
   </div>
   <div class="refs">
     <div class="ref rv">
       <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
       <p data-de="«Ich hatte nie ein professionelles Foto — jetzt habe ich 30 Bilder, bei denen ich wirklich ich selbst bin.»" data-en=""I'd never had a professional photo — now I have 30 images where I truly look like myself."">«Ich hatte nie ein professionelles Foto — jetzt habe ich 30 Bilder, bei denen ich wirklich ich selbst bin.»</p>
-      <div class="ref-who"><div class="ref-av">M</div><div><div class="ref-nm">Miriam K.</div><div class="ref-rl" data-de="Unternehmerin, Zürich" data-en="Entrepreneur, Zurich">Unternehmerin, Zürich</div></div></div>
+      <div class="ref-who">
+        <div class="ref-av">M</div>
+        <div>
+          <div class="ref-nm">Miriam K.</div>
+          <div class="ref-rl" data-de="Unternehmerin, Zürich" data-en="Entrepreneur, Zurich">Unternehmerin, Zürich</div>
+        </div>
+      </div>
     </div>
     <div class="ref rv d1">
       <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
       <p data-de="«Sabrina schafft es, dass man sich komplett vergisst — und genau das sieht man den Bildern an.»" data-en=""Sabrina makes you forget yourself — and that's exactly what you see in the photos."">«Sabrina schafft es, dass man sich komplett vergisst — und genau das sieht man den Bildern an.»</p>
-      <div class="ref-who"><div class="ref-av">T</div><div><div class="ref-nm">Thomas R.</div><div class="ref-rl" data-de="Führungskraft, Basel" data-en="Executive, Basel">Führungskraft, Basel</div></div></div>
+      <div class="ref-who">
+        <div class="ref-av">T</div>
+        <div>
+          <div class="ref-nm">Thomas R.</div>
+          <div class="ref-rl" data-de="Führungskraft, Basel" data-en="Executive, Basel">Führungskraft, Basel</div>
+        </div>
+      </div>
     </div>
     <div class="ref rv d2">
       <div class="stars"><i></i><i></i><i></i><i></i><i></i></div>
       <p data-de="«Das Shooting hat Spass gemacht — die Bilder überzeugten meinen Arbeitgeber auf LinkedIn sofort.»" data-en=""The shoot was fun — the photos convinced my employer on LinkedIn straight away."">«Das Shooting hat Spass gemacht — die Bilder überzeugten meinen Arbeitgeber auf LinkedIn sofort.»</p>
-      <div class="ref-who"><div class="ref-av">L</div><div><div class="ref-nm">Laura M.</div><div class="ref-rl" data-de="Marketingleiterin, Zürich" data-en="Marketing director, Zurich">Marketingleiterin, Zürich</div></div></div>
+      <div class="ref-who">
+        <div class="ref-av">L</div>
+        <div>
+          <div class="ref-nm">Laura M.</div>
+          <div class="ref-rl" data-de="Marketingleiterin, Zürich" data-en="Marketing director, Zurich">Marketingleiterin, Zürich</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PREISE -->
+<!-- ── PREISE ── -->
 <section class="section-bg">
   <div class="section">
     <div class="center rv">
-      <span class="eyebrow">Pakete & Preise</span>
+      <span class="eyebrow" data-de="Pakete & Preise" data-en="Packages & pricing">Pakete & Preise</span>
       <h2 data-de="Transparent, ohne Überraschungen" data-en="Transparent, no surprises">Transparent, ohne Überraschungen</h2>
-      <p class="section-lead" data-de="Klare Pakete für jeden Anlass. Du weisst von Anfang an, was dich erwartet." data-en="Clear packages for every occasion. You know from the start what to expect." data-de="Klare Pakete für jeden Anlass. Du weisst von Anfang an, was dich erwartet." data-en="Clear packages for every occasion. You know from the start what to expect.">Klare Pakete für jeden Anlass. Du weisst von Anfang an, was dich erwartet.</p>
+      <p class="section-lead" data-de="Klare Pakete für jeden Anlass. Du weisst von Anfang an, was dich erwartet." data-en="Clear packages for every occasion. You know from the start what to expect.">Klare Pakete für jeden Anlass. Du weisst von Anfang an, was dich erwartet.</p>
     </div>
     <div class="prices">
       <div class="price rv">
-        <div class="pc">Bewerbung</div>
-        <h3 data-de="Bewerbungsfoto" data-en="Headshot" data-de="Bewerbungsfoto" data-en="Headshot">Bewerbungsfoto</h3>
+        <div class="pc" data-de="Bewerbung" data-en="Headshot">Bewerbung</div>
+        <h3 data-de="Bewerbungsfoto" data-en="Headshot">Bewerbungsfoto</h3>
         <div class="amt"><span class="c">CHF</span> 180</div>
-        <ul><li data-de="30–45 Min. Shooting" data-en="30–45 min. shoot">30–45 Min. Shooting</li><li data-de="5 bearbeitete Bilder" data-en="5 edited images">5 bearbeitete Bilder</li><li data-de="Online-Galerie zum Download" data-en="Online gallery for download">Online-Galerie zum Download</li><li data-de="Stil-Beratung vorab" data-en="Style consultation beforehand">Stil-Beratung vorab</li></ul>
+        <ul>
+          <li data-de="30–45 Min. Shooting" data-en="30–45 min. shoot">30–45 Min. Shooting</li>
+          <li data-de="5 bearbeitete Bilder" data-en="5 edited images">5 bearbeitete Bilder</li>
+          <li data-de="Online-Galerie zum Download" data-en="Online gallery for download">Online-Galerie zum Download</li>
+          <li data-de="Stil-Beratung vorab" data-en="Style consultation beforehand">Stil-Beratung vorab</li>
+        </ul>
         <a href="/kontakt/" class="pb" data-de="Anfragen" data-en="Enquire">Anfragen</a>
       </div>
       <div class="price feat rv d1">
         <div class="pc" data-de="Business · beliebt" data-en="Business · popular">Business · beliebt</div>
         <h3>Business Portrait</h3>
         <div class="amt"><span class="c">CHF</span> 280</div>
-        <ul><li data-de="60 Min. Shooting" data-en="60 min. shoot">60 Min. Shooting</li><li data-de="15 bearbeitete Bilder" data-en="15 edited images">15 bearbeitete Bilder</li><li data-de="Online-Galerie zum Download" data-en="Online gallery for download">Online-Galerie zum Download</li><li data-de="Outfit-Beratung inklusive" data-en="Outfit consultation included">Outfit-Beratung inklusive</li></ul>
+        <ul>
+          <li data-de="60 Min. Shooting" data-en="60 min. shoot">60 Min. Shooting</li>
+          <li data-de="15 bearbeitete Bilder" data-en="15 edited images">15 bearbeitete Bilder</li>
+          <li data-de="Online-Galerie zum Download" data-en="Online gallery for download">Online-Galerie zum Download</li>
+          <li data-de="Outfit-Beratung inklusive" data-en="Outfit consultation included">Outfit-Beratung inklusive</li>
+        </ul>
         <a href="/kontakt/" class="pb" data-de="Anfragen" data-en="Enquire">Anfragen</a>
       </div>
       <div class="price rv d2">
         <div class="pc">Branding</div>
         <h3>Personal Branding</h3>
         <div class="amt"><span class="c">CHF</span> 490</div>
-        <ul><li data-de="90 Min. Shooting" data-en="90 min. shoot">90 Min. Shooting</li><li data-de="30 bearbeitete Bilder" data-en="30 edited images">30 bearbeitete Bilder</li><li data-de="2 verschiedene Looks" data-en="2 different looks">2 verschiedene Looks</li><li data-de="Konzept-Gespräch vorab" data-en="Concept discussion beforehand">Konzept-Gespräch vorab</li></ul>
+        <ul>
+          <li data-de="90 Min. Shooting" data-en="90 min. shoot">90 Min. Shooting</li>
+          <li data-de="30 bearbeitete Bilder" data-en="30 edited images">30 bearbeitete Bilder</li>
+          <li data-de="2 verschiedene Looks" data-en="2 different looks">2 verschiedene Looks</li>
+          <li data-de="Konzept-Gespräch vorab" data-en="Concept discussion beforehand">Konzept-Gespräch vorab</li>
+        </ul>
         <a href="/kontakt/" class="pb" data-de="Anfragen" data-en="Enquire">Anfragen</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABLAUF -->
+<!-- ── ABLAUF ── -->
 <section class="section">
   <div class="center rv">
     <span class="eyebrow" data-de="Ablauf" data-en="Process">Ablauf</span>
     <h2 data-de="So läuft dein Shooting ab" data-en="How your shoot works">So läuft dein Shooting ab</h2>
   </div>
-    <div class="steps">
+  <div class="steps">
     <div class="step rv" onclick="this.classList.toggle('flipped')">
       <div class="step-inner">
         <div class="step-front">
@@ -524,7 +491,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
           <h3 data-de="Erstkontakt" data-en="First contact">Erstkontakt</h3>
         </div>
         <div class="step-back">
-          <div class="step-icon-wrap" style="width:48px;height:48px;min-width:48px;min-height:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="step-icon-wrap" style="width:48px;height:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <h3 data-de="Erstkontakt" data-en="First contact">Erstkontakt</h3>
           <p data-de="Kurzes Gespräch über deine Wünsche, Ziele und Stil — per Telefon oder E-Mail." data-en="A brief talk about your wishes, goals and style — by phone or email.">Kurzes Gespräch über deine Wünsche, Ziele und Stil — per Telefon oder E-Mail.</p>
         </div>
@@ -537,7 +504,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
           <h3 data-de="Konzept" data-en="Concept">Konzept</h3>
         </div>
         <div class="step-back">
-          <div class="step-icon-wrap" style="width:48px;height:48px;min-width:48px;min-height:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
+          <div class="step-icon-wrap" style="width:48px;height:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg></div>
           <h3 data-de="Konzept" data-en="Concept">Konzept</h3>
           <p data-de="Gemeinsam planen wir Outfit, Atmosphäre und Stimmung deines Shootings." data-en="Together we plan the outfit, atmosphere and mood of your shoot.">Gemeinsam planen wir Outfit, Atmosphäre und Stimmung deines Shootings.</p>
         </div>
@@ -550,7 +517,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
           <h3 data-de="Shooting" data-en="Shoot">Shooting</h3>
         </div>
         <div class="step-back">
-          <div class="step-icon-wrap" style="width:48px;height:48px;min-width:48px;min-height:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+          <div class="step-icon-wrap" style="width:48px;height:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
           <h3 data-de="Shooting" data-en="Shoot">Shooting</h3>
           <p data-de="Im Studio in Zürich-West — entspannt, ich begleite dich durch alles." data-en="In the studio in Zurich-West — relaxed, I guide you through everything.">Im Studio in Zürich-West — entspannt, ich begleite dich durch alles.</p>
         </div>
@@ -563,7 +530,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
           <h3 data-de="Lieferung" data-en="Delivery">Lieferung</h3>
         </div>
         <div class="step-back">
-          <div class="step-icon-wrap" style="width:48px;height:48px;min-width:48px;min-height:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+          <div class="step-icon-wrap" style="width:48px;height:48px;border-radius:50%;margin-bottom:.75rem"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
           <h3 data-de="Lieferung" data-en="Delivery">Lieferung</h3>
           <p data-de="Deine bearbeiteten Bilder per Online-Galerie — zum Download." data-en="Your edited images via online gallery — to download.">Deine bearbeiteten Bilder per Online-Galerie — zum Download.</p>
         </div>
@@ -572,7 +539,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   </div>
 </section>
 
-<!-- STANDORT -->
+<!-- ── STANDORT ── -->
 <section class="loc" id="standort">
   <div class="loc-map">
     <iframe src="https://www.google.com/maps?q=Hardturmstrasse+124a,+8005+Z%C3%BCrich&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Studio Sabrina Fiechter, Hardturmstrasse 124a, Zürich"></iframe>
@@ -582,56 +549,189 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
     <h2 data-de="Mein Studio in Zürich-West" data-en="My studio in Zurich-West">Mein Studio in Zürich-West</h2>
     <div class="loc-row">
       <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      <div><div class="l">Adresse</div><div class="v">Hardturmstrasse 124a, 8005 Zürich</div></div>
+      <div><div class="l" data-de="Adresse" data-en="Address">Adresse</div><div class="v">Hardturmstrasse 124a, 8005 Zürich</div></div>
     </div>
     <div class="loc-row">
       <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-      <div><div class="l">Telefon</div><div class="v"><a href="tel:+41762701117">+41 76 270 11 17</a></div></div>
+      <div><div class="l" data-de="Telefon" data-en="Phone">Telefon</div><div class="v"><a href="tel:+41762701117">+41 76 270 11 17</a></div></div>
     </div>
     <div class="loc-row">
       <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
       <div><div class="l">E-Mail</div><div class="v"><a href="mailto:info@sabrinafiechter.ch">info@sabrinafiechter.ch</a></div></div>
     </div>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=Hardturmstrasse+124a,+8005+Z%C3%BCrich" target="_blank" rel="noopener" class="hero-cta">Route planen →</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Hardturmstrasse+124a,+8005+Z%C3%BCrich" target="_blank" rel="noopener" class="hero-cta" data-de="Route planen →" data-en="Get directions →">Route planen →</a>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ── CTA ── -->
 <section class="cta">
   <h2 data-de="Bereit für dein Shooting?" data-en="Ready for your shoot?">Bereit für dein Shooting?</h2>
-  <p data-de="Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt." data-en="Just get in touch — I look forward to meeting you and developing a concept that truly fits you." data-de="Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt." data-en="Just get in touch — I look forward to meeting you and developing a concept that truly fits you.">Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt.</p>
-  <a href="#" onclick="openFormModal();return false;" class="hero-cta">Termin anfragen</a>
-  <div class="cta-detail">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
+  <p data-de="Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt." data-en="Just get in touch — I look forward to meeting you and developing a concept that truly fits you.">Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt.</p>
+  <a href="#" onclick="openFormModal();return false;" class="hero-cta" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+  <div class="cta-detail" data-de="Studio Zürich-West · 8 Min. vom Hauptbahnhof" data-en="Studio Zurich-West · 8 min. from main station">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
 </section>
 
+<!-- ── FOOTER (Partial bleibt bestehen) ── -->
 <div id="sf-footer"></div>
 
+<!-- ── KONTAKT MODAL ── -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeFormModal()" aria-label="Schliessen">✕</button>
+    <h2 data-de="Termin anfragen" data-en="Book now">Termin anfragen</h2>
+    <p class="sub" data-de="Ich melde mich so schnell wie möglich bei dir — versprochen." data-en="I'll get back to you as soon as possible — promise.">Ich melde mich so schnell wie möglich bei dir — versprochen.</p>
+    <div id="formContent">
+      <form name="termin-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="termin-anfrage">
+        <p style="display:none"><input name="bot-field"></p>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-de="Vorname" data-en="First name">Vorname</label>
+            <input type="text" id="vorname" name="vorname" placeholder="Sabrina"
+              data-placeholder-de="Sabrina" data-placeholder-en="Anna" required>
+            <span class="field-error" data-de="Bitte gib deinen Vornamen ein." data-en="Please enter your first name.">Bitte gib deinen Vornamen ein.</span>
+          </div>
+          <div class="form-group">
+            <label data-de="Nachname" data-en="Last name">Nachname</label>
+            <input type="text" id="nachname" name="nachname" placeholder="Fiechter"
+              data-placeholder-de="Fiechter" data-placeholder-en="Smith" required>
+            <span class="field-error" data-de="Bitte gib deinen Nachnamen ein." data-en="Please enter your last name.">Bitte gib deinen Nachnamen ein.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
+          <input type="email" id="email" name="email" placeholder="hallo@beispiel.ch"
+            data-placeholder-de="hallo@beispiel.ch" data-placeholder-en="hello@example.com" required>
+          <span class="field-error" data-de="Bitte gib eine gültige E-Mail-Adresse ein." data-en="Please enter a valid email address.">Bitte gib eine gültige E-Mail-Adresse ein.</span>
+        </div>
+        <div class="form-group">
+          <label data-de="Telefonnummer" data-en="Phone number">Telefonnummer</label>
+          <input type="tel" id="telefon" name="telefon" placeholder="+41 76 000 00 00"
+            data-placeholder-de="+41 76 000 00 00" data-placeholder-en="+41 76 000 00 00" required>
+          <span class="field-error" data-de="Bitte gib deine Telefonnummer ein." data-en="Please enter your phone number.">Bitte gib deine Telefonnummer ein.</span>
+        </div>
+        <div class="form-group">
+          <label data-de="Deine Nachricht" data-en="Your message">Deine Nachricht</label>
+          <textarea id="nachricht" name="nachricht" required
+            placeholder="Erzähl mir von deinem Wunsch-Shooting..."
+            data-placeholder-de="Erzähl mir von deinem Wunsch-Shooting..."
+            data-placeholder-en="Tell me about your dream shoot..."></textarea>
+          <span class="field-error" data-de="Bitte schreib mir eine kurze Nachricht." data-en="Please write a short message.">Bitte schreib mir eine kurze Nachricht.</span>
+        </div>
+        <button type="submit" class="form-submit" data-de="Los geht's →" data-en="Let's go →">Los geht's →</button>
+      </form>
+    </div>
+    <div class="form-success" id="formSuccess" style="display:none">
+      <div class="check">✉️</div>
+      <h3 data-de="Nachricht gesendet!" data-en="Message sent!">Nachricht gesendet!</h3>
+      <p data-de="Danke — ich melde mich bald bei dir." data-en="Thank you — I'll be in touch soon.">Danke — ich melde mich bald bei dir.</p>
+    </div>
+  </div>
+</div>
+
 <script>
-async function loadPartial(url, targetId) {
-  try {
-    const res = await fetch(url);
-    const html = await res.text();
-    document.getElementById(targetId).outerHTML = html;
-  } catch(e) { console.error('Partial load error:', url, e); }
+// ── MODAL ──
+function openFormModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
-document.addEventListener('DOMContentLoaded', async () => {
-  await loadPartial('header.html', 'sf-header');
-  await loadPartial('footer.html', 'sf-footer');
-  // Sprache initialisieren
-  if(typeof applyLang === 'function'){
-    const lang = localStorage.getItem('sf_lang') || 'de';
-    const de = document.getElementById('btnDE');
-    const en = document.getElementById('btnEN');
-    if(de && en && lang === 'en'){
-      de.classList.remove('active');
-      en.classList.add('active');
-    }
-    applyLang(lang);
+function closeFormModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ── FORMULAR VALIDIERUNG ──
+function validateField(f) {
+  const g = f.closest('.form-group');
+  const v = f.type === 'email'
+    ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim())
+    : f.value.trim().length > 0;
+  f.classList.toggle('invalid', !v);
+  f.classList.toggle('valid', v);
+  g.classList.toggle('has-error', !v);
+  return v;
+}
+
+// ── NETLIFY FORMULAR ABSENDEN ──
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const fields = form.querySelectorAll('input[required],textarea[required]');
+  let ok = true, first = null;
+  fields.forEach(f => { if (!validateField(f)) { ok = false; if (!first) first = f; } });
+  if (!ok) { first.focus(); return; }
+  try {
+    await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(new FormData(form)).toString()
+    });
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    setTimeout(closeFormModal, 3000);
+  } catch(err) {
+    alert('Fehler beim Senden. Bitte versuche es nochmals.');
   }
-  // Reveal-Animation nach dem Laden der Partials starten
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px'});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+}
+
+// ── REVEAL ANIMATION ──
+// Startet sobald header.js geladen & DOM bereit ist
+document.addEventListener('DOMContentLoaded', () => {
+  // Formular-Echtzeit-Validierung
+  document.querySelectorAll('#modalOverlay input, #modalOverlay textarea').forEach(f => {
+    f.addEventListener('blur', () => validateField(f));
+    f.addEventListener('input', () => { if (f.classList.contains('invalid')) validateField(f); });
+  });
+
+  // Footer laden
+  fetch('/footer.html')
+    .then(r => r.text())
+    .then(html => { document.getElementById('sf-footer').outerHTML = html; })
+    .catch(e => console.error('Footer load error:', e));
+
+  // Scroll-Reveal für Seitenelemente
+  const io = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+    });
+  }, { threshold: .12, rootMargin: '0px 0px -40px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // Sprache auf Seiteninhalt anwenden (header.js stellt applyLang bereit)
+  // Kleiner Delay damit header.js sicher initialisiert ist
+  setTimeout(() => {
+    if (typeof window.applyLang === 'function') {
+      window.applyLang(localStorage.getItem('sf_lang') || 'de');
+    }
+  }, 50);
 });
+
+// ── CMS DATEN (inhalt.json) ──
+async function loadCMSData() {
+  try {
+    const res = await fetch('/inhalt.json');
+    if (!res.ok) return; // kein Fehler wenn JSON nicht existiert
+    const data = await res.json();
+    const lang = localStorage.getItem('sf_lang') || 'de';
+    if (data.hero) {
+      if (data.hero.image) document.getElementById('hero-bg').src = data.hero.image;
+      if (data.hero.title) document.getElementById('hero-title').innerText = data.hero.title;
+    }
+    if (data.about && data.about.image) {
+      document.getElementById('about-image').src = data.about.image;
+    }
+  } catch(e) { /* JSON optional, kein Fehler */ }
+}
+loadCMSData();
+
+// ── NETLIFY IDENTITY (CMS Login) ──
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', user => {
+    if (!user) {
+      window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
+    }
+  });
+}
 </script>
 </body>
 </html>
