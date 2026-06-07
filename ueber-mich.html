@@ -8,6 +8,32 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- ── SPRACHE: muss vor Navbar-Load sein ── -->
+<script>
+var sfLang = localStorage.getItem('sf_lang') || 'de';
+
+function applyLang(l) {
+  document.querySelectorAll('[data-de]').forEach(function(el) {
+    el.innerHTML = l === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-de')) : el.getAttribute('data-de');
+  });
+  document.querySelectorAll('[data-placeholder-de]').forEach(function(el) {
+    el.setAttribute('placeholder', l === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-de'));
+  });
+}
+
+function setLang(l) {
+  sfLang = l;
+  localStorage.setItem('sf_lang', l);
+  var btnDE = document.getElementById('btnDE');
+  var btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', l === 'de');
+  if (btnEN) btnEN.classList.toggle('active', l === 'en');
+  applyLang(l);
+}
+</script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -21,107 +47,125 @@ h1,h2,h3{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);line-h
 a{color:inherit}
 img{display:block;max-width:100%}
 
-/* PAGE HERO */
+/* ── NAVBAR (aus index.html übernommen) ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:80px;background:#fff;box-shadow:0 2px 20px rgba(0,0,0,.06);transition:background .35s,box-shadow .35s;}
+/* Auf Unterseiten ist die Navbar immer solid (kein Hero-Bild darunter) */
+.logo{text-decoration:none;display:flex;align-items:center;line-height:0}
+.logo-wrap{display:grid;}
+.logo-img{grid-area:1/1;height:52px;width:auto;display:block;filter:invert(1);}
+.menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.menu a{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:400;letter-spacing:.02em;color:var(--black);text-decoration:none;transition:color .25s;position:relative;padding-bottom:3px;white-space:nowrap;}
+.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:currentColor;transition:width .3s}
+.menu a:hover::after{width:100%}
+.menu .termin{background:var(--black);color:#fff !important;padding:.6rem 0;border-radius:2px;font-weight:500;width:195px;text-align:center;display:inline-flex;align-items:center;justify-content:center;transition:background .25s,color .25s;white-space:nowrap;}
+.menu .termin::after{display:none}
+.menu .termin:hover{background:var(--accent) !important;color:#fff !important}
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
+.burger span{width:26px;height:2px;background:var(--black);display:block;transition:background .35s}
+.mobile{position:fixed;inset:0;z-index:290;background:#fff;display:none;flex-direction:column;justify-content:center;padding:3rem;gap:.4rem}
+.mobile.open{display:flex}
+.mobile a{font-family:'Jost';font-size:1.6rem;color:var(--black);text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--line)}
+.mobile .close{position:absolute;top:1.8rem;right:2.5rem;font-size:2rem;background:none;border:none;cursor:pointer}
+.lang-toggle{display:flex;align-items:center;gap:4px}
+.lang-li{list-style:none;display:flex;align-items:center;margin-left:.5rem}
+.lang-btn{padding:.35rem .65rem;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;cursor:pointer;border:1.5px solid #d0d0d0;border-radius:2px;background:#fff;color:#666;transition:all .2s;line-height:1;}
+.lang-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+
+/* ── PAGE HERO ── */
 .page-hero{padding:8rem 2.5rem 5rem;background:var(--bg-soft);border-bottom:1px solid var(--line)}
 .page-hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.page-hero-text .eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:1rem;display:block}
+.page-hero-text .eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
 .page-hero-text h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:300;margin-bottom:1.5rem}
 .page-hero-text .lead{font-size:1.15rem;color:var(--grey);line-height:1.8;margin-bottom:1.5rem}
 .page-hero-text .lead strong{color:var(--black);font-weight:600}
 .page-hero-img{aspect-ratio:4/5;overflow:hidden;background:var(--line);border-radius:4px}
 .page-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
 
-/* SECTIONS */
+/* ── SECTIONS ── */
 .sec{padding:6rem 2.5rem;max-width:1280px;margin:0 auto}
 .sec-full{padding:6rem 0;background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .sec-full-inner{max-width:1280px;margin:0 auto;padding:0 2.5rem}
-.eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:1rem;display:block}
-.section-title{font-family:'Jost';font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;
-  margin-bottom:1.5rem;color:var(--black)}
+.eyebrow{font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.section-title{font-family:'Jost';font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;margin-bottom:1.5rem;color:var(--black)}
 
-/* FACTS */
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  border:1px solid var(--line);border-radius:4px;overflow:hidden}
+/* ── FACTS ── */
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .fact{padding:2.5rem 2rem;border-right:1px solid var(--line);text-align:center}
 .fact:last-child{border-right:none}
-.fact .num{font-family:'Jost';font-size:2.8rem;font-weight:300;color:var(--accent);
-  line-height:1;margin-bottom:.4rem}
+.fact .num{font-family:'Jost';font-size:2.8rem;font-weight:300;color:var(--accent);line-height:1;margin-bottom:.4rem}
 .fact .label{font-size:.88rem;color:var(--grey);line-height:1.5}
 
-/* ZWEI WELTEN */
+/* ── ZWEI WELTEN ── */
 .worlds{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3rem}
 .world{padding:3rem;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
 .world h3{font-size:1.4rem;font-weight:400;margin-bottom:.75rem}
 .world p{font-size:.98rem;color:var(--grey);line-height:1.75;margin-bottom:1.25rem}
-.world .tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;
-  border-bottom:1px solid var(--accent);padding-bottom:2px;transition:gap .25s}
+.world .tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:2px;transition:gap .25s}
 .world .tag:hover{gap:.85rem}
 
-/* QUOTE */
+/* ── QUOTE ── */
 .quote{background:var(--black);padding:6rem 2.5rem;text-align:center}
-.quote q{font-family:'Jost';font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;
-  color:#fff;line-height:1.35;max-width:800px;margin:0 auto;display:block;quotes:none}
-.quote .attr{margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.45);
-  letter-spacing:.08em;text-transform:uppercase}
+.quote q{font-family:'Jost';font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;color:#fff;line-height:1.35;max-width:800px;margin:0 auto;display:block;quotes:none}
+.quote .attr{margin-top:1.5rem;font-size:.85rem;color:rgba(255,255,255,.45);letter-spacing:.08em;text-transform:uppercase}
 
-/* WERTE */
+/* ── WERTE ── */
 .values{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
 .value{text-align:center;padding:2.5rem 1.5rem}
 .value-icon{color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
 .value h3{font-size:1.1rem;font-weight:500;margin-bottom:.5rem}
 .value p{font-size:.92rem;color:var(--grey);line-height:1.65}
 
-/* CTA */
+/* ── CTA ── */
 .cta{text-align:center;padding:6rem 2.5rem;background:var(--bg-soft);border-top:1px solid var(--line)}
 .cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;margin-bottom:1rem}
 .cta p{font-size:1.05rem;color:var(--grey);max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
-.btn-dark{display:inline-flex;align-items:center;gap:.6rem;background:var(--black);
-  color:#fff;padding:.95rem 2.4rem;border-radius:2px;font-family:'Jost';font-weight:500;
-  font-size:.95rem;text-decoration:none;border:1.5px solid var(--black);transition:all .3s}
+.btn-dark{display:inline-flex;align-items:center;gap:.6rem;background:var(--black);color:#fff;padding:.95rem 2.4rem;border-radius:2px;font-family:'Jost';font-weight:500;font-size:.95rem;text-decoration:none;border:1.5px solid var(--black);transition:all .3s}
 .btn-dark:hover{background:var(--accent);border-color:var(--accent)}
-.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-family:'Jost';
-  font-weight:500;font-size:.95rem;color:var(--black);text-decoration:none;
-  border-bottom:1.5px solid var(--black);padding-bottom:2px;transition:all .25s}
+.btn-ghost{display:inline-flex;align-items:center;gap:.5rem;font-family:'Jost';font-weight:500;font-size:.95rem;color:var(--black);text-decoration:none;border-bottom:1.5px solid var(--black);padding-bottom:2px;transition:all .25s}
 .btn-ghost:hover{color:var(--accent);border-color:var(--accent);gap:.85rem}
 
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);
-  display:flex;align-items:center;justify-content:center;padding:1.5rem;
-  opacity:0;pointer-events:none;transition:opacity .35s}
+/* ── FOOTER ── */
+footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem}
+.foot-tag{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7}
+.foot-ct{font-family:'Jost';font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.foot-links a{font-size:.96rem;color:rgba(255,255,255,.85);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--accent)}
+.foot-copy{max-width:1280px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(255,255,255,.35)}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .35s}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:#fff;width:100%;max-width:520px;padding:3rem;border-radius:4px;
-  position:relative;transform:translateY(24px);transition:transform .35s;max-height:90vh;overflow-y:auto}
+.modal{background:#fff;width:100%;max-width:520px;padding:3rem;border-radius:4px;position:relative;transform:translateY(24px);transition:transform .35s;max-height:90vh;overflow-y:auto}
 .modal-overlay.open .modal{transform:translateY(0)}
-.modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;
-  font-size:1.6rem;cursor:pointer;color:#999;line-height:1}
+.modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#999;line-height:1}
 .modal-close:hover{color:#1a1a1a}
 .modal h2{font-family:'Jost',sans-serif;font-size:1.8rem;font-weight:300;color:#1a1a1a;margin-bottom:.5rem}
 .modal .sub{font-size:.95rem;color:#6b6b6b;margin-bottom:2rem;line-height:1.6}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
 .form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
 .form-group label{font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#333}
-.form-group input,.form-group textarea{border:1.5px solid #e6e6e6;border-radius:2px;
-  padding:.85rem 1rem;font-family:'Manrope',sans-serif;font-size:1rem;color:#1a1a1a;
-  background:#fff;transition:border-color .25s;outline:none}
+.form-group input,.form-group textarea{border:1.5px solid #e6e6e6;border-radius:2px;padding:.85rem 1rem;font-family:'Manrope',sans-serif;font-size:1rem;color:#1a1a1a;background:#fff;transition:border-color .25s;outline:none}
 .form-group input:focus,.form-group textarea:focus{border-color:#1f7a72}
 .form-group input.invalid,.form-group textarea.invalid{border-color:#e53e3e;background:#fff8f8}
 .form-group input.valid,.form-group textarea.valid{border-color:#1f7a72}
 .field-error{font-size:.78rem;color:#e53e3e;margin-top:.3rem;display:none}
 .form-group.has-error .field-error{display:block}
 .form-group textarea{resize:vertical;min-height:120px}
-.form-submit{width:100%;background:#1a1a1a;color:#fff;border:none;font-family:'Jost',sans-serif;
-  font-size:1rem;font-weight:500;padding:1.1rem;border-radius:2px;cursor:pointer;
-  transition:background .3s;margin-top:.5rem}
+.form-submit{width:100%;background:#1a1a1a;color:#fff;border:none;font-family:'Jost',sans-serif;font-size:1rem;font-weight:500;padding:1.1rem;border-radius:2px;cursor:pointer;transition:background .3s;margin-top:.5rem}
 .form-submit:hover{background:#1f7a72}
 .form-success{text-align:center;padding:2rem 0;display:none}
 .form-success .check{font-size:3rem;margin-bottom:1rem}
 .form-success h3{font-family:'Jost';font-weight:300;font-size:1.5rem;color:#1a1a1a;margin-bottom:.5rem}
 .form-success p{color:#6b6b6b;font-size:.95rem}
 
-/* MOBILE */
+/* ── MOBILE ── */
+@media(max-width:920px){
+  .topbar{padding:0 1.3rem}
+  .menu{display:none}
+  .burger{display:flex}
+}
 @media(max-width:900px){
   .page-hero{padding:6rem 1.3rem 3.5rem}
   .page-hero-inner{grid-template-columns:1fr;gap:2.5rem}
@@ -135,17 +179,15 @@ img{display:block;max-width:100%}
   .fact{border-bottom:1px solid var(--line)}
   .quote{padding:4rem 1.3rem}
   .cta{padding:4rem 1.3rem}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
 }
-@media(max-width:600px){
-  .form-row{grid-template-columns:1fr}
-}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<sf-header></sf-header>
-<script src="/header.js"></script>
+<!-- ── NAVBAR (aus navbar.html) ── -->
+<div id="nav-placeholder"></div>
 
 <!-- PAGE HERO -->
 <section class="page-hero">
@@ -156,7 +198,7 @@ img{display:block;max-width:100%}
       <p class="lead" data-de="Portraitfotografin mit Leidenschaft für kreative, konzeptionelle Bilder — und zertifizierte <strong>CliftonStrengths® Coach</strong>. Zwei Welten, eine Leidenschaft: <strong>Menschen zum Strahlen bringen.</strong>" data-en="Portrait photographer with a passion for creative, conceptual images — and certified <strong>CliftonStrengths® Coach</strong>. Two worlds, one passion: <strong>making people shine.</strong>">Portraitfotografin mit Leidenschaft für kreative, konzeptionelle Bilder — und zertifizierte <strong>CliftonStrengths® Coach</strong>. Zwei Welten, eine Leidenschaft: <strong>Menschen zum Strahlen bringen.</strong></p>
       <p class="lead" data-de="Mit meinem Studio in Zürich-West schaffe ich einen Raum, in dem du dich wohlfühlst — egal ob du viel oder wenig Erfahrung vor der Kamera hast." data-en="With my studio in Zurich-West I create a space where you feel comfortable — whether you have a lot or little experience in front of the camera.">Mit meinem Studio in Zürich-West schaffe ich einen Raum, in dem du dich wohlfühlst — egal ob du viel oder wenig Erfahrung vor der Kamera hast.</p>
       <div style="display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center;margin-top:.5rem">
-        <a href="#" onclick="openFormModal();return false;" class="btn-dark" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+        <a href="#" onclick="openFormModal();return false;" class="btn-dark" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
       </div>
     </div>
     <div class="page-hero-img">
@@ -261,9 +303,7 @@ img{display:block;max-width:100%}
     <span class="eyebrow" data-de="Inspiration" data-en="Inspiration">Inspiration</span>
     <h2 class="section-title" data-de="Folge mir auf Instagram" data-en="Follow me on Instagram">Folge mir auf Instagram</h2>
     <p style="font-size:1.05rem;color:var(--grey);max-width:520px;margin:0 auto 2.5rem;line-height:1.7" data-de="Hinter den Kulissen, neue Projekte, Shooting-Einblicke und mehr — auf Instagram teile ich was mich täglich inspiriert." data-en="Behind the scenes, new projects, shoot insights and more — on Instagram I share what inspires me daily.">Hinter den Kulissen, neue Projekte, Shooting-Einblicke und mehr — auf Instagram teile ich was mich täglich inspiriert.</p>
-    <a href="https://www.instagram.com/sabrinafiechter.photography/" target="_blank" rel="noopener" class="btn-dark">
-      @ sabrinafiechter.photography ↗
-    </a>
+    <a href="https://www.instagram.com/sabrinafiechter.photography/" target="_blank" rel="noopener" class="btn-dark">@ sabrinafiechter.photography ↗</a>
   </div>
 </section>
 
@@ -273,20 +313,20 @@ img{display:block;max-width:100%}
   <h2 data-de="Lass uns gemeinsam etwas schaffen." data-en="Let's create something together.">Lass uns gemeinsam etwas schaffen.</h2>
   <p data-de="Ob Portrait-Shooting oder Coaching — ich freue mich darauf, dich kennenzulernen." data-en="Whether portrait shoot or coaching — I look forward to meeting you.">Ob Portrait-Shooting oder Coaching — ich freue mich darauf, dich kennenzulernen.</p>
   <div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap;align-items:center">
-    <a href="#" onclick="openFormModal();return false;" class="btn-dark" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+    <a href="#" onclick="openFormModal();return false;" class="btn-dark" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
     <a href="https://www.talentsoul.ch/" target="_blank" rel="noopener" class="btn-ghost" data-de="TalentSoul besuchen →" data-en="Visit TalentSoul →">TalentSoul besuchen →</a>
   </div>
   <p style="margin-top:1.5rem;font-size:.85rem;color:#aaa" data-de="Studio Zürich-West · Hardturmstrasse 124a, 8005 Zürich · Schweizweit verfügbar" data-en="Studio Zurich-West · Hardturmstrasse 124a, 8005 Zurich · Available throughout Switzerland">Studio Zürich-West · Hardturmstrasse 124a, 8005 Zürich · Schweizweit verfügbar</p>
 </section>
 
-<!-- FOOTER -->
-<div id="sf-footer"></div>
+<!-- ── FOOTER (aus footer.html) ── -->
+<div id="footer-placeholder"></div>
 
-<!-- MODAL -->
+<!-- ── MODAL ── -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeFormModal()" aria-label="Schliessen">✕</button>
-    <h2 data-de="Termin anfragen" data-en="Book now">Termin anfragen</h2>
+    <h2 data-de="Termin anfragen" data-en="Book a session">Termin anfragen</h2>
     <p class="sub" data-de="Ich melde mich so schnell wie möglich bei dir — versprochen." data-en="I'll get back to you as soon as possible — promise.">Ich melde mich so schnell wie möglich bei dir — versprochen.</p>
     <div id="formContent">
       <form name="termin-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
@@ -295,41 +335,34 @@ img{display:block;max-width:100%}
         <div class="form-row">
           <div class="form-group">
             <label data-de="Vorname" data-en="First name">Vorname</label>
-            <input type="text" id="vorname" name="vorname" placeholder="Sabrina"
-              data-placeholder-de="Sabrina" data-placeholder-en="Anna" required>
+            <input type="text" id="vorname" name="vorname" placeholder="Sabrina" data-placeholder-de="Sabrina" data-placeholder-en="Anna" required>
             <span class="field-error" data-de="Bitte gib deinen Vornamen ein." data-en="Please enter your first name.">Bitte gib deinen Vornamen ein.</span>
           </div>
           <div class="form-group">
             <label data-de="Nachname" data-en="Last name">Nachname</label>
-            <input type="text" id="nachname" name="nachname" placeholder="Fiechter"
-              data-placeholder-de="Fiechter" data-placeholder-en="Smith" required>
+            <input type="text" id="nachname" name="nachname" placeholder="Fiechter" data-placeholder-de="Fiechter" data-placeholder-en="Smith" required>
             <span class="field-error" data-de="Bitte gib deinen Nachnamen ein." data-en="Please enter your last name.">Bitte gib deinen Nachnamen ein.</span>
           </div>
         </div>
         <div class="form-group">
           <label data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
-          <input type="email" id="email" name="email" placeholder="hallo@beispiel.ch"
-            data-placeholder-de="hallo@beispiel.ch" data-placeholder-en="hello@example.com" required>
+          <input type="email" id="email" name="email" placeholder="hallo@beispiel.ch" data-placeholder-de="hallo@beispiel.ch" data-placeholder-en="hello@example.com" required>
           <span class="field-error" data-de="Bitte gib eine gültige E-Mail-Adresse ein." data-en="Please enter a valid email address.">Bitte gib eine gültige E-Mail-Adresse ein.</span>
         </div>
         <div class="form-group">
           <label data-de="Telefonnummer" data-en="Phone number">Telefonnummer</label>
-          <input type="tel" id="telefon" name="telefon" placeholder="+41 76 000 00 00"
-            data-placeholder-de="+41 76 000 00 00" data-placeholder-en="+41 76 000 00 00" required>
+          <input type="tel" id="telefon" name="telefon" placeholder="+41 76 000 00 00" data-placeholder-de="+41 76 000 00 00" data-placeholder-en="+41 76 000 00 00" required>
           <span class="field-error" data-de="Bitte gib deine Telefonnummer ein." data-en="Please enter your phone number.">Bitte gib deine Telefonnummer ein.</span>
         </div>
         <div class="form-group">
           <label data-de="Deine Nachricht" data-en="Your message">Deine Nachricht</label>
-          <textarea id="nachricht" name="nachricht" required
-            placeholder="Erzähl mir von deinem Wunsch-Shooting..."
-            data-placeholder-de="Erzähl mir von deinem Wunsch-Shooting..."
-            data-placeholder-en="Tell me about your dream shoot..."></textarea>
+          <textarea id="nachricht" name="nachricht" required placeholder="Erzähl mir von deinem Wunsch-Shooting..." data-placeholder-de="Erzähl mir von deinem Wunsch-Shooting..." data-placeholder-en="Tell me about your dream shoot..."></textarea>
           <span class="field-error" data-de="Bitte schreib mir eine kurze Nachricht." data-en="Please write a short message.">Bitte schreib mir eine kurze Nachricht.</span>
         </div>
         <button type="submit" class="form-submit" data-de="Los geht's →" data-en="Let's go →">Los geht's →</button>
       </form>
     </div>
-    <div class="form-success" id="formSuccess" style="display:none">
+    <div class="form-success" id="formSuccess">
       <div class="check">✉️</div>
       <h3 data-de="Nachricht gesendet!" data-en="Message sent!">Nachricht gesendet!</h3>
       <p data-de="Danke — ich melde mich bald bei dir." data-en="Thank you — I'll be in touch soon.">Danke — ich melde mich bald bei dir.</p>
@@ -338,69 +371,71 @@ img{display:block;max-width:100%}
 </div>
 
 <script>
-function openFormModal() {
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
+// ── MODAL ──
+function openFormModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeFormModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+function validateField(f){
+  var g=f.closest('.form-group');
+  var v=f.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()):f.value.trim().length>0;
+  f.classList.toggle('invalid',!v);f.classList.toggle('valid',v);
+  g.classList.toggle('has-error',!v);return v;
 }
-function closeFormModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function validateField(f) {
-  const g = f.closest('.form-group');
-  const v = f.type === 'email'
-    ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim())
-    : f.value.trim().length > 0;
-  f.classList.toggle('invalid', !v);
-  f.classList.toggle('valid', v);
-  g.classList.toggle('has-error', !v);
-  return v;
-}
-async function handleSubmit(e) {
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f){
+    f.addEventListener('blur',function(){validateField(f)});
+    f.addEventListener('input',function(){if(f.classList.contains('invalid'))validateField(f)});
+  });
+});
+async function handleSubmit(e){
   e.preventDefault();
-  const form = e.target;
-  const fields = form.querySelectorAll('input[required],textarea[required]');
-  let ok = true, first = null;
-  fields.forEach(f => { if (!validateField(f)) { ok = false; if (!first) first = f; } });
-  if (!ok) { first.focus(); return; }
-  try {
-    await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    });
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-    setTimeout(closeFormModal, 3000);
-  } catch(err) {
-    alert('Fehler beim Senden. Bitte versuche es nochmals.');
-  }
+  var form=e.target;
+  var fields=form.querySelectorAll('input[required],textarea[required]');
+  var ok=true,first=null;
+  fields.forEach(function(f){if(!validateField(f)){ok=false;if(!first)first=f}});
+  if(!ok){first.focus();return;}
+  try{
+    await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});
+    document.getElementById('formContent').style.display='none';
+    document.getElementById('formSuccess').style.display='block';
+    setTimeout(closeFormModal,3000);
+  }catch(err){alert('Fehler beim Senden. Bitte versuche es nochmals.')}
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('#modalOverlay input, #modalOverlay textarea').forEach(f => {
-    f.addEventListener('blur', () => validateField(f));
-    f.addEventListener('input', () => { if (f.classList.contains('invalid')) validateField(f); });
+// ── NAVBAR laden → dann Sprache setzen ──
+fetch('/navbar.html')
+  .then(function(r){return r.text()})
+  .then(function(html){
+    document.getElementById('nav-placeholder').innerHTML=html;
+    // Auf Unterseiten: Navbar immer solid (weisser Hintergrund)
+    var tb=document.getElementById('topbar');
+    if(tb){
+      tb.classList.add('solid');
+      // Logo auf dieser Seite immer schwarz (kein Scroll-Effekt nötig)
+      var logo=tb.querySelector('.logo-img');
+      if(logo) logo.style.filter='invert(1)';
+    }
+    // Sprache auf Navbar anwenden
+    var btnDE=document.getElementById('btnDE');
+    var btnEN=document.getElementById('btnEN');
+    if(btnDE) btnDE.classList.toggle('active',sfLang==='de');
+    if(btnEN) btnEN.classList.toggle('active',sfLang==='en');
+    applyLang(sfLang);
   });
 
-  // Footer laden
-  fetch('/footer.html')
-    .then(r => r.text())
-    .then(html => { document.getElementById('sf-footer').outerHTML = html; })
-    .catch(() => {});
+// ── FOOTER laden ──
+fetch('/footer.html')
+  .then(function(r){return r.text()})
+  .then(function(html){
+    document.getElementById('footer-placeholder').innerHTML=html;
+    applyLang(sfLang);
+  });
 
-  // Sprache anwenden sobald header bereit
-  const applyOnReady = () => {
-    if (typeof window.applyLang === 'function') {
-      window.applyLang(localStorage.getItem('sf_lang') || 'de');
-    }
-  };
-  if (typeof window.applyLang === 'function') {
-    applyOnReady();
-  } else {
-    document.addEventListener('sf-header-ready', applyOnReady, { once: true });
-  }
-});
+// ── NETLIFY IDENTITY ──
+if(window.netlifyIdentity){
+  window.netlifyIdentity.on('init',function(user){
+    if(!user){window.netlifyIdentity.on('login',function(){document.location.href='/admin/'})}
+  });
+}
 </script>
 </body>
 </html>
