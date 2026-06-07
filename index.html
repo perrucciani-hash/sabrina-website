@@ -544,7 +544,14 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   <div class="cta-detail" data-de="Studio Zürich-West · 8 Min. vom Hauptbahnhof" data-en="Studio Zurich-West · 8 min from main station">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
 </section>
 
-{% include footer.html %}
+<div id="footer-placeholder"></div>
+<script>
+  fetch('/footer.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
+</script>
 
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
   <div class="modal">
