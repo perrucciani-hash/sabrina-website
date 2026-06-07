@@ -697,13 +697,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: .12, rootMargin: '0px 0px -40px' });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  // Sprache auf Seiteninhalt anwenden (header.js stellt applyLang bereit)
-  // Kleiner Delay damit header.js sicher initialisiert ist
-  setTimeout(() => {
+  // Sprache anwenden sobald header.js bereit ist (via sf-header-ready Event)
+  const applyOnReady = () => {
     if (typeof window.applyLang === 'function') {
       window.applyLang(localStorage.getItem('sf_lang') || 'de');
     }
-  }, 50);
+  };
+  if (typeof window.applyLang === 'function') {
+    applyOnReady();
+  } else {
+    document.addEventListener('sf-header-ready', applyOnReady, { once: true });
+  }
 });
 
 // ── CMS DATEN (inhalt.json) ──
