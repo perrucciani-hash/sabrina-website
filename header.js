@@ -39,6 +39,7 @@ class SfHeader extends HTMLElement {
           background:#fff;color:#1a1a1a !important;
           padding:.6rem 1.4rem;border-radius:2px;font-weight:500;
           transition:background .25s,color .25s
+          min-width:150px;text-align:center;
         }
         .menu .termin::after{display:none}
         .topbar.solid .menu .termin,
