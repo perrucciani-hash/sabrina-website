@@ -1,252 +1,130 @@
+<!-- NAVBAR CSS -->
 <style>
-  /* Grundzustand der Topbar (z.B. transparent) */
-  .topbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Sorgt dafür, dass die Navbar immer oben ist */
-    background-color: transparent;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  /* Zustand beim Scrollen (wird via JS aktiviert) */
-  .topbar.solid {
-    background-color: #ffffff !important; /* Wechselt auf Weiß */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional: Leichter Schatten */
-  }
-
-  /* Sorgt dafür, dass die Links in der weißen Navbar lesbar sind (Beispiel) */
-  .topbar.solid .menu a, 
-  .topbar.solid .termin-nav-btn {
-    color: #000000; 
-  }
-
-  /* Verhindert, dass das mobile Menü im Hintergrund Klicks blockiert, wenn es geschlossen ist */
-  .mobile {
-    position: fixed;
-    top: 0;
-    right: -100%; /* Oder display: none; je nach deinem Design */
-    z-index: 999;
-    transition: right 0.3s ease;
-  }
-  .mobile.open {
-    right: 0;
-  }
-
-  /* CSS-Reset für den neuen "Termin"-Button, damit er wie ein Link aussieht */
-  .termin-nav-btn {
-    background: none;
-    border: none;
-    font: inherit;
-    cursor: pointer;
-    color: inherit;
-    padding: 0;
-  }
+/* ── HEADER ── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:80px;
+  background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.0) 100%);
+  transition:background .35s,height .35s,box-shadow .35s;
+}
+.topbar.solid{background:#fff;height:70px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.logo{text-decoration:none;display:flex;align-items:center;line-height:0}
+.logo-img{height:56px;width:auto;display:block;
+  mix-blend-mode:screen;
+  transition:filter .35s,mix-blend-mode .35s}
+.topbar.solid .logo-img{mix-blend-mode:multiply;filter:none}
+.menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.menu a{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:400;letter-spacing:.02em;
+  color:#fff;text-decoration:none;transition:color .25s;position:relative;padding-bottom:3px}
+.topbar.solid .menu a{color:var(--black)}
+.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;
+  background:currentColor;transition:width .3s}
+.menu a:hover::after{width:100%}
+.menu .termin{
+  background:#fff;color:var(--black) !important;
+  padding:.6rem 1.4rem;border-radius:2px;font-weight:500;
+  transition:background .25s,color .25s}
+.menu .termin::after{display:none}
+.topbar.solid .menu .termin{background:var(--black);color:#fff !important}
+.menu .termin:hover{background:var(--accent);color:#fff !important}
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
+.burger span{width:26px;height:2px;background:#fff;display:block;transition:background .35s}
+.topbar.solid .burger span{background:var(--black)}
+.mobile{position:fixed;inset:0;z-index:290;background:#fff;display:none;
+  flex-direction:column;justify-content:center;padding:3rem;gap:.4rem}
+.mobile.open{display:flex}
+.mobile a{font-family:'Jost';font-size:1.6rem;color:var(--black);text-decoration:none;
+  padding:.7rem 0;border-bottom:1px solid var(--line)}
+.mobile .close{position:absolute;top:1.8rem;right:2.5rem;font-size:2rem;background:none;border:none;cursor:pointer}
+/* LANG TOGGLE */
+.lang-toggle{display:flex;align-items:center;gap:4px}
+.lang-li{list-style:none;display:flex;align-items:center;margin-left:.5rem}
+.lang-btn{padding:.35rem .65rem;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;
+  letter-spacing:.08em;cursor:pointer;border:1.5px solid rgba(255,255,255,.5);
+  border-radius:2px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);
+  transition:all .2s;line-height:1}
+.lang-btn.active{background:#fff;color:#1a1a1a;border-color:#fff}
+.topbar.solid .lang-btn{border-color:#d0d0d0;background:#fff;color:#666}
+.topbar.solid .lang-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+@media(max-width:920px){
+  .topbar{padding:0 1.3rem}
+  .menu{display:none}
+  .burger{display:flex}
+}
 </style>
 
-<header class="topbar" id="topbar">
+<!-- NAVBAR HTML -->
+<nav class="topbar" id="topbar">
   <a href="/" class="logo">
-    <img src="/images/logos/logo-weiss.png" alt="Sabrina Fiechter Photography" class="logo-img">
+    <img src="/images/assets/logo.png" alt="Sabrina Fiechter" class="logo-img">
   </a>
-  
   <ul class="menu">
-    <li><a href="/portfolio/">Portfolio</a></li>
     <li><a href="/shooting/">Shooting</a></li>
+    <li><a href="/bewerbungsfotos/">Bewerbungsfotos</a></li>
+    <li><a href="/portfolio/">Portfolio</a></li>
     <li><a href="/ueber-mich/">Über mich</a></li>
-    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/kontakt/">Kontakt</a></li>
     <li class="lang-li">
       <div class="lang-toggle">
-        <button class="lang-btn active" onclick="setLang('de'); event.stopPropagation();" id="btnDE">DE</button>
-        <button class="lang-btn" onclick="setLang('en'); event.stopPropagation();" id="btnEN">EN</button>
+        <button class="lang-btn active" id="btnDE" onclick="switchLang('de')">DE</button>
+        <button class="lang-btn" id="btnEN" onclick="switchLang('en')">EN</button>
       </div>
     </li>
-    <li>
-      <button onclick="openFormModal()" class="termin-nav-btn" data-de="Termin anfragen" data-en="Book now">Termin anfragen</button>
-    </li>
+    <li><a href="#" onclick="openFormModal();return false;" class="termin">Termin anfragen</a></li>
   </ul>
-  
-  <button class="burger" onclick="document.querySelector('.mobile').classList.add('open')" aria-label="Menü">
+  <button class="burger" id="burger" aria-label="Menü">
     <span></span><span></span><span></span>
   </button>
-</header>
+</nav>
 
-<div class="mobile">
-  <button class="close" onclick="document.querySelector('.mobile').classList.remove('open')">✕</button>
-  <a href="/portfolio/">Portfolio</a>
+<!-- MOBILE MENU -->
+<div class="mobile" id="mobileMenu">
+  <button class="close" id="mobileClose">✕</button>
   <a href="/shooting/">Shooting</a>
+  <a href="/bewerbungsfotos/">Bewerbungsfotos</a>
+  <a href="/portfolio/">Portfolio</a>
   <a href="/ueber-mich/">Über mich</a>
-  <a href="/blog/">Blog</a>
-  <button onclick="openFormModal(); document.querySelector('.mobile').classList.remove('open')" class="termin-nav-btn" data-de="Termin anfragen" data-en="Book now">Termin anfragen</button>
+  <a href="/kontakt/">Kontakt</a>
+  <a href="#" onclick="openFormModal();return false;">Termin anfragen</a>
 </div>
 
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeFormModal()" aria-label="Schliessen">✕</button>
-    <h2 data-de="Termin anfragen" data-en="Book now">Termin anfragen</h2>
-    <p class="sub" data-de="Ich melde mich so schnell wie möglich bei dir — versprochen." data-en="I'll get back to you as soon as possible — promise.">Ich melde mich so schnell wie möglich bei dir — versprochen.</p>
-    
-    <div id="formContent">
-      <form name="termin-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
-        <input type="hidden" name="form-name" value="termin-anfrage">
-        <p style="display:none"><input name="bot-field"></p>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label for="vorname" data-de="Vorname" data-en="First name">Vorname</label>
-            <input type="text" id="vorname" name="vorname" placeholder="Sabrina"
-                   data-placeholder-de="Sabrina" data-placeholder-en="Anna" required>
-            <span class="field-error" data-de="Bitte gib deinen Vornamen ein." data-en="Please enter your first name.">Bitte gib deinen Vornamen ein.</span>
-          </div>
-          <div class="form-group">
-            <label for="nachname" data-de="Nachname" data-en="Last name">Nachname</label>
-            <input type="text" id="nachname" name="nachname" placeholder="Fiechter"
-                   data-placeholder-de="Fiechter" data-placeholder-en="Smith" required>
-            <span class="field-error" data-de="Bitte gib deinen Nachnamen ein." data-en="Please enter your last name.">Bitte gib deinen Nachnamen ein.</span>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label for="email" data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
-          <input type="email" id="email" name="email" placeholder="hallo@beispiel.ch"
-                 data-placeholder-de="hallo@beispiel.ch" data-placeholder-en="hello@example.com" required>
-          <span class="field-error" data-de="Bitte gib eine gültige E-Mail-Adresse ein." data-en="Please enter a valid email address.">Bitte gib eine gültige E-Mail-Adresse ein.</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="telefon" data-de="Telefonnummer" data-en="Phone number">Telefonnummer</label>
-          <input type="tel" id="telefon" name="telefon" placeholder="+41 76 000 00 00"
-                 data-placeholder-de="+41 76 000 00 00" data-placeholder-en="+41 76 000 00 00" required>
-          <span class="field-error" data-de="Bitte gib deine Telefonnummer ein." data-en="Please enter your phone number.">Bitte gib deine Telefonnummer ein.</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="nachricht" data-de="Deine Nachricht" data-en="Your message">Deine Nachricht</label>
-          <textarea id="nachricht" name="nachricht" required
-                    placeholder="Erzähl mir von deinem Wunsch-Shooting..."
-                    data-placeholder-de="Erzähl mir von deinem Wunsch-Shooting..."
-                    data-placeholder-en="Tell me about your dream shoot..."></textarea>
-          <span class="field-error" data-de="Bitte schreib mir eine kurze Nachricht." data-en="Please write a short message.">Bitte schreib mir eine kurze Nachricht.</span>
-        </div>
-        
-        <button type="submit" class="form-submit" data-de="Los geht's →" data-en="Let's go →">Los geht's →</button>
-      </form>
-    </div>
-    
-    <div class="form-success" id="formSuccess" style="display:none;">
-      <div class="check">✉️</div>
-      <h3 data-de="Nachricht gesendet!" data-en="Message sent!">Nachricht gesendet!</h3>
-      <p data-de="Danke — ich melde mich bald bei dir." data-en="Thank you — I'll be in touch soon.">Danke — ich melde mich bald bei dir.</p>
-    </div>
-  </div>
-</div>
-
+<!-- NAVBAR JAVASCRIPT -->
 <script>
-// --- 1. Scroll-Verhalten (Topbar) ---
-const tb = document.getElementById('topbar');
-if (tb) {
-  window.addEventListener('scroll', () => {
-    // Schaltet die Klasse "solid" ein, wenn mehr als 60px gescrollt wurde
-    tb.classList.toggle('solid', window.scrollY > 60);
-  }, { passive: true });
-}
-
-// --- 2. Modal Steuerung ---
-function openFormModal() {
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-// Globaler Sprach-State aus LocalStorage holen (Standard: 'de')
-let sfLang = localStorage.getItem('sf_lang') || 'de';
-
-function closeFormModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-// --- 3. Formular-Validierung ---
-function validateField(f) {
-  const g = f.closest('.form-group');
-  if (!g) return true;
-  
-  const isEmail = f.type === 'email';
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const isValid = isEmail ? emailRegex.test(f.value.trim()) : f.value.trim().length > 0;
-  
-  f.classList.toggle('invalid', !isValid);
-  f.classList.toggle('valid', isValid);
-  g.classList.toggle('has-error', !isValid);
-  return isValid;
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('#modalOverlay input, #modalOverlay textarea').forEach(f => {
-    f.addEventListener('blur', () => validateField(f));
-    f.addEventListener('input', () => {
-      if (f.classList.contains('invalid')) validateField(f);
-    });
-  });
-  
-  // Sprache direkt beim Laden der Seite initialisieren
-  applyLang(sfLang);
+// Scroll: transparent → weiss
+window.addEventListener('scroll', () => {
+  document.getElementById('topbar').classList.toggle('solid', window.scrollY > 60);
 });
 
-// --- 4. Netlify Formular-Übermittlung ---
-async function handleSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const fields = form.querySelectorAll('input[required], textarea[required]');
-  let ok = true;
-  let first = null;
-  
-  fields.forEach(f => {
-    if (!validateField(f)) {
-      ok = false;
-      if (!first) first = f;
-    }
-  });
-  
-  if (!ok) {
-    if (first) first.focus();
-    return;
-  }
-  
-  try {
-    await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    });
-    document.getElementById('formContent').style.display = 'none';
-    document.getElementById('formSuccess').style.display = 'block';
-    setTimeout(closeFormModal, 3000);
-  } catch (err) {
-    alert('Fehler beim Senden. Bitte versuche es nochmals.');
-  }
+// Burger / Mobile Menu
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.add('open');
+});
+document.getElementById('mobileClose').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.remove('open');
+});
+
+// Sprache umschalten
+function switchLang(lang) {
+  localStorage.setItem('sf_lang', lang);
+  document.getElementById('btnDE').classList.toggle('active', lang === 'de');
+  document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+  applyLang(lang);
 }
 
-// --- 5. Sprachumschaltung ---
-function setLang(l) {
-  sfLang = l;
-  localStorage.setItem('sf_lang', l);
-  
-  const de = document.getElementById('btnDE');
-  const en = document.getElementById('btnEN');
-  if (de) de.classList.toggle('active', l === 'de');
-  if (en) en.classList.toggle('active', l === 'en');
-  
-  applyLang(l);
+function applyLang(lang) {
+  document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+    el.innerHTML = el.getAttribute('data-' + lang);
+  });
 }
 
-function applyLang(l) {
-  // Texte übersetzen
-  document.querySelectorAll('[data-de]').forEach(el => {
-    el.innerHTML = l === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-de')) : el.getAttribute('data-de');
-  });
-  // Placeholders übersetzen
-  document.querySelectorAll('[data-placeholder-de]').forEach(el => {
-    el.setAttribute('placeholder', l === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-de'));
-  });
-}
+// Beim Laden gespeicherte Sprache anwenden
+(function() {
+  const lang = localStorage.getItem('sf_lang') || 'de';
+  if (lang === 'en') {
+    document.getElementById('btnDE').classList.remove('active');
+    document.getElementById('btnEN').classList.add('active');
+  }
+  applyLang(lang);
+})();
 </script>
