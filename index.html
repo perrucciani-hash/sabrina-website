@@ -50,10 +50,10 @@ a{color:inherit}
 .topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:80px;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 100%);transition:background .35s,box-shadow .35s;}
 .topbar.solid{background:#fff;height:80px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .logo{text-decoration:none;display:flex;align-items:center;line-height:0}
-/* logo-wrap: feste Grösse, beide Bilder übereinander — kein Layout-Sprung */
-.logo-wrap{position:relative;height:52px;width:auto;display:flex;align-items:center;}
-.logo-white,.logo-black{height:52px;width:auto;display:block;transition:opacity .35s;}
-.logo-black{position:absolute;top:0;left:0;opacity:0;}
+/* logo-wrap: grid-Stacking — beide Bilder exakt übereinander, keine Positionierungsprobleme */
+.logo-wrap{display:grid;}
+.logo-white,.logo-black{grid-area:1/1;height:52px;width:auto;display:block;transition:opacity .35s;}
+.logo-black{opacity:0;}
 .topbar.solid .logo-white{opacity:0;}
 .topbar.solid .logo-black{opacity:1;}
 .menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
