@@ -9,7 +9,34 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- ── SPRACHE: Muss vor dem Laden der Navbar sein ── -->
+<script>
+var sfLang = localStorage.getItem('sf_lang') || 'de';
+
+function applyLang(l) {
+  document.querySelectorAll('[data-de]').forEach(function(el) {
+    el.innerHTML = l === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-de')) : el.getAttribute('data-de');
+  });
+  document.querySelectorAll('[data-placeholder-de]').forEach(function(el) {
+    el.setAttribute('placeholder', l === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-de'));
+  });
+}
+
+function setLang(l) {
+  sfLang = l;
+  localStorage.setItem('sf_lang', l);
+  var btnDE = document.getElementById('btnDE');
+  var btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', l === 'de');
+  if (btnEN) btnEN.classList.toggle('active', l === 'en');
+  applyLang(l);
+  renderCMSContent();
+}
+</script>
+
 <style>
+/* ── RESET & BASE ── */
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--black:#1a1a1a;--text:#333333;--grey:#6b6b6b;--line:#e6e6e6;--bg:#ffffff;--bg-soft:#f6f5f3;--accent:#1f7a72;--accent-dark:#15605a;--gold:#e0a83d;}
 html{scroll-behavior:smooth}
@@ -18,7 +45,7 @@ h1,h2,h3,h4{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);lin
 img{display:block;max-width:100%}
 a{color:inherit}
 
-/* HEADER */
+/* ── HEADER ── */
 .topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:80px;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 100%);transition:background .35s,height .35s,box-shadow .35s;}
 .topbar.solid{background:#fff;height:70px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .logo{text-decoration:none;display:flex;align-items:center;line-height:0}
@@ -29,13 +56,10 @@ a{color:inherit}
 .topbar.solid .menu a{color:var(--black)}
 .menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:currentColor;transition:width .3s}
 .menu a:hover::after{width:100%}
-
-/* NAV CTA — fixed width so DE/EN never shifts the nav layout */
 .menu .termin{background:#fff;color:var(--black) !important;padding:.6rem 0;border-radius:2px;font-weight:500;width:195px;text-align:center;display:inline-flex;align-items:center;justify-content:center;transition:background .25s,color .25s;white-space:nowrap;}
 .menu .termin::after{display:none}
 .topbar.solid .menu .termin{background:var(--black);color:#fff !important}
 .menu .termin:hover,.topbar.solid .menu .termin:hover{background:var(--accent) !important;color:#fff !important}
-
 .burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
 .burger span{width:26px;height:2px;background:#fff;display:block;transition:background .35s}
 .topbar.solid .burger span{background:var(--black)}
@@ -44,7 +68,7 @@ a{color:inherit}
 .mobile a{font-family:'Jost';font-size:1.6rem;color:var(--black);text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--line)}
 .mobile .close{position:absolute;top:1.8rem;right:2.5rem;font-size:2rem;background:none;border:none;cursor:pointer}
 
-/* LANG TOGGLE */
+/* ── LANG TOGGLE ── */
 .lang-toggle{display:flex;align-items:center;gap:4px}
 .lang-li{list-style:none;display:flex;align-items:center;margin-left:.5rem}
 .lang-btn{padding:.35rem .65rem;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;cursor:pointer;border:1.5px solid rgba(255,255,255,.5);border-radius:2px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);transition:all .2s;line-height:1;}
@@ -52,21 +76,16 @@ a{color:inherit}
 .topbar.solid .lang-btn{border-color:#d0d0d0;background:#fff;color:#666}
 .topbar.solid .lang-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
 
-/* HERO */
+/* ── HERO ── */
 .hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:center;justify-content:flex-start;text-align:left;overflow:hidden}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.45) 40%,rgba(0,0,0,.1) 70%,transparent 100%)}
 .hero-inner{position:relative;z-index:2;color:#fff;padding:2rem 2rem 2rem 5vw;max-width:520px}
-
-/* HEIGHT-LOCKED elements — never reflow on lang switch */
 .hero-kicker{font-family:'Jost';font-size:1rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:1.2rem;opacity:.9;font-weight:300;display:block;height:1.5em;overflow:hidden;white-space:nowrap;}
 .hero h1{font-size:clamp(3rem,7vw,6rem);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.02;margin-bottom:1.4rem}
 .hero-sub{font-size:1.15rem;line-height:1.6;max-width:440px;margin:0 0 2.2rem;color:rgba(255,255,255,.92);font-weight:400;display:block;height:3.68rem;overflow:hidden;}
-
-/* CTA BUTTON — fixed width everywhere */
 .hero-cta{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:#fff;color:var(--black);font-family:'Jost';font-size:1rem;font-weight:500;letter-spacing:.04em;width:220px;padding:1rem 0;text-decoration:none;border-radius:2px;transition:background .3s,color .3s;border:1.5px solid #fff;white-space:nowrap;}
 .hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-
 .hero-badges{display:flex;align-items:center;justify-content:flex-start;gap:2rem;margin-top:2.6rem;flex-wrap:wrap}
 .hero-badge{display:flex;align-items:center;gap:.6rem;color:#fff}
 .hero-badge .stars{display:flex;gap:2px}
@@ -77,7 +96,7 @@ a{color:inherit}
 .scroll-hint{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);z-index:2;color:#fff;font-family:'Jost';font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;opacity:.8;animation:bob 2s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
 
-/* SECTION */
+/* ── SECTION ── */
 .section{padding:6rem 2.5rem;max-width:1280px;margin:0 auto}
 .section-bg{background:var(--bg-soft)}
 .center{text-align:center;max-width:680px;margin:0 auto 3.5rem}
@@ -85,7 +104,7 @@ a{color:inherit}
 .section h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:300;margin-bottom:1.2rem}
 .section-lead{font-size:1.1rem;color:var(--grey);line-height:1.7}
 
-/* ANGEBOT */
+/* ── ANGEBOT ── */
 .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
 .offer{display:flex;flex-direction:column;text-decoration:none;color:inherit}
 .offer-img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--bg-soft);margin-bottom:1.5rem}
@@ -101,7 +120,7 @@ a{color:inherit}
 .offer-link{font-family:'Jost';font-size:.92rem;font-weight:500;letter-spacing:.03em;color:var(--black);display:inline-flex;align-items:center;gap:.45rem;transition:gap .25s,color .25s}
 .offer:hover .offer-link{gap:.8rem;color:var(--accent)}
 
-/* ABOUT */
+/* ── ABOUT ── */
 .about{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:center}
 .about-img{aspect-ratio:4/5;overflow:hidden;background:var(--bg-soft)}
 .about-img img{width:100%;height:100%;object-fit:cover}
@@ -115,7 +134,7 @@ a{color:inherit}
 .about-text .btn-line{margin-top:1.8rem;display:inline-flex;align-items:center;gap:.5rem;font-family:'Jost';font-weight:500;color:var(--black);text-decoration:none;border-bottom:1.5px solid var(--black);padding-bottom:2px;transition:gap .25s,color .25s,border-color .25s}
 .about-text .btn-line:hover{gap:.85rem;color:var(--accent);border-color:var(--accent)}
 
-/* REFERENZEN */
+/* ── REFERENZEN ── */
 .refs{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
 .ref{background:#fff;border:1px solid var(--line);padding:2.4rem;border-radius:2px}
 .ref .stars{display:flex;gap:3px;margin-bottom:1.3rem}
@@ -126,7 +145,7 @@ a{color:inherit}
 .ref-nm{font-family:'Jost';font-size:1.05rem;color:var(--black)}
 .ref-rl{font-size:.88rem;color:var(--grey)}
 
-/* PREISE */
+/* ── PREISE ── */
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .price{border:1px solid var(--line);padding:2.6rem 2.2rem;background:#fff;display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s}
 .price:hover{box-shadow:0 16px 40px rgba(0,0,0,.08);transform:translateY(-4px)}
@@ -149,7 +168,7 @@ a{color:inherit}
 .price.feat .pb{background:#fff;color:var(--black);border-color:#fff}
 .price.feat .pb:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
-/* CTA SECTION */
+/* ── CTA ── */
 .cta{text-align:center;padding:7rem 2.5rem;background:var(--black);color:#fff}
 .cta h2{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:300;color:#fff;margin-bottom:1.2rem;max-width:760px;margin-left:auto;margin-right:auto}
 .cta p{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
@@ -157,7 +176,7 @@ a{color:inherit}
 .cta .hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .cta-detail{margin-top:2rem;font-family:'Jost';font-size:.85rem;letter-spacing:.08em;color:rgba(255,255,255,.4);text-transform:uppercase}
 
-/* FOOTER */
+/* ── FOOTER ── */
 footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 .foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem}
 .foot-logo{font-family:'Jost';font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;display:block;margin-bottom:1rem}
@@ -168,12 +187,12 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 .foot-links a:hover{color:var(--accent)}
 .foot-copy{max-width:1280px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(255,255,255,.35)}
 
-/* REVEAL */
+/* ── REVEAL ── */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
 .rv.vis{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
-/* STEPS */
+/* ── STEPS ── */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;position:relative}
 .steps::before{display:none}
 .step{cursor:pointer;perspective:800px;position:relative;z-index:1;padding:0 1rem}
@@ -189,7 +208,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 .step-back h3{color:var(--black);margin-bottom:.5rem}
 .step-back p{font-size:.85rem;color:var(--text);line-height:1.6;text-align:center;margin-top:.25rem}
 
-/* STANDORT */
+/* ── STANDORT ── */
 .loc{display:grid;grid-template-columns:1fr 1fr;min-height:480px;background:#f6f5f3}
 .loc-map{position:relative;min-height:480px;width:100%}
 .loc-map iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
@@ -205,7 +224,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 .loc-info .hero-cta{background:var(--black);color:#fff;border-color:var(--black);align-self:flex-start;margin-top:1rem}
 .loc-info .hero-cta:hover{background:var(--accent);border-color:var(--accent)}
 
-/* MODAL */
+/* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .35s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:#fff;width:100%;max-width:520px;padding:3rem;border-radius:4px;position:relative;transform:translateY(24px);transition:transform .35s;max-height:90vh;overflow-y:auto}
@@ -233,7 +252,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 .form-success p{color:#6b6b6b;font-size:.95rem}
 @media(max-width:600px){.form-row{grid-template-columns:1fr}}
 
-/* MOBILE */
+/* ── MOBILE ── */
 @media(max-width:920px){
   .topbar{padding:0 1.3rem}
   .menu{display:none}
@@ -257,28 +276,10 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 </head>
 <body>
 
-<header class="topbar" id="topbar">
-  <a href="/" class="logo"><img src="/images/logos/logo-weiss.png" alt="Sabrina Fiechter Photography" class="logo-img"></a>
-  <ul class="menu">
-    <li><a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a></li>
-    <li><a href="/shooting/" data-de="Shooting" data-en="Shooting">Shooting</a></li>
-    <li><a href="ueber-mich.html" data-de="Über mich" data-en="About me">Über mich</a></li>
-    <li><a href="/blog/" data-de="Blog" data-en="Blog">Blog</a></li>
-    <li class="lang-li"><div class="lang-toggle"><button class="lang-btn active" onclick="setLang('de')" id="btnDE">DE</button><button class="lang-btn" onclick="setLang('en')" id="btnEN">EN</button></div></li>
-    <li><a href="#" onclick="openFormModal();return false;" class="termin" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a></li>
-  </ul>
-  <button class="burger" onclick="document.querySelector('.mobile').classList.add('open')" aria-label="Menü"><span></span><span></span><span></span></button>
-</header>
+<!-- ── NAVBAR (aus navbar.html) ── -->
+<div id="nav-placeholder"></div>
 
-<div class="mobile">
-  <button class="close" onclick="document.querySelector('.mobile').classList.remove('open')">✕</button>
-  <a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a>
-  <a href="/shooting/" data-de="Shooting" data-en="Shooting">Shooting</a>
-  <a href="ueber-mich.html" data-de="Über mich" data-en="About me">Über mich</a>
-  <a href="/blog/" data-de="Blog" data-en="Blog">Blog</a>
-  <a href="#" onclick="openFormModal();return false;" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
-</div>
-
+<!-- ── HERO ── -->
 <section class="hero">
   <img id="hero-bg" src="/images/assets/hero.jpg" alt="Portraitfotografin Zürich – Sabrina Fiechter">
   <div class="hero-inner">
@@ -302,6 +303,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   <div class="scroll-hint" data-de="↓ Scroll" data-en="↓ Scroll">↓ Scroll</div>
 </section>
 
+<!-- ── ANGEBOT ── -->
 <section class="section">
   <div class="center rv">
     <span class="eyebrow" data-de="Angebot Fotografie" data-en="Photography services">Angebot Fotografie</span>
@@ -354,6 +356,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   </div>
 </section>
 
+<!-- ── ÜBER MICH ── -->
 <section class="section-bg">
   <div class="section">
     <div class="about">
@@ -381,6 +384,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   </div>
 </section>
 
+<!-- ── REFERENZEN ── -->
 <section class="section">
   <div class="center rv">
     <span class="eyebrow" data-de="Referenzen" data-en="Reviews">Referenzen</span>
@@ -405,6 +409,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   </div>
 </section>
 
+<!-- ── PREISE ── -->
 <section class="section-bg">
   <div class="section">
     <div class="center rv">
@@ -453,6 +458,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   </div>
 </section>
 
+<!-- ── ABLAUF ── -->
 <section class="section">
   <div class="center rv">
     <span class="eyebrow" data-de="Ablauf" data-en="Process">Ablauf</span>
@@ -514,6 +520,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   </div>
 </section>
 
+<!-- ── STANDORT ── -->
 <section class="loc" id="standort">
   <div class="loc-map">
     <iframe src="https://www.google.com/maps?q=Hardturmstrasse+124a,+8005+Z%C3%BCrich&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Studio Sabrina Fiechter, Hardturmstrasse 124a, Zürich"></iframe>
@@ -537,6 +544,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   </div>
 </section>
 
+<!-- ── CTA ── -->
 <section class="cta">
   <h2 data-de="Bereit für dein Shooting?" data-en="Ready for your shoot?">Bereit für dein Shooting?</h2>
   <p data-de="Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt." data-en="Just get in touch — I look forward to meeting you and developing a concept that truly fits you.">Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt.</p>
@@ -544,15 +552,10 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   <div class="cta-detail" data-de="Studio Zürich-West · 8 Min. vom Hauptbahnhof" data-en="Studio Zurich-West · 8 min from main station">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
 </section>
 
+<!-- ── FOOTER (aus footer.html) ── -->
 <div id="footer-placeholder"></div>
-<script>
-  fetch('/footer.html')
-    .then(r => r.text())
-    .then(html => {
-      document.getElementById('footer-placeholder').innerHTML = html;
-    });
-</script>
 
+<!-- ── MODAL ── -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeFormModal()" aria-label="Schliessen">✕</button>
@@ -601,120 +604,131 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 </div>
 
 <script>
-// Scroll
-const tb=document.getElementById('topbar');
-addEventListener('scroll',()=>{tb.classList.toggle('solid',scrollY>60)},{passive:true});
+// ── SCROLL ──
+var tb = document.getElementById('topbar');
+if (tb) addEventListener('scroll', function() { tb.classList.toggle('solid', scrollY > 60); }, { passive: true });
 
-// Reveal
-const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px'});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// ── REVEAL ──
+var io = new IntersectionObserver(function(es) {
+  es.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+}, { threshold: .12, rootMargin: '0px 0px -40px' });
+document.querySelectorAll('.rv').forEach(function(el) { io.observe(el); });
 
-// Modal
-function openFormModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
-function closeFormModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+// ── MODAL ──
+function openFormModal() { document.getElementById('modalOverlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeFormModal() { document.getElementById('modalOverlay').classList.remove('open'); document.body.style.overflow = ''; }
 
-// Form
-function validateField(f){
-  const g=f.closest('.form-group');
-  const v=f.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()):f.value.trim().length>0;
-  f.classList.toggle('invalid',!v);f.classList.toggle('valid',v);
-  g.classList.toggle('has-error',!v);return v;
+// ── FORM ──
+function validateField(f) {
+  var g = f.closest('.form-group');
+  var v = f.type === 'email' ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()) : f.value.trim().length > 0;
+  f.classList.toggle('invalid', !v); f.classList.toggle('valid', v);
+  g.classList.toggle('has-error', !v); return v;
 }
-document.addEventListener('DOMContentLoaded',function(){
-  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(f=>{
-    f.addEventListener('blur',()=>validateField(f));
-    f.addEventListener('input',()=>{if(f.classList.contains('invalid'))validateField(f)});
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f) {
+    f.addEventListener('blur', function() { validateField(f); });
+    f.addEventListener('input', function() { if (f.classList.contains('invalid')) validateField(f); });
   });
 });
-async function handleSubmit(e){
+async function handleSubmit(e) {
   e.preventDefault();
-  const form=e.target;
-  const fields=form.querySelectorAll('input[required],textarea[required]');
-  let ok=true,first=null;
-  fields.forEach(f=>{if(!validateField(f)){ok=false;if(!first)first=f}});
-  if(!ok){first.focus();return;}
-  try{
-    await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});
-    document.getElementById('formContent').style.display='none';
-    document.getElementById('formSuccess').style.display='block';
-    setTimeout(closeFormModal,3000);
-  }catch(err){alert('Fehler beim Senden. Bitte versuche es nochmals.')}
+  var form = e.target;
+  var fields = form.querySelectorAll('input[required],textarea[required]');
+  var ok = true, first = null;
+  fields.forEach(function(f) { if (!validateField(f)) { ok = false; if (!first) first = f; } });
+  if (!ok) { first.focus(); return; }
+  try {
+    await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
+    document.getElementById('formContent').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+    setTimeout(closeFormModal, 3000);
+  } catch(err) { alert('Fehler beim Senden. Bitte versuche es nochmals.'); }
 }
 
-// Language
-let sfLang=localStorage.getItem('sf_lang')||'de';
-
-function applyLang(l){
-  document.querySelectorAll('[data-de]').forEach(el=>{
-    el.innerHTML=l==='en'?(el.getAttribute('data-en')||el.getAttribute('data-de')):el.getAttribute('data-de');
-  });
-  document.querySelectorAll('[data-placeholder-de]').forEach(el=>{
-    el.setAttribute('placeholder',l==='en'?el.getAttribute('data-placeholder-en'):el.getAttribute('data-placeholder-de'));
-  });
+// ── NAVBAR + FOOTER laden ──
+function loadPartial(url, placeholderId, callback) {
+  fetch(url)
+    .then(function(r) { return r.text(); })
+    .then(function(html) {
+      document.getElementById(placeholderId).innerHTML = html;
+      if (callback) callback();
+    })
+    .catch(function(err) { console.error('Fehler beim Laden von ' + url, err); });
 }
 
-function setLang(l){
-  sfLang=l;
-  localStorage.setItem('sf_lang',l);
-  document.getElementById('btnDE').classList.toggle('active',l==='de');
-  document.getElementById('btnEN').classList.toggle('active',l==='en');
-  applyLang(l);
-  renderCMSContent();
-}
+// Navbar laden → danach Sprache + Scroll-Listener initialisieren
+loadPartial('/navbar.html', 'nav-placeholder', function() {
+  // Sprache auf Navbar anwenden
+  var btnDE = document.getElementById('btnDE');
+  var btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', sfLang === 'de');
+  if (btnEN) btnEN.classList.toggle('active', sfLang === 'en');
+  applyLang(sfLang);
 
-// CMS
-let cmsData=null;
-async function loadCMSData(){
-  try{
-    const r=await fetch('/inhalt.json');
-    if(!r.ok)throw new Error('JSON nicht gefunden');
-    cmsData=await r.json();
-    renderCMSContent();
-  }catch(err){console.error('Fehler beim Laden der CMS-Daten:',err);}
-}
-
-function renderCMSContent(){
-  if(!cmsData)return;
-  const lang=localStorage.getItem('sf_lang')||'de';
-  if(cmsData.hero){
-    document.getElementById('hero-bg').src=cmsData.hero.image;
-    document.getElementById('hero-title').innerText=cmsData.hero.title;
-    const kicker=document.getElementById('hero-kicker');
-    if(cmsData.hero.kicker_de)kicker.setAttribute('data-de',cmsData.hero.kicker_de);
-    if(cmsData.hero.kicker_en)kicker.setAttribute('data-en',cmsData.hero.kicker_en);
-    kicker.innerHTML=lang==='en'?(cmsData.hero.kicker_en||cmsData.hero.kicker_de):cmsData.hero.kicker_de;
-    const sub=document.getElementById('hero-sub');
-    const subDe=cmsData.hero.sub_de?cmsData.hero.sub_de.replace(/\n/g,'<br>'):'';
-    const subEn=cmsData.hero.sub_en?cmsData.hero.sub_en.replace(/\n/g,'<br>'):subDe;
-    if(subDe)sub.setAttribute('data-de',subDe);
-    if(subEn)sub.setAttribute('data-en',subEn);
-    sub.innerHTML=lang==='en'?subEn:subDe;
+  // Scroll-Listener braucht jetzt #topbar
+  var tb = document.getElementById('topbar');
+  if (tb) {
+    addEventListener('scroll', function() { tb.classList.toggle('solid', scrollY > 60); }, { passive: true });
   }
-  if(cmsData.about){
-    document.getElementById('about-image').src=cmsData.about.image;
-    [['about-title','title_de','title_en'],['about-p1','p1_de','p1_en'],['about-p2','p2_de','p2_en']].forEach(([id,dk,ek])=>{
-      const el=document.getElementById(id);
-      if(!el)return;
-      if(cmsData.about[dk])el.setAttribute('data-de',cmsData.about[dk]);
-      if(cmsData.about[ek])el.setAttribute('data-en',cmsData.about[ek]);
-      el.innerHTML=lang==='en'?(cmsData.about[ek]||cmsData.about[dk]):cmsData.about[dk];
+});
+
+// Footer laden
+loadPartial('/footer.html', 'footer-placeholder', function() {
+  applyLang(sfLang); // Footer-Texte auch übersetzen
+});
+
+// ── CMS ──
+var cmsData = null;
+async function loadCMSData() {
+  try {
+    var r = await fetch('/inhalt.json');
+    if (!r.ok) throw new Error('JSON nicht gefunden');
+    cmsData = await r.json();
+    renderCMSContent();
+  } catch(err) { console.error('Fehler beim Laden der CMS-Daten:', err); }
+}
+
+function renderCMSContent() {
+  if (!cmsData) return;
+  var lang = localStorage.getItem('sf_lang') || 'de';
+
+  if (cmsData.hero) {
+    document.getElementById('hero-bg').src = cmsData.hero.image;
+    document.getElementById('hero-title').innerText = cmsData.hero.title;
+    var kicker = document.getElementById('hero-kicker');
+    if (cmsData.hero.kicker_de) kicker.setAttribute('data-de', cmsData.hero.kicker_de);
+    if (cmsData.hero.kicker_en) kicker.setAttribute('data-en', cmsData.hero.kicker_en);
+    kicker.innerHTML = lang === 'en' ? (cmsData.hero.kicker_en || cmsData.hero.kicker_de) : cmsData.hero.kicker_de;
+    var sub = document.getElementById('hero-sub');
+    var subDe = cmsData.hero.sub_de ? cmsData.hero.sub_de.replace(/\n/g, '<br>') : '';
+    var subEn = cmsData.hero.sub_en ? cmsData.hero.sub_en.replace(/\n/g, '<br>') : subDe;
+    if (subDe) sub.setAttribute('data-de', subDe);
+    if (subEn) sub.setAttribute('data-en', subEn);
+    sub.innerHTML = lang === 'en' ? subEn : subDe;
+  }
+
+  if (cmsData.about) {
+    document.getElementById('about-image').src = cmsData.about.image;
+    [['about-title','title_de','title_en'],['about-p1','p1_de','p1_en'],['about-p2','p2_de','p2_en']].forEach(function(x) {
+      var el = document.getElementById(x[0]);
+      if (!el) return;
+      if (cmsData.about[x[1]]) el.setAttribute('data-de', cmsData.about[x[1]]);
+      if (cmsData.about[x[2]]) el.setAttribute('data-en', cmsData.about[x[2]]);
+      el.innerHTML = lang === 'en' ? (cmsData.about[x[2]] || cmsData.about[x[1]]) : cmsData.about[x[1]];
     });
   }
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
-  if(sfLang==='en'){
-    document.getElementById('btnDE').classList.remove('active');
-    document.getElementById('btnEN').classList.add('active');
-  }
+document.addEventListener('DOMContentLoaded', function() {
   applyLang(sfLang);
   loadCMSData();
 });
 
-// Netlify Identity
-if(window.netlifyIdentity){
-  window.netlifyIdentity.on('init',user=>{
-    if(!user){window.netlifyIdentity.on('login',()=>{document.location.href='/admin/';})}
+// ── NETLIFY IDENTITY ──
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', function(user) {
+    if (!user) { window.netlifyIdentity.on('login', function() { document.location.href = '/admin/'; }); }
   });
 }
 </script>
