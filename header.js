@@ -87,18 +87,18 @@ class SfHeader extends HTMLElement {
           <img src="/images/logos/logo-weiss.png" alt="Sabrina Fiechter" class="logo-img">
         </a>
         <ul class="menu">
-          <li><a href="/shooting/">Shooting</a></li>
-          <li><a href="/bewerbungsfotos/">Bewerbungsfotos</a></li>
-          <li><a href="/portfolio/">Portfolio</a></li>
-          <li><a href="/ueber-mich/">Über mich</a></li>
-          <li><a href="/kontakt/">Kontakt</a></li>
+          <li><a href="/shooting/" data-de="Shooting" data-en="Shooting">Shooting</a></li>
+          <li><a href="/bewerbungsfotos/" data-de="Bewerbungsfotos" data-en="Headshots">Bewerbungsfotos</a></li>
+          <li><a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a></li>
+          <li><a href="/ueber-mich/" data-de="Über mich" data-en="About me">Über mich</a></li>
+          <li><a href="/kontakt/" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
           <li class="lang-li">
             <div class="lang-toggle">
               <button class="lang-btn active" id="sf-btnDE">DE</button>
               <button class="lang-btn" id="sf-btnEN">EN</button>
             </div>
           </li>
-          <li><a href="#" class="termin" id="sf-termin-btn">Termin anfragen</a></li>
+          <li><a href="#" class="termin" id="sf-termin-btn" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a></li>
         </ul>
         <button class="burger" id="sf-burger" aria-label="Menue">
           <span></span><span></span><span></span>
@@ -106,13 +106,13 @@ class SfHeader extends HTMLElement {
       </nav>
 
       <div class="mobile" id="sf-mobile">
-        <button class="close-btn" id="sf-mobile-close">X</button>
-        <a href="/shooting/">Shooting</a>
-        <a href="/bewerbungsfotos/">Bewerbungsfotos</a>
-        <a href="/portfolio/">Portfolio</a>
-        <a href="/ueber-mich/">Über mich</a>
-        <a href="/kontakt/">Kontakt</a>
-        <a href="#" id="sf-termin-mobile">Termin anfragen</a>
+        <button class="close-btn" id="sf-mobile-close">&#x2715;</button>
+        <a href="/shooting/" data-de="Shooting" data-en="Shooting">Shooting</a>
+        <a href="/bewerbungsfotos/" data-de="Bewerbungsfotos" data-en="Headshots">Bewerbungsfotos</a>
+        <a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a>
+        <a href="/ueber-mich/" data-de="Über mich" data-en="About me">Über mich</a>
+        <a href="/kontakt/" data-de="Kontakt" data-en="Contact">Kontakt</a>
+        <a href="#" id="sf-termin-mobile" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
       </div>
     `;
 
@@ -122,7 +122,7 @@ class SfHeader extends HTMLElement {
   _init() {
     const topbar = this.querySelector('#sf-topbar');
 
-    // Seiten ohne Hero: Topbar immer weiss (z.B. ueber-mich, kontakt, portfolio)
+    // Seiten ohne Hero: Topbar immer weiss
     const alwaysSolid = !document.querySelector('.hero');
     if (alwaysSolid) {
       topbar.classList.add('always-solid');
@@ -136,7 +136,7 @@ class SfHeader extends HTMLElement {
     const path = window.location.pathname;
     this.querySelectorAll('.menu a').forEach(a => {
       const href = a.getAttribute('href');
-      if (href && href !== '#' && path.startsWith(href) && href !== '/') {
+      if (href && href !== '#' && href !== '/' && path.startsWith(href)) {
         a.classList.add('active');
       }
     });
@@ -164,11 +164,13 @@ class SfHeader extends HTMLElement {
     const btnEN = this.querySelector('#sf-btnEN');
 
     const applyLang = (lang) => {
+      // Alle data-de/data-en Elemente auf der ganzen Seite übersetzen
       document.querySelectorAll('[data-de]').forEach(el => {
         el.innerHTML = lang === 'en'
           ? (el.getAttribute('data-en') || el.getAttribute('data-de'))
           : el.getAttribute('data-de');
       });
+      // Placeholders übersetzen
       document.querySelectorAll('[data-placeholder-de]').forEach(el => {
         el.setAttribute('placeholder',
           lang === 'en'
@@ -176,6 +178,7 @@ class SfHeader extends HTMLElement {
             : el.getAttribute('data-placeholder-de')
         );
       });
+      // Buttons aktualisieren
       btnDE.classList.toggle('active', lang === 'de');
       btnEN.classList.toggle('active', lang === 'en');
       localStorage.setItem('sf_lang', lang);
@@ -184,7 +187,7 @@ class SfHeader extends HTMLElement {
     btnDE.addEventListener('click', () => applyLang('de'));
     btnEN.addEventListener('click', () => applyLang('en'));
 
-    // Global verfügbar machen
+    // Global verfügbar
     window.applyLang = applyLang;
 
     // Gespeicherte Sprache anwenden
