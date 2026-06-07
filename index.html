@@ -46,11 +46,15 @@ img{display:block;max-width:100%}
 a{color:inherit}
 
 /* ── HEADER ── */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:80px;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 100%);transition:background .35s,height .35s,box-shadow .35s;}
-.topbar.solid{background:#fff;height:70px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+/* Gleiche Höhe in beiden Zuständen — kein vertikales Springen */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:80px;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 100%);transition:background .35s,box-shadow .35s;}
+.topbar.solid{background:#fff;height:80px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
 .logo{text-decoration:none;display:flex;align-items:center;line-height:0}
-.logo-img{height:56px;width:auto;display:block;mix-blend-mode:screen;transition:filter .35s,mix-blend-mode .35s}
-.topbar.solid .logo-img{mix-blend-mode:multiply;filter:none}
+/* Zwei Logos: weiss für transparent, schwarz für solid */
+.logo-img-white{height:52px;width:auto;display:block;}
+.logo-img-black{height:52px;width:auto;display:none;}
+.topbar.solid .logo-img-white{display:none}
+.topbar.solid .logo-img-black{display:block}
 .menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
 .menu a{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:400;letter-spacing:.02em;color:#fff;text-decoration:none;transition:color .25s;position:relative;padding-bottom:3px;white-space:nowrap;}
 .topbar.solid .menu a{color:var(--black)}
