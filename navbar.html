@@ -1,0 +1,33 @@
+<header class="topbar" id="topbar">
+  <a href="/" class="logo">
+    <img src="/images/logos/logo-weiss.png" alt="Sabrina Fiechter Photography" class="logo-img">
+  </a>
+  <ul class="menu">
+    <li><a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a></li>
+    <li><a href="/shooting/" data-de="Shooting" data-en="Shooting">Shooting</a></li>
+    <li><a href="ueber-mich.html" data-de="Über mich" data-en="About me">Über mich</a></li>
+    <li><a href="/blog/" data-de="Blog" data-en="Blog">Blog</a></li>
+    <li class="lang-li">
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('de')" id="btnDE">DE</button>
+        <button class="lang-btn" onclick="setLang('en')" id="btnEN">EN</button>
+      </div>
+    </li>
+    <li>
+      <a href="#" onclick="openFormModal();return false;" class="termin"
+        data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
+    </li>
+  </ul>
+  <button class="burger" onclick="document.querySelector('.mobile').classList.add('open')" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile">
+  <button class="close" onclick="document.querySelector('.mobile').classList.remove('open')">✕</button>
+  <a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a>
+  <a href="/shooting/" data-de="Shooting" data-en="Shooting">Shooting</a>
+  <a href="ueber-mich.html" data-de="Über mich" data-en="About me">Über mich</a>
+  <a href="/blog/" data-de="Blog" data-en="Blog">Blog</a>
+  <a href="#" onclick="openFormModal();return false;" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
+</div>
