@@ -86,8 +86,33 @@ a{color:inherit}
 .hero-kicker{font-family:'Jost';font-size:1rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:1.2rem;opacity:.9;font-weight:300;display:block;height:1.5em;overflow:hidden;white-space:nowrap;}
 .hero h1{font-size:clamp(3rem,7vw,6rem);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.02;margin-bottom:1.4rem}
 .hero-sub{font-size:1.15rem;line-height:1.6;max-width:440px;margin:0 0 2.2rem;color:rgba(255,255,255,.92);font-weight:400;display:block;height:3.68rem;overflow:hidden;}
-.hero-cta{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;background:#fff;color:var(--black);font-family:'Jost';font-size:1rem;font-weight:500;letter-spacing:.04em;width:220px;padding:1rem 0;text-decoration:none;border-radius:2px;transition:background .3s,color .3s;border:1.5px solid #fff;white-space:nowrap;}
-.hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+/* ── CTA BUTTON — einheitliche Grösse überall ── */
+.hero-cta,
+.menu .termin,
+.price .pb,
+.loc-info .hero-cta,
+.cta .hero-cta {
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Jost';font-size:.95rem;font-weight:500;letter-spacing:.04em;
+  width:220px;padding:.75rem 0;
+  border-radius:2px;border:1.5px solid;
+  text-decoration:none;white-space:nowrap;
+  transition:background .3s,color .3s,border-color .3s;
+}
+/* Hero (auf dunklem Bild) */
+.hero-cta{background:#fff;color:var(--black);border-color:#fff;}
+.hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+/* CTA-Section (auf schwarzem Hintergrund) */
+.cta .hero-cta{background:#fff;color:var(--black);border-color:#fff;}
+.cta .hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
+/* Standort */
+.loc-info .hero-cta{background:var(--black);color:#fff;border-color:var(--black);align-self:flex-start;margin-top:1rem;}
+.loc-info .hero-cta:hover{background:var(--accent);border-color:var(--accent);}
+/* Preise */
+.price .pb{background:#fff;color:var(--black);border-color:var(--black);}
+.price .pb:hover{background:var(--black);color:#fff;border-color:var(--black);}
+.price.feat .pb{background:#fff;color:var(--black);border-color:#fff;}
+.price.feat .pb:hover{background:var(--accent);border-color:var(--accent);color:#fff;}
 .hero-badges{display:flex;align-items:center;justify-content:flex-start;gap:2rem;margin-top:2.6rem;flex-wrap:wrap}
 .hero-badge{display:flex;align-items:center;gap:.6rem;color:#fff}
 .hero-badge .stars{display:flex;gap:2px}
@@ -165,17 +190,13 @@ a{color:inherit}
 .price.feat li{color:rgba(255,255,255,.8)}
 .price li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
 .price.feat li::before{color:var(--gold)}
-.price .pb{text-align:center;padding:.9rem;font-family:'Jost';font-weight:500;letter-spacing:.04em;text-decoration:none;border-radius:2px;border:1.5px solid var(--black);color:var(--black);transition:all .25s}
-.price .pb:hover{background:var(--black);color:#fff}
-.price.feat .pb{background:#fff;color:var(--black);border-color:#fff}
-.price.feat .pb:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+/* .price .pb — siehe einheitliche CTA-Styles oben */
 
 /* ── CTA ── */
 .cta{text-align:center;padding:7rem 2.5rem;background:var(--black);color:#fff}
 .cta h2{font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:300;color:#fff;margin-bottom:1.2rem;max-width:760px;margin-left:auto;margin-right:auto}
 .cta p{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
-.cta .hero-cta{background:#fff;color:var(--black);border-color:#fff}
-.cta .hero-cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+/* .cta .hero-cta, .loc-info .hero-cta — siehe einheitliche CTA-Styles oben */
 .cta-detail{margin-top:2rem;font-family:'Jost';font-size:.85rem;letter-spacing:.08em;color:rgba(255,255,255,.4);text-transform:uppercase}
 
 /* ── FOOTER ── */
@@ -223,8 +244,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 .loc-row .v{font-size:1.05rem;color:#1a1a1a;font-weight:500}
 .loc-row .v a{color:#1a1a1a;text-decoration:none;transition:color .2s}
 .loc-row .v a:hover{color:var(--accent)}
-.loc-info .hero-cta{background:var(--black);color:#fff;border-color:var(--black);align-self:flex-start;margin-top:1rem}
-.loc-info .hero-cta:hover{background:var(--accent);border-color:var(--accent)}
+/* .loc-info .hero-cta — siehe einheitliche CTA-Styles oben */
 
 /* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .35s}
