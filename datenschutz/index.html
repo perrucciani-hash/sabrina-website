@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Datenschutz | Sabrina Fiechter Photography</title>
+<meta name="description" id="page-desc" content="Datenschutzerklärung von Sabrina Fiechter Photography, Zürich.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+var PAGE_META = {
+  de: { title: 'Datenschutz | Sabrina Fiechter Photography', desc: 'Datenschutzerklärung von Sabrina Fiechter Photography, Zürich.', lang: 'de' },
+  en: { title: 'Privacy Policy | Sabrina Fiechter Photography', desc: 'Privacy policy of Sabrina Fiechter Photography, Zurich.', lang: 'en' }
+};
+</script>
+
+<script>
+var sfLang = localStorage.getItem('sf_lang') || 'de';
+function applyLang(l) {
+  document.querySelectorAll('[data-de]').forEach(function(el) {
+    el.innerHTML = l === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-de')) : el.getAttribute('data-de');
+  });
+  var meta = PAGE_META[l] || PAGE_META.de;
+  document.getElementById('page-title').textContent = meta.title;
+  document.getElementById('page-desc').setAttribute('content', meta.desc);
+  document.getElementById('html-root').setAttribute('lang', meta.lang);
+}
+function setLang(l) {
+  sfLang = l; localStorage.setItem('sf_lang', l);
+  var btnDE = document.getElementById('btnDE'), btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', l === 'de');
+  if (btnEN) btnEN.classList.toggle('active', l === 'en');
+  applyLang(l);
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#1a1a1a;--text:#333333;--grey:#6b6b6b;--line:#e6e6e6;--bg:#ffffff;--bg-soft:#f6f5f3;--accent:#1f7a72;}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-size:18px;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);line-height:1.2}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+img{display:block;max-width:100%}
+
+.page-header{padding:8rem 2.5rem 4rem;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.page-header-inner{max-width:800px;margin:0 auto}
+.page-header .eyebrow{font-family:'Jost';font-size:.82rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.page-header h1{font-size:clamp(2.2rem,4vw,3rem);font-weight:300}
+
+.legal-content{max-width:800px;margin:0 auto;padding:5rem 2.5rem 7rem}
+.legal-content h2{font-size:1.25rem;font-weight:500;margin:3rem 0 .75rem;color:var(--black);font-family:'Jost'}
+.legal-content h2:first-child{margin-top:0}
+.legal-content h3{font-size:1.05rem;font-weight:600;margin:2rem 0 .5rem;color:var(--black)}
+.legal-content p{font-size:1rem;color:var(--text);line-height:1.8;margin-bottom:1rem}
+.legal-content ul{margin:.5rem 0 1rem 1.5rem;display:flex;flex-direction:column;gap:.4rem}
+.legal-content ul li{font-size:1rem;color:var(--text);line-height:1.7}
+.legal-content a{color:var(--accent)}
+.legal-content .contact-block{background:var(--bg-soft);border:1px solid var(--line);border-radius:4px;padding:2rem 2.2rem;margin-bottom:2rem}
+.legal-content .contact-block p{margin-bottom:.3rem}
+.legal-content .contact-block p:last-child{margin-bottom:0}
+.divider{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+.toc{background:var(--bg-soft);border:1px solid var(--line);border-radius:4px;padding:1.8rem 2.2rem;margin-bottom:3rem}
+.toc h3{font-size:.9rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-bottom:1rem}
+.toc ol{margin-left:1.2rem;display:flex;flex-direction:column;gap:.4rem}
+.toc ol li a{font-size:.95rem;color:var(--accent);text-decoration:none}
+.toc ol li a:hover{text-decoration:underline}
+
+footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem}
+.foot-logo{font-family:'Jost';font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;display:block;margin-bottom:1rem}
+.foot-tag{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7}
+.foot-ct{font-family:'Jost';font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.foot-links a{font-size:.96rem;color:rgba(255,255,255,.85);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--accent)}
+.foot-copy{max-width:1280px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(255,255,255,.35)}
+
+@media(max-width:920px){.menu{display:none}.burger{display:flex}}
+@media(max-width:760px){
+  .page-header{padding:6rem 1.3rem 3rem}
+  .legal-content{padding:3.5rem 1.3rem 5rem}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <span class="eyebrow" data-de="Rechtliches" data-en="Legal">Rechtliches</span>
+    <h1 data-de="Datenschutzerklärung" data-en="Privacy Policy">Datenschutzerklärung</h1>
+  </div>
+</div>
+
+<div class="legal-content">
+
+  <div class="toc">
+    <h3 data-de="Inhalt" data-en="Contents">Inhalt</h3>
+    <ol>
+      <li><a href="#verantwortliche" data-de="Verantwortliche Stelle" data-en="Responsible party">Verantwortliche Stelle</a></li>
+      <li><a href="#grundsaetze" data-de="Allgemeine Hinweise" data-en="General information">Allgemeine Hinweise</a></li>
+      <li><a href="#datenerfassung" data-de="Bearbeitung von Personendaten" data-en="Processing of personal data">Bearbeitung von Personendaten</a></li>
+      <li><a href="#sicherheit" data-de="Sicherheitsmassnahmen" data-en="Security measures">Sicherheitsmassnahmen</a></li>
+      <li><a href="#cookies" data-de="Cookies" data-en="Cookies">Cookies</a></li>
+      <li><a href="#server-logs" data-de="Server-Logfiles" data-en="Server log files">Server-Logfiles</a></li>
+      <li><a href="#kontaktformular" data-de="Kontaktformular" data-en="Contact form">Kontaktformular</a></li>
+      <li><a href="#drittanbieter" data-de="Dienste von Dritten" data-en="Third-party services">Dienste von Dritten</a></li>
+      <li><a href="#rechte" data-de="Ihre Rechte" data-en="Your rights">Ihre Rechte</a></li>
+      <li><a href="#aenderungen" data-de="Änderungen" data-en="Changes">Änderungen</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <h2 id="verantwortliche" data-de="1. Verantwortliche Stelle" data-en="1. Responsible party">1. Verantwortliche Stelle</h2>
+  <div class="contact-block">
+    <p><strong>Sabrina Fiechter</strong></p>
+    <p>Hardturmstrasse 124a<br>8005 Zürich</p>
+    <p><a href="tel:+41762701117">+41 76 270 11 17</a></p>
+    <p><a href="mailto:info@sabrinafiechter.ch">info@sabrinafiechter.ch</a></p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- 2 -->
+  <h2 id="grundsaetze" data-de="2. Allgemeine Hinweise" data-en="2. General information">2. Allgemeine Hinweise</h2>
+  <p data-de="Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können." data-en="The following information provides a simple overview of what happens to your personal data when you visit this website. Personal data is all data by which you can be personally identified.">Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+  <p data-de="Der Betrieb dieser Website erfolgt in Übereinstimmung mit der Schweizer Datenschutzgesetzgebung (DSG) sowie, soweit anwendbar, der Europäischen Datenschutz-Grundverordnung (DSGVO). Ihre personenbezogenen Daten werden vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung behandelt." data-en="This website is operated in compliance with Swiss data protection law (DSG) and, where applicable, the European General Data Protection Regulation (GDPR). Your personal data is treated confidentially and in accordance with the statutory data protection regulations and this privacy policy.">Der Betrieb dieser Website erfolgt in Übereinstimmung mit der Schweizer Datenschutzgesetzgebung (DSG) sowie, soweit anwendbar, der Europäischen Datenschutz-Grundverordnung (DSGVO). Ihre personenbezogenen Daten werden vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung behandelt.</p>
+
+  <hr class="divider">
+
+  <!-- 3 -->
+  <h2 id="datenerfassung" data-de="3. Bearbeitung von Personendaten" data-en="3. Processing of personal data">3. Bearbeitung von Personendaten</h2>
+  <p data-de="Personenbezogene Daten werden nur erhoben, wenn Sie uns diese im Rahmen einer Kontaktaufnahme, einer Terminanfrage oder einer sonstigen Nutzung der Website freiwillig mitteilen. Diese Daten werden ausschliesslich für den angegebenen Zweck verwendet und nicht ohne Ihre ausdrückliche Einwilligung an Dritte weitergegeben." data-en="Personal data is only collected if you voluntarily provide it to us in the context of a contact enquiry, an appointment request or other use of the website. This data is used exclusively for the stated purpose and is not passed on to third parties without your explicit consent.">Personenbezogene Daten werden nur erhoben, wenn Sie uns diese im Rahmen einer Kontaktaufnahme, einer Terminanfrage oder einer sonstigen Nutzung der Website freiwillig mitteilen. Diese Daten werden ausschliesslich für den angegebenen Zweck verwendet und nicht ohne Ihre ausdrückliche Einwilligung an Dritte weitergegeben.</p>
+  <p data-de="Die Rechtsgrundlagen der Datenbearbeitung können je nach Situation sein: Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Erfüllung eines Vertrags oder vorvertraglicher Massnahmen (Art. 6 Abs. 1 lit. b DSGVO), eine rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO) oder berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO)." data-en="The legal bases for data processing may vary depending on the situation: your consent (Art. 6(1)(a) GDPR), the fulfilment of a contract or pre-contractual measures (Art. 6(1)(b) GDPR), a legal obligation (Art. 6(1)(c) GDPR) or legitimate interests (Art. 6(1)(f) GDPR).">Die Rechtsgrundlagen der Datenbearbeitung können je nach Situation sein: Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die Erfüllung eines Vertrags oder vorvertraglicher Massnahmen (Art. 6 Abs. 1 lit. b DSGVO), eine rechtliche Verpflichtung (Art. 6 Abs. 1 lit. c DSGVO) oder berechtigte Interessen (Art. 6 Abs. 1 lit. f DSGVO).</p>
+
+  <hr class="divider">
+
+  <!-- 4 -->
+  <h2 id="sicherheit" data-de="4. Sicherheitsmassnahmen" data-en="4. Security measures">4. Sicherheitsmassnahmen</h2>
+  <p data-de="Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-/TLS-Verschlüsselung (erkennbar am «https://» in der Adresszeile des Browsers). Damit sind Daten, die Sie an uns übermitteln, für Dritte nicht mitlesbar." data-en="For security reasons and to protect the transmission of confidential content, this website uses SSL/TLS encryption (recognisable by the 'https://' in the browser address bar). This means that data you transmit to us cannot be read by third parties.">Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL-/TLS-Verschlüsselung (erkennbar am «https://» in der Adresszeile des Browsers). Damit sind Daten, die Sie an uns übermitteln, für Dritte nicht mitlesbar.</p>
+  <p data-de="Es werden technische und organisatorische Sicherheitsmassnahmen getroffen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, Verlust, Zerstörung oder den Zugriff unberechtigter Personen zu schützen." data-en="Technical and organisational security measures are taken to protect your data against accidental or intentional manipulation, loss, destruction or access by unauthorised persons.">Es werden technische und organisatorische Sicherheitsmassnahmen getroffen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, Verlust, Zerstörung oder den Zugriff unberechtigter Personen zu schützen.</p>
+
+  <hr class="divider">
+
+  <!-- 5 -->
+  <h2 id="cookies" data-de="5. Cookies" data-en="5. Cookies">5. Cookies</h2>
+  <p data-de="Cookies sind kleine Textdateien, die beim Besuch dieser Website auf Ihrem Gerät gespeichert werden. Sie dienen dazu, die Website funktionsfähig zu halten und das Nutzungserlebnis zu verbessern." data-en="Cookies are small text files that are stored on your device when you visit this website. They serve to keep the website functional and to improve the user experience.">Cookies sind kleine Textdateien, die beim Besuch dieser Website auf Ihrem Gerät gespeichert werden. Sie dienen dazu, die Website funktionsfähig zu halten und das Nutzungserlebnis zu verbessern.</p>
+
+  <h3 data-de="Cookie-Typen" data-en="Cookie types">Cookie-Typen</h3>
+  <ul>
+    <li data-de="<strong>Notwendige Cookies:</strong> Erforderlich für den Betrieb der Website (z. B. Session-Verwaltung). Sie können nicht deaktiviert werden." data-en="<strong>Necessary cookies:</strong> Required for the operation of the website (e.g. session management). They cannot be deactivated."><strong>Notwendige Cookies:</strong> Erforderlich für den Betrieb der Website (z. B. Session-Verwaltung). Sie können nicht deaktiviert werden.</li>
+    <li data-de="<strong>Statistik-Cookies:</strong> Helfen uns, die Nutzung der Website zu verstehen und zu verbessern. Speicherdauer bis zu 2 Jahren." data-en="<strong>Statistics cookies:</strong> Help us understand and improve the use of the website. Storage duration up to 2 years."><strong>Statistik-Cookies:</strong> Helfen uns, die Nutzung der Website zu verstehen und zu verbessern. Speicherdauer bis zu 2 Jahren.</li>
+    <li data-de="<strong>Temporäre Cookies (Session Cookies):</strong> Werden nach dem Schliessen des Browsers automatisch gelöscht." data-en="<strong>Temporary cookies (session cookies):</strong> Are automatically deleted when the browser is closed."><strong>Temporäre Cookies (Session Cookies):</strong> Werden nach dem Schliessen des Browsers automatisch gelöscht.</li>
+    <li data-de="<strong>Permanente Cookies:</strong> Bleiben für eine festgelegte Zeitdauer auf Ihrem Gerät gespeichert." data-en="<strong>Permanent cookies:</strong> Remain stored on your device for a specified period of time."><strong>Permanente Cookies:</strong> Bleiben für eine festgelegte Zeitdauer auf Ihrem Gerät gespeichert.</li>
+  </ul>
+
+  <h3 data-de="Cookie-Einstellungen" data-en="Cookie settings">Cookie-Einstellungen</h3>
+  <p data-de="Sie können Cookies in Ihren Browser-Einstellungen jederzeit deaktivieren oder löschen. Beachten Sie, dass die Deaktivierung bestimmter Cookies die Funktionalität dieser Website einschränken kann." data-en="You can deactivate or delete cookies in your browser settings at any time. Please note that deactivating certain cookies may restrict the functionality of this website.">Sie können Cookies in Ihren Browser-Einstellungen jederzeit deaktivieren oder löschen. Beachten Sie, dass die Deaktivierung bestimmter Cookies die Funktionalität dieser Website einschränken kann.</p>
+  <p data-de="Weitere Informationen zum Umgang mit Cookies finden Sie unter <a href='https://www.aboutcookies.org' target='_blank' rel='noopener'>aboutcookies.org</a> oder <a href='https://www.allaboutcookies.org' target='_blank' rel='noopener'>allaboutcookies.org</a>." data-en="Further information on how to handle cookies can be found at <a href='https://www.aboutcookies.org' target='_blank' rel='noopener'>aboutcookies.org</a> or <a href='https://www.allaboutcookies.org' target='_blank' rel='noopener'>allaboutcookies.org</a>.">Weitere Informationen zum Umgang mit Cookies finden Sie unter <a href="https://www.aboutcookies.org" target="_blank" rel="noopener">aboutcookies.org</a> oder <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener">allaboutcookies.org</a>.</p>
+
+  <hr class="divider">
+
+  <!-- 6 -->
+  <h2 id="server-logs" data-de="6. Server-Logfiles" data-en="6. Server log files">6. Server-Logfiles</h2>
+  <p data-de="Der Hosting-Anbieter dieser Website erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt. Dies sind:" data-en="The hosting provider of this website automatically collects and stores information in so-called server log files, which your browser automatically transmits. These are:">Der Hosting-Anbieter dieser Website erhebt und speichert automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt. Dies sind:</p>
+  <ul>
+    <li data-de="Browsertyp und Browserversion" data-en="Browser type and version">Browsertyp und Browserversion</li>
+    <li data-de="Verwendetes Betriebssystem" data-en="Operating system used">Verwendetes Betriebssystem</li>
+    <li data-de="Referrer URL (zuvor besuchte Seite)" data-en="Referrer URL (previously visited page)">Referrer URL (zuvor besuchte Seite)</li>
+    <li data-de="Hostname des zugreifenden Rechners" data-en="Hostname of the accessing computer">Hostname des zugreifenden Rechners</li>
+    <li data-de="Uhrzeit der Serveranfrage" data-en="Time of the server request">Uhrzeit der Serveranfrage</li>
+  </ul>
+  <p data-de="Diese Daten sind nicht bestimmten Personen zuordenbar und werden nicht mit anderen Datenquellen zusammengeführt." data-en="This data cannot be assigned to specific persons and is not merged with other data sources.">Diese Daten sind nicht bestimmten Personen zuordenbar und werden nicht mit anderen Datenquellen zusammengeführt.</p>
+
+  <hr class="divider">
+
+  <!-- 7 -->
+  <h2 id="kontaktformular" data-de="7. Kontaktformular" data-en="7. Contact form">7. Kontaktformular</h2>
+  <p data-de="Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen angegebenen Kontaktdaten zum Zweck der Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter." data-en="If you send us enquiries via the contact form, your details from the enquiry form, including the contact details you have provided, will be stored by us for the purpose of processing the enquiry and in case of follow-up questions. We do not pass on this data without your consent.">Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen angegebenen Kontaktdaten zum Zweck der Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+
+  <hr class="divider">
+
+  <!-- 8 -->
+  <h2 id="drittanbieter" data-de="8. Dienste von Dritten" data-en="8. Third-party services">8. Dienste von Dritten</h2>
+
+  <h3>Google Maps</h3>
+  <p data-de="Diese Website verwendet Google Maps zur Darstellung von Karten. Beim Aufruf von Seiten mit Google Maps werden Informationen (einschliesslich Ihrer IP-Adresse) an Google LLC in den USA übertragen. Google kann diese Daten für Werbung und Marktforschung nutzen. Weitere Informationen: <a href='https://policies.google.com/privacy' target='_blank' rel='noopener'>Google Datenschutzerklärung</a>." data-en="This website uses Google Maps to display maps. When pages with Google Maps are accessed, information (including your IP address) is transmitted to Google LLC in the USA. Google may use this data for advertising and market research. Further information: <a href='https://policies.google.com/privacy' target='_blank' rel='noopener'>Google Privacy Policy</a>.">Diese Website verwendet Google Maps zur Darstellung von Karten. Beim Aufruf von Seiten mit Google Maps werden Informationen (einschliesslich Ihrer IP-Adresse) an Google LLC in den USA übertragen. Google kann diese Daten für Werbung und Marktforschung nutzen. Weitere Informationen: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Datenschutzerklärung</a>.</p>
+
+  <h3>Instagram</h3>
+  <p data-de="Diese Website enthält Links zum Instagram-Profil von Sabrina Fiechter. Beim Anklicken dieser Links verlassen Sie diese Website. Instagram Inc. kann Seitenbesuche Benutzerkonten zuordnen, sofern Sie eingeloggt sind. Der Seitenbetreiber erhält keine Kenntnis über die konkrete Datenverwertung durch Instagram." data-en="This website contains links to Sabrina Fiechter's Instagram profile. By clicking on these links you leave this website. Instagram Inc. may assign page visits to user accounts if you are logged in. The website operator has no knowledge of the specific data use by Instagram.">Diese Website enthält Links zum Instagram-Profil von Sabrina Fiechter. Beim Anklicken dieser Links verlassen Sie diese Website. Instagram Inc. kann Seitenbesuche Benutzerkonten zuordnen, sofern Sie eingeloggt sind. Der Seitenbetreiber erhält keine Kenntnis über die konkrete Datenverwertung durch Instagram.</p>
+
+  <h3 data-de="Hinweis zur Datenweitergabe in die USA" data-en="Note on data transfer to the USA">Hinweis zur Datenweitergabe in die USA</h3>
+  <p data-de="Einige der auf dieser Website eingebundenen Dienste (z. B. Google Maps) übertragen Daten in die USA. Die USA gelten nach EU-Recht nicht als sicheres Drittland im Sinne des Datenschutzrechts. US-Behörden können ohne Möglichkeit eines rechtlichen Widerspruchs Zugriff auf diese Daten fordern." data-en="Some of the services integrated on this website (e.g. Google Maps) transfer data to the USA. The USA is not considered a safe third country under EU data protection law. US authorities can demand access to this data without the possibility of legal challenge.">Einige der auf dieser Website eingebundenen Dienste (z. B. Google Maps) übertragen Daten in die USA. Die USA gelten nach EU-Recht nicht als sicheres Drittland im Sinne des Datenschutzrechts. US-Behörden können ohne Möglichkeit eines rechtlichen Widerspruchs Zugriff auf diese Daten fordern.</p>
+
+  <hr class="divider">
+
+  <!-- 9 -->
+  <h2 id="rechte" data-de="9. Ihre Rechte" data-en="9. Your rights">9. Ihre Rechte</h2>
+  <p data-de="Sie haben jederzeit das Recht auf:" data-en="You have the right at any time to:">Sie haben jederzeit das Recht auf:</p>
+  <ul>
+    <li data-de="<strong>Auskunft</strong> über die bei uns zu Ihrer Person gespeicherten Daten" data-en="<strong>Information</strong> about the data stored with us relating to your person"><strong>Auskunft</strong> über die bei uns zu Ihrer Person gespeicherten Daten</li>
+    <li data-de="<strong>Berichtigung</strong> unrichtiger oder unvollständiger Daten" data-en="<strong>Correction</strong> of inaccurate or incomplete data"><strong>Berichtigung</strong> unrichtiger oder unvollständiger Daten</li>
+    <li data-de="<strong>Löschung</strong> Ihrer gespeicherten Daten, soweit keine gesetzliche Aufbewahrungspflicht besteht" data-en="<strong>Deletion</strong> of your stored data, provided there is no legal retention obligation"><strong>Löschung</strong> Ihrer gespeicherten Daten, soweit keine gesetzliche Aufbewahrungspflicht besteht</li>
+    <li data-de="<strong>Einschränkung</strong> der Datenverarbeitung" data-en="<strong>Restriction</strong> of data processing"><strong>Einschränkung</strong> der Datenverarbeitung</li>
+    <li data-de="<strong>Datenübertragbarkeit</strong> in einem strukturierten, maschinenlesbaren Format" data-en="<strong>Data portability</strong> in a structured, machine-readable format"><strong>Datenübertragbarkeit</strong> in einem strukturierten, maschinenlesbaren Format</li>
+    <li data-de="<strong>Widerspruch</strong> gegen die Datenverarbeitung" data-en="<strong>Objection</strong> to data processing"><strong>Widerspruch</strong> gegen die Datenverarbeitung</li>
+    <li data-de="<strong>Widerruf</strong> einer erteilten Einwilligung" data-en="<strong>Withdrawal</strong> of consent given"><strong>Widerruf</strong> einer erteilten Einwilligung</li>
+  </ul>
+  <p data-de="Für die Ausübung dieser Rechte wenden Sie sich bitte an: <a href='mailto:info@sabrinafiechter.ch'>info@sabrinafiechter.ch</a>" data-en="To exercise these rights, please contact: <a href='mailto:info@sabrinafiechter.ch'>info@sabrinafiechter.ch</a>">Für die Ausübung dieser Rechte wenden Sie sich bitte an: <a href="mailto:info@sabrinafiechter.ch">info@sabrinafiechter.ch</a></p>
+
+  <hr class="divider">
+
+  <!-- 10 -->
+  <h2 id="aenderungen" data-de="10. Änderungen" data-en="10. Changes">10. Änderungen</h2>
+  <p data-de="Diese Datenschutzerklärung kann ohne vorherige Ankündigung angepasst werden. Die jeweils aktuelle Fassung gilt. Bei wesentlichen Änderungen werden Sie per E-Mail informiert, sofern Sie uns Ihre E-Mail-Adresse mitgeteilt haben." data-en="This privacy policy may be updated without prior notice. The current version shall apply. In the event of significant changes, you will be notified by email if you have provided us with your email address.">Diese Datenschutzerklärung kann ohne vorherige Ankündigung angepasst werden. Die jeweils aktuelle Fassung gilt. Bei wesentlichen Änderungen werden Sie per E-Mail informiert, sofern Sie uns Ihre E-Mail-Adresse mitgeteilt haben.</p>
+  <p data-de="Quelle: In Anlehnung an SwissAnwalt." data-en="Source: Based on SwissAnwalt.">Quelle: In Anlehnung an SwissAnwalt.</p>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<div id="modal-placeholder"></div>
+
+<script>
+function openFormModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeFormModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btnDE = document.getElementById('btnDE'), btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', sfLang === 'de');
+  if (btnEN) btnEN.classList.toggle('active', sfLang === 'en');
+  applyLang(sfLang);
+});
+
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', function(user) {
+    if (!user) { window.netlifyIdentity.on('login', function() { document.location.href = '/admin/'; }); }
+  });
+}
+</script>
+</body>
+</html>
