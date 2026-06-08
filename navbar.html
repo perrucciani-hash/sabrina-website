@@ -99,6 +99,10 @@
   width:12px;height:7px;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M0 7 L6 0 L12 7' fill='%23fff' stroke='%23e6e6e6' stroke-width='1'/%3E%3C/svg%3E") no-repeat center;
 }
+/* Unsichtbare Brücke zwischen li und Dropdown — verhindert Hover-Verlust beim Überfahren der Lücke */
+.has-dropdown::before{
+  content:'';position:absolute;top:100%;left:-16px;right:-16px;height:14px;
+}
 /* Chevron auf dem Angebot-Link */
 .has-dropdown>a .chev{
   display:inline-block;margin-left:.3em;
