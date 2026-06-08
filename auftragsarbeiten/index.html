@@ -100,6 +100,19 @@ a{color:inherit} img{display:block;max-width:100%}
 .btn-white{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--black);width:220px;padding:.75rem 0;border-radius:2px;font-family:'Jost';font-weight:500;font-size:.95rem;letter-spacing:.04em;text-decoration:none;border:1.5px solid var(--black);white-space:nowrap;transition:all .3s}
 .btn-white:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 
+/* WEITERE ANGEBOTE */
+.more-offers{padding:5rem 2.5rem;background:var(--bg-soft);border-top:1px solid var(--line)}
+.more-offers-inner{max-width:1100px;margin:0 auto}
+.more-offers h2{font-family:'Jost';font-size:1.1rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:2rem}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.more-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:1.8rem 2rem;text-decoration:none;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,box-shadow .2s}
+.more-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.07);text-decoration:none}
+.more-card-cat{font-family:'Jost';font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.more-card h3{font-family:'Jost';font-size:1.15rem;font-weight:400;color:var(--black);margin:0}
+.more-card p{font-size:.92rem;color:var(--grey);line-height:1.6;margin:0;flex:1}
+.more-card-link{font-family:'Jost';font-size:.85rem;font-weight:500;color:var(--black);margin-top:.5rem}
+@media(max-width:700px){.more-grid{grid-template-columns:1fr}}
+
 .cta{text-align:center;padding:6rem 2.5rem;background:var(--black);color:#fff}
 .cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#fff;margin-bottom:1rem;max-width:680px;margin-left:auto;margin-right:auto}
 .cta p{font-size:1.05rem;color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
@@ -231,24 +244,24 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
           <input type="hidden" name="form-name" value="auftragsarbeiten">
           <div class="form-row">
             <div class="form-group">
-              <label data-de="Vorname" data-en="First name">Vorname</label>
-              <input type="text" name="vorname" required data-placeholder-de="Dein Vorname" data-placeholder-en="Your first name" placeholder="Dein Vorname">
+              <label for="aw-vorname" data-de="Vorname" data-en="First name">Vorname</label>
+              <input id="aw-vorname" type="text" name="vorname" required data-placeholder-de="Dein Vorname" data-placeholder-en="Your first name" placeholder="Dein Vorname">
               <span class="field-error" data-de="Bitte Vorname eingeben" data-en="Please enter your first name">Bitte Vorname eingeben</span>
             </div>
             <div class="form-group">
-              <label data-de="Nachname" data-en="Last name">Nachname</label>
-              <input type="text" name="nachname" required data-placeholder-de="Dein Nachname" data-placeholder-en="Your last name" placeholder="Dein Nachname">
+              <label for="aw-nachname" data-de="Nachname" data-en="Last name">Nachname</label>
+              <input id="aw-nachname" type="text" name="nachname" required data-placeholder-de="Dein Nachname" data-placeholder-en="Your last name" placeholder="Dein Nachname">
               <span class="field-error" data-de="Bitte Nachname eingeben" data-en="Please enter your last name">Bitte Nachname eingeben</span>
             </div>
           </div>
           <div class="form-group">
-            <label>E-Mail</label>
-            <input type="email" name="email" required data-placeholder-de="deine@email.ch" data-placeholder-en="your@email.com" placeholder="deine@email.ch">
+            <label for="aw-email">E-Mail</label>
+            <input id="aw-email" type="email" name="email" required data-placeholder-de="deine@email.ch" data-placeholder-en="your@email.com" placeholder="deine@email.ch">
             <span class="field-error" data-de="Bitte gültige E-Mail eingeben" data-en="Please enter a valid email">Bitte gültige E-Mail eingeben</span>
           </div>
           <div class="form-group">
-            <label data-de="Art des Auftrags" data-en="Type of commission">Art des Auftrags</label>
-            <select name="auftragsart">
+            <label for="aw-auftragsart" data-de="Art des Auftrags" data-en="Type of commission">Art des Auftrags</label>
+            <select id="aw-auftragsart" name="auftragsart">
               <option value="" data-de="Bitte wählen..." data-en="Please select...">Bitte wählen...</option>
               <option value="event" data-de="Event / Anlass" data-en="Event">Event / Anlass</option>
               <option value="reportage" data-de="Reportage / Bildstrecke" data-en="Reportage">Reportage / Bildstrecke</option>
@@ -257,8 +270,8 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
             </select>
           </div>
           <div class="form-group">
-            <label data-de="Dein Anliegen" data-en="Your brief">Dein Anliegen</label>
-            <textarea name="anliegen" required data-placeholder-de="Beschreib mir so konkret wie möglich, was du dir vorstellst — Ort, Datum (falls bekannt), Stimmung, Verwendungszweck, Anzahl Bilder ..." data-placeholder-en="Describe as specifically as possible what you have in mind — location, date (if known), mood, intended use, number of images ..." placeholder="Beschreib mir so konkret wie möglich, was du dir vorstellst — Ort, Datum (falls bekannt), Stimmung, Verwendungszweck, Anzahl Bilder ..."></textarea>
+            <label for="aw-anliegen" data-de="Dein Anliegen" data-en="Your brief">Dein Anliegen</label>
+            <textarea id="aw-anliegen" name="anliegen" required data-placeholder-de="Beschreib mir so konkret wie möglich, was du dir vorstellst — Ort, Datum (falls bekannt), Stimmung, Verwendungszweck, Anzahl Bilder ..." data-placeholder-en="Describe as specifically as possible what you have in mind — location, date (if known), mood, intended use, number of images ..." placeholder="Beschreib mir so konkret wie möglich, was du dir vorstellst — Ort, Datum (falls bekannt), Stimmung, Verwendungszweck, Anzahl Bilder ..."></textarea>
             <span class="field-error" data-de="Bitte Anliegen beschreiben" data-en="Please describe your brief">Bitte Anliegen beschreiben</span>
           </div>
           <button type="submit" class="form-submit" data-de="Auftrag senden" data-en="Send request">Auftrag senden</button>
@@ -274,6 +287,32 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 </div>
 
 <!-- CTA -->
+<section class="more-offers">
+  <div class="more-offers-inner">
+    <h2 data-de="Weitere Angebote" data-en="More offers">Weitere Angebote</h2>
+    <div class="more-grid">
+      <a href="/bewerbungsfotos/" class="more-card">
+        <span class="more-card-cat" data-de="Privatkunden" data-en="Private clients">Privatkunden</span>
+        <h3 data-de="Bewerbungsfotos" data-en="Application Photos">Bewerbungsfotos</h3>
+        <p data-de="Professionelle Fotos für Lebenslauf, LinkedIn und Bewerbungen." data-en="Professional photos for CV, LinkedIn and job applications.">Professionelle Fotos für Lebenslauf, LinkedIn und Bewerbungen.</p>
+        <span class="more-card-link">→</span>
+      </a>
+      <a href="/business-portraits/" class="more-card">
+        <span class="more-card-cat" data-de="Business" data-en="Business">Business</span>
+        <h3 data-de="Business Portraits" data-en="Business Portraits">Business Portraits</h3>
+        <p data-de="Headshots für Website, LinkedIn und Team-Auftritte." data-en="Headshots for website, LinkedIn and team appearances.">Headshots für Website, LinkedIn und Team-Auftritte.</p>
+        <span class="more-card-link">→</span>
+      </a>
+      <a href="/portraits/" class="more-card">
+        <span class="more-card-cat" data-de="Privatkunden" data-en="Private clients">Privatkunden</span>
+        <h3 data-de="Portraits" data-en="Portraits">Portraits</h3>
+        <p data-de="Ausdrucksstarke Portraits — ruhig und zeitlos oder kreativ und farbig." data-en="Expressive portraits — calm and timeless or creative and colourful.">Ausdrucksstarke Portraits — ruhig und zeitlos oder kreativ und farbig.</p>
+        <span class="more-card-link">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="cta">
   <h2 data-de="Lieber persönlich besprechen?" data-en="Prefer to discuss in person?">Lieber persönlich besprechen?</h2>
   <p data-de="Ruf mich einfach an oder schreib mir — ich freue mich auf dein Projekt." data-en="Just call or write to me — I look forward to hearing about your project.">Ruf mich einfach an oder schreib mir — ich freue mich auf dein Projekt.</p>

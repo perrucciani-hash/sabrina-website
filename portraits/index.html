@@ -118,6 +118,19 @@ a{color:inherit} img{display:block;max-width:100%}
 .faq-a{font-size:.98rem;color:var(--grey);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
 .faq-item.open .faq-a{max-height:300px;padding-top:1rem}
 
+/* WEITERE ANGEBOTE */
+.more-offers{padding:5rem 2.5rem;background:var(--bg-soft);border-top:1px solid var(--line)}
+.more-offers-inner{max-width:1100px;margin:0 auto}
+.more-offers h2{font-family:'Jost';font-size:1.1rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--grey);margin-bottom:2rem}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.more-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:1.8rem 2rem;text-decoration:none;display:flex;flex-direction:column;gap:.5rem;transition:border-color .2s,box-shadow .2s}
+.more-card:hover{border-color:var(--accent);box-shadow:0 4px 20px rgba(0,0,0,.07);text-decoration:none}
+.more-card-cat{font-family:'Jost';font-size:.75rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.more-card h3{font-family:'Jost';font-size:1.15rem;font-weight:400;color:var(--black);margin:0}
+.more-card p{font-size:.92rem;color:var(--grey);line-height:1.6;margin:0;flex:1}
+.more-card-link{font-family:'Jost';font-size:.85rem;font-weight:500;color:var(--black);margin-top:.5rem}
+@media(max-width:700px){.more-grid{grid-template-columns:1fr}}
+
 .cta{text-align:center;padding:6rem 2.5rem;background:var(--black);color:#fff}
 .cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#fff;margin-bottom:1rem;max-width:680px;margin-left:auto;margin-right:auto}
 .cta p{font-size:1.05rem;color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
@@ -362,6 +375,32 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 </div>
 
 <!-- CTA -->
+<section class="more-offers">
+  <div class="more-offers-inner">
+    <h2 data-de="Weitere Angebote" data-en="More offers">Weitere Angebote</h2>
+    <div class="more-grid">
+      <a href="/bewerbungsfotos/" class="more-card">
+        <span class="more-card-cat" data-de="Privatkunden" data-en="Private clients">Privatkunden</span>
+        <h3 data-de="Bewerbungsfotos" data-en="Application Photos">Bewerbungsfotos</h3>
+        <p data-de="Professionelle Fotos für Lebenslauf, LinkedIn und Bewerbungen." data-en="Professional photos for CV, LinkedIn and job applications.">Professionelle Fotos für Lebenslauf, LinkedIn und Bewerbungen.</p>
+        <span class="more-card-link">→</span>
+      </a>
+      <a href="/business-portraits/" class="more-card">
+        <span class="more-card-cat" data-de="Business" data-en="Business">Business</span>
+        <h3 data-de="Business Portraits" data-en="Business Portraits">Business Portraits</h3>
+        <p data-de="Headshots für Website, LinkedIn und Team-Auftritte." data-en="Headshots for website, LinkedIn and team appearances.">Headshots für Website, LinkedIn und Team-Auftritte.</p>
+        <span class="more-card-link">→</span>
+      </a>
+      <a href="/auftragsarbeiten/" class="more-card">
+        <span class="more-card-cat" data-de="Firmen & Privat" data-en="Business & private">Firmen & Privat</span>
+        <h3 data-de="Auftragsarbeiten" data-en="Commissioned Work">Auftragsarbeiten</h3>
+        <p data-de="Events, Reportagen, Produktfotos und individuelle Aufträge." data-en="Events, reportages, product photos and individual commissions.">Events, Reportagen, Produktfotos und individuelle Aufträge.</p>
+        <span class="more-card-link">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="cta">
   <h2 data-de="Bereit für dein Portrait?" data-en="Ready for your portrait?">Bereit für dein Portrait?</h2>
   <p data-de="Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam den richtigen Look zu finden." data-en="Just get in touch — I look forward to meeting you and finding the right look together.">Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam den richtigen Look zu finden.</p>
