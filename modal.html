@@ -1,0 +1,113 @@
+<style>
+/* ── MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);
+  display:flex;align-items:center;justify-content:center;padding:1.5rem;
+  opacity:0;pointer-events:none;transition:opacity .35s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{
+  background:#fff;width:100%;max-width:520px;padding:3rem;border-radius:4px;
+  position:relative;transform:translateY(24px);transition:transform .35s;
+  max-height:90vh;overflow-y:auto;
+}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-close{
+  position:absolute;top:1.2rem;right:1.4rem;
+  background:none;border:none;font-size:1.6rem;cursor:pointer;color:#999;line-height:1;
+}
+.modal-close:hover{color:#1a1a1a}
+.modal h2{font-family:'Jost',sans-serif;font-size:1.8rem;font-weight:300;color:#1a1a1a;margin-bottom:.5rem}
+.modal .sub{font-size:.95rem;color:#6b6b6b;margin-bottom:2rem;line-height:1.6}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.form-group label{font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#333}
+.form-group input,.form-group textarea{
+  border:1.5px solid #e6e6e6;border-radius:2px;padding:.85rem 1rem;
+  font-family:'Manrope',sans-serif;font-size:1rem;color:#1a1a1a;
+  background:#fff;transition:border-color .25s;outline:none;
+}
+.form-group input:focus,.form-group textarea:focus{border-color:#1f7a72}
+.form-group input.invalid,.form-group textarea.invalid{border-color:#e53e3e;background:#fff8f8}
+.form-group input.valid,.form-group textarea.valid{border-color:#1f7a72}
+.field-error{font-size:.78rem;color:#e53e3e;margin-top:.3rem;display:none}
+.form-group.has-error .field-error{display:block}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{
+  width:100%;background:#1a1a1a;color:#fff;border:none;
+  font-family:'Jost',sans-serif;font-size:1rem;font-weight:500;
+  padding:1.1rem;border-radius:2px;cursor:pointer;transition:background .3s;margin-top:.5rem;
+}
+.form-submit:hover{background:#1f7a72}
+.form-success{text-align:center;padding:2rem 0;display:none}
+.form-success .check{font-size:3rem;margin-bottom:1rem}
+.form-success h3{font-family:'Jost';font-weight:300;font-size:1.5rem;color:#1a1a1a;margin-bottom:.5rem}
+.form-success p{color:#6b6b6b;font-size:.95rem}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+</style>
+
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeFormModal()" aria-label="Schliessen">✕</button>
+    <h2 data-de="Termin anfragen" data-en="Book a session">Termin anfragen</h2>
+    <p class="sub"
+      data-de="Ich melde mich so schnell wie möglich bei dir — versprochen."
+      data-en="I'll get back to you as soon as possible — promise.">Ich melde mich so schnell wie möglich bei dir — versprochen.</p>
+    <div id="formContent">
+      <form name="termin-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="termin-anfrage">
+        <p style="display:none"><input name="bot-field"></p>
+        <div class="form-row">
+          <div class="form-group">
+            <label data-de="Vorname" data-en="First name">Vorname</label>
+            <input type="text" id="vorname" name="vorname"
+              placeholder="Sabrina" data-placeholder-de="Sabrina" data-placeholder-en="Anna" required>
+            <span class="field-error"
+              data-de="Bitte gib deinen Vornamen ein."
+              data-en="Please enter your first name.">Bitte gib deinen Vornamen ein.</span>
+          </div>
+          <div class="form-group">
+            <label data-de="Nachname" data-en="Last name">Nachname</label>
+            <input type="text" id="nachname" name="nachname"
+              placeholder="Fiechter" data-placeholder-de="Fiechter" data-placeholder-en="Smith" required>
+            <span class="field-error"
+              data-de="Bitte gib deinen Nachnamen ein."
+              data-en="Please enter your last name.">Bitte gib deinen Nachnamen ein.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
+          <input type="email" id="email" name="email"
+            placeholder="hallo@beispiel.ch" data-placeholder-de="hallo@beispiel.ch" data-placeholder-en="hello@example.com" required>
+          <span class="field-error"
+            data-de="Bitte gib eine gültige E-Mail-Adresse ein."
+            data-en="Please enter a valid email address.">Bitte gib eine gültige E-Mail-Adresse ein.</span>
+        </div>
+        <div class="form-group">
+          <label data-de="Telefonnummer" data-en="Phone number">Telefonnummer</label>
+          <input type="tel" id="telefon" name="telefon"
+            placeholder="+41 76 000 00 00" data-placeholder-de="+41 76 000 00 00" data-placeholder-en="+41 76 000 00 00" required>
+          <span class="field-error"
+            data-de="Bitte gib deine Telefonnummer ein."
+            data-en="Please enter your phone number.">Bitte gib deine Telefonnummer ein.</span>
+        </div>
+        <div class="form-group">
+          <label data-de="Deine Nachricht" data-en="Your message">Deine Nachricht</label>
+          <textarea id="nachricht" name="nachricht" required
+            placeholder="Erzähl mir von deinem Wunsch-Shooting..."
+            data-placeholder-de="Erzähl mir von deinem Wunsch-Shooting..."
+            data-placeholder-en="Tell me about your dream shoot..."></textarea>
+          <span class="field-error"
+            data-de="Bitte schreib mir eine kurze Nachricht."
+            data-en="Please write a short message.">Bitte schreib mir eine kurze Nachricht.</span>
+        </div>
+        <button type="submit" class="form-submit" data-de="Los geht's →" data-en="Let's go →">Los geht's →</button>
+      </form>
+    </div>
+    <div class="form-success" id="formSuccess">
+      <div class="check">✉️</div>
+      <h3 data-de="Nachricht gesendet!" data-en="Message sent!">Nachricht gesendet!</h3>
+      <p data-de="Danke — ich melde mich bald bei dir." data-en="Thank you — I'll be in touch soon.">Danke — ich melde mich bald bei dir.</p>
+    </div>
+  </div>
+</div>
