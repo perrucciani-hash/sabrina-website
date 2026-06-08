@@ -356,38 +356,21 @@ async function handleSubmit(e){
   }catch(err){alert('Fehler beim Senden. Bitte versuche es nochmals.')}
 }
 
-// ── NAVBAR laden → Sprache setzen ──
-// navbar.html ist standardmässig solid — kein .solid nötig
-fetch('/navbar.html')
-  .then(function(r){return r.text()})
-  .then(function(html){
-    document.getElementById('nav-placeholder').innerHTML=html;
-    var btnDE=document.getElementById('btnDE');
-    var btnEN=document.getElementById('btnEN');
-    if(btnDE) btnDE.classList.toggle('active',sfLang==='de');
-    if(btnEN) btnEN.classList.toggle('active',sfLang==='en');
-    applyLang(sfLang);
-  });
+// ── INIT (Partials werden durch Edge Function serverseitig eingebettet) ──
+document.addEventListener('DOMContentLoaded', function() {
+  // Sprache anwenden
+  var btnDE = document.getElementById('btnDE');
+  var btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', sfLang === 'de');
+  if (btnEN) btnEN.classList.toggle('active', sfLang === 'en');
+  applyLang(sfLang);
 
-// ── FOOTER laden ──
-fetch('/footer.html')
-  .then(function(r){return r.text()})
-  .then(function(html){
-    document.getElementById('footer-placeholder').innerHTML=html;
-    applyLang(sfLang);
+  // Form-Validation initialisieren
+  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f) {
+    f.addEventListener('blur', function() { validateField(f); });
+    f.addEventListener('input', function() { if (f.classList.contains('invalid')) validateField(f); });
   });
-
-// ── MODAL laden ──
-fetch('/modal.html')
-  .then(function(r){return r.text()})
-  .then(function(html){
-    document.getElementById('modal-placeholder').innerHTML=html;
-    applyLang(sfLang);
-    document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f){
-      f.addEventListener('blur',function(){validateField(f)});
-      f.addEventListener('input',function(){if(f.classList.contains('invalid'))validateField(f)});
-    });
-  });
+});
 
 // ── NETLIFY IDENTITY ──
 if(window.netlifyIdentity){
