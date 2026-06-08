@@ -1,26 +1,48 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" id="html-root">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portraitfotografin Zürich — Business, Personal Branding & Bewerbungsfotos | Sabrina Fiechter</title>
-<meta name="description" content="Portraitfotografin mit Studio in Zürich-West. Authentische Business Portraits, Personal Branding und Bewerbungsfotos — entspannt, persönlich, du selbst.">
+<title id="page-title">Portraitfotografin Zürich — Business, Personal Branding & Bewerbungsfotos | Sabrina Fiechter</title>
+<meta name="description" id="page-desc" content="Portraitfotografin mit Studio in Zürich-West. Authentische Business Portraits, Personal Branding und Bewerbungsfotos — entspannt, persönlich, du selbst.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<!-- ── METADATEN für Sprachwechsel ── -->
+<script>
+var PAGE_META = {
+  de: {
+    title: 'Portraitfotografin Zürich — Business, Personal Branding & Bewerbungsfotos | Sabrina Fiechter',
+    desc:  'Portraitfotografin mit Studio in Zürich-West. Authentische Business Portraits, Personal Branding und Bewerbungsfotos — entspannt, persönlich, du selbst.',
+    lang:  'de'
+  },
+  en: {
+    title: 'Portrait Photographer Zurich — Business, Personal Branding & Headshots | Sabrina Fiechter',
+    desc:  'Portrait photographer with studio in Zurich-West. Authentic business portraits, personal branding and headshots — relaxed, personal, yourself.',
+    lang:  'en'
+  }
+};
+</script>
 
 <!-- ── SPRACHE: Muss vor dem Laden der Navbar sein ── -->
 <script>
 var sfLang = localStorage.getItem('sf_lang') || 'de';
 
 function applyLang(l) {
+  // DOM-Inhalte übersetzen
   document.querySelectorAll('[data-de]').forEach(function(el) {
     el.innerHTML = l === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-de')) : el.getAttribute('data-de');
   });
   document.querySelectorAll('[data-placeholder-de]').forEach(function(el) {
     el.setAttribute('placeholder', l === 'en' ? el.getAttribute('data-placeholder-en') : el.getAttribute('data-placeholder-de'));
   });
+  // Metadaten übersetzen
+  var meta = PAGE_META[l] || PAGE_META.de;
+  document.getElementById('page-title').textContent = meta.title;
+  document.getElementById('page-desc').setAttribute('content', meta.desc);
+  document.getElementById('html-root').setAttribute('lang', meta.lang);
 }
 
 function setLang(l) {
@@ -45,45 +67,14 @@ h1,h2,h3,h4{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);lin
 img{display:block;max-width:100%}
 a{color:inherit}
 
-/* ── HEADER ── */
-/* Gleiche Höhe in beiden Zuständen — kein vertikales Springen */
-.topbar{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:80px;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 100%);transition:background .35s,box-shadow .35s;}
-.topbar.solid{background:#fff;height:80px;box-shadow:0 2px 20px rgba(0,0,0,.06)}
-.logo{text-decoration:none;display:flex;align-items:center;line-height:0}
-/* Ein Logo, CSS-Filter macht es auf weissem Hintergrund schwarz */
-.logo-img{height:52px;width:auto;display:block;transition:filter .35s;}
-.topbar.solid .logo-img{filter:invert(1);}
-.menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
-.menu a{font-family:'Jost',sans-serif;font-size:.95rem;font-weight:400;letter-spacing:.02em;color:#fff;text-decoration:none;transition:color .25s;position:relative;padding-bottom:3px;white-space:nowrap;}
-.topbar.solid .menu a{color:var(--black)}
-.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1.5px;background:currentColor;transition:width .3s}
-.menu a:hover::after{width:100%}
-.menu .termin{background:#fff;color:var(--black) !important;padding:.6rem 0;border-radius:2px;font-weight:500;width:195px;text-align:center;display:inline-flex;align-items:center;justify-content:center;transition:background .25s,color .25s;white-space:nowrap;}
-.menu .termin::after{display:none}
-.topbar.solid .menu .termin{background:var(--black);color:#fff !important}
-.menu .termin:hover,.topbar.solid .menu .termin:hover{background:var(--accent) !important;color:#fff !important}
-.burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
-.burger span{width:26px;height:2px;background:#fff;display:block;transition:background .35s}
-.topbar.solid .burger span{background:var(--black)}
-.mobile{position:fixed;inset:0;z-index:290;background:#fff;display:none;flex-direction:column;justify-content:center;padding:3rem;gap:.4rem}
-.mobile.open{display:flex}
-.mobile a{font-family:'Jost';font-size:1.6rem;color:var(--black);text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--line)}
-.mobile .close{position:absolute;top:1.8rem;right:2.5rem;font-size:2rem;background:none;border:none;cursor:pointer}
-
-/* ── LANG TOGGLE ── */
-.lang-toggle{display:flex;align-items:center;gap:4px}
-.lang-li{list-style:none;display:flex;align-items:center;margin-left:.5rem}
-.lang-btn{padding:.35rem .65rem;font-family:'Jost',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;cursor:pointer;border:1.5px solid rgba(255,255,255,.5);border-radius:2px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);transition:all .2s;line-height:1;}
-.lang-btn.active{background:#fff;color:#1a1a1a;border-color:#fff}
-.topbar.solid .lang-btn{border-color:#d0d0d0;background:#fff;color:#666}
-.topbar.solid .lang-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+/* ── NAVBAR-CSS: in navbar.html ── */
 
 /* ── HERO ── */
 .hero{position:relative;height:82vh;min-height:560px;display:flex;align-items:center;justify-content:flex-start;text-align:left;overflow:hidden}
 .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.75) 0%,rgba(0,0,0,.45) 40%,rgba(0,0,0,.1) 70%,transparent 100%)}
 .hero-inner{position:relative;z-index:2;color:#fff;padding:2rem 2rem 2rem 5vw;max-width:520px}
-.hero-kicker{font-family:'Jost';font-size:1rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:1.2rem;opacity:.9;font-weight:300;display:block;height:1.5em;overflow:hidden;white-space:nowrap;}
+.hero-kicker{font-family:'Jost';font-size:1rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:1.2rem;opacity:.9;font-weight:300;display:block;height:1.5em;overflow:visible;white-space:nowrap;max-width:none;}
 .hero h1{font-size:clamp(3rem,7vw,6rem);font-weight:300;color:#fff;letter-spacing:.01em;line-height:1.02;margin-bottom:1.4rem}
 .hero-sub{font-size:1.15rem;line-height:1.6;max-width:440px;margin:0 0 2.2rem;color:rgba(255,255,255,.92);font-weight:400;display:block;height:3.68rem;overflow:hidden;}
 /* ── CTA BUTTON — einheitliche Grösse überall ── */
@@ -246,33 +237,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 .loc-row .v a:hover{color:var(--accent)}
 /* .loc-info .hero-cta — siehe einheitliche CTA-Styles oben */
 
-/* ── MODAL ── */
-.modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .35s}
-.modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:#fff;width:100%;max-width:520px;padding:3rem;border-radius:4px;position:relative;transform:translateY(24px);transition:transform .35s;max-height:90vh;overflow-y:auto}
-.modal-overlay.open .modal{transform:translateY(0)}
-.modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#999;line-height:1}
-.modal-close:hover{color:#1a1a1a}
-.modal h2{font-family:'Jost',sans-serif;font-size:1.8rem;font-weight:300;color:#1a1a1a;margin-bottom:.5rem}
-.modal .sub{font-size:.95rem;color:#6b6b6b;margin-bottom:2rem;line-height:1.6}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
-.form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
-.form-group label{font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#333}
-.form-group input,.form-group textarea{border:1.5px solid #e6e6e6;border-radius:2px;padding:.85rem 1rem;font-family:'Manrope',sans-serif;font-size:1rem;color:#1a1a1a;background:#fff;transition:border-color .25s;outline:none}
-.form-group input:focus,.form-group textarea:focus{border-color:#1f7a72}
-.form-group input.invalid,.form-group textarea.invalid{border-color:#e53e3e;background:#fff8f8;animation:shake .35s cubic-bezier(.36,.07,.19,.97)}
-.form-group input.valid,.form-group textarea.valid{border-color:#1f7a72}
-.field-error{font-size:.78rem;color:#e53e3e;margin-top:.3rem;display:none}
-.form-group.has-error .field-error{display:block}
-@keyframes shake{10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(3px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
-.form-group textarea{resize:vertical;min-height:120px}
-.form-submit{width:100%;background:#1a1a1a;color:#fff;border:none;font-family:'Jost',sans-serif;font-size:1rem;font-weight:500;padding:1.1rem;border-radius:2px;cursor:pointer;transition:background .3s;margin-top:.5rem}
-.form-submit:hover{background:#1f7a72}
-.form-success{text-align:center;padding:2rem 0;display:none}
-.form-success .check{font-size:3rem;margin-bottom:1rem}
-.form-success h3{font-family:'Jost';font-weight:300;font-size:1.5rem;color:#1a1a1a;margin-bottom:.5rem}
-.form-success p{color:#6b6b6b;font-size:.95rem}
-@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+/* ── MODAL-CSS: in modal.html ── */
 
 /* ── MOBILE ── */
 @media(max-width:920px){
@@ -577,59 +542,10 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 <!-- ── FOOTER (aus footer.html) ── -->
 <div id="footer-placeholder"></div>
 
-<!-- ── MODAL ── -->
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
-  <div class="modal">
-    <button class="modal-close" onclick="closeFormModal()" aria-label="Schliessen">✕</button>
-    <h2 data-de="Termin anfragen" data-en="Book a session">Termin anfragen</h2>
-    <p class="sub" data-de="Ich melde mich so schnell wie möglich bei dir — versprochen." data-en="I'll get back to you as soon as possible — promise.">Ich melde mich so schnell wie möglich bei dir — versprochen.</p>
-    <div id="formContent">
-      <form name="termin-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
-        <input type="hidden" name="form-name" value="termin-anfrage">
-        <p style="display:none"><input name="bot-field"></p>
-        <div class="form-row">
-          <div class="form-group">
-            <label data-de="Vorname" data-en="First name">Vorname</label>
-            <input type="text" id="vorname" name="vorname" placeholder="Sabrina" data-placeholder-de="Sabrina" data-placeholder-en="Anna" required>
-            <span class="field-error" data-de="Bitte gib deinen Vornamen ein." data-en="Please enter your first name.">Bitte gib deinen Vornamen ein.</span>
-          </div>
-          <div class="form-group">
-            <label data-de="Nachname" data-en="Last name">Nachname</label>
-            <input type="text" id="nachname" name="nachname" placeholder="Fiechter" data-placeholder-de="Fiechter" data-placeholder-en="Smith" required>
-            <span class="field-error" data-de="Bitte gib deinen Nachnamen ein." data-en="Please enter your last name.">Bitte gib deinen Nachnamen ein.</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <label data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
-          <input type="email" id="email" name="email" placeholder="hallo@beispiel.ch" data-placeholder-de="hallo@beispiel.ch" data-placeholder-en="hello@example.com" required>
-          <span class="field-error" data-de="Bitte gib eine gültige E-Mail-Adresse ein." data-en="Please enter a valid email address.">Bitte gib eine gültige E-Mail-Adresse ein.</span>
-        </div>
-        <div class="form-group">
-          <label data-de="Telefonnummer" data-en="Phone number">Telefonnummer</label>
-          <input type="tel" id="telefon" name="telefon" placeholder="+41 76 000 00 00" data-placeholder-de="+41 76 000 00 00" data-placeholder-en="+41 76 000 00 00" required>
-          <span class="field-error" data-de="Bitte gib deine Telefonnummer ein." data-en="Please enter your phone number.">Bitte gib deine Telefonnummer ein.</span>
-        </div>
-        <div class="form-group">
-          <label data-de="Deine Nachricht" data-en="Your message">Deine Nachricht</label>
-          <textarea id="nachricht" name="nachricht" required placeholder="Erzähl mir von deinem Wunsch-Shooting..." data-placeholder-de="Erzähl mir von deinem Wunsch-Shooting..." data-placeholder-en="Tell me about your dream shoot..."></textarea>
-          <span class="field-error" data-de="Bitte schreib mir eine kurze Nachricht." data-en="Please write a short message.">Bitte schreib mir eine kurze Nachricht.</span>
-        </div>
-        <button type="submit" class="form-submit" data-de="Los geht's →" data-en="Let's go →">Los geht's →</button>
-      </form>
-    </div>
-    <div class="form-success" id="formSuccess">
-      <div class="check">✉️</div>
-      <h3 data-de="Nachricht gesendet!" data-en="Message sent!">Nachricht gesendet!</h3>
-      <p data-de="Danke — ich melde mich bald bei dir." data-en="Thank you — I'll be in touch soon.">Danke — ich melde mich bald bei dir.</p>
-    </div>
-  </div>
-</div>
+<!-- ── MODAL (aus modal.html) ── -->
+<div id="modal-placeholder"></div>
 
 <script>
-// ── SCROLL ──
-var tb = document.getElementById('topbar');
-if (tb) addEventListener('scroll', function() { tb.classList.toggle('solid', scrollY > 60); }, { passive: true });
-
 // ── REVEAL ──
 var io = new IntersectionObserver(function(es) {
   es.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
@@ -688,16 +604,29 @@ loadPartial('/navbar.html', 'nav-placeholder', function() {
   if (btnEN) btnEN.classList.toggle('active', sfLang === 'en');
   applyLang(sfLang);
 
-  // Scroll-Listener braucht jetzt #topbar
+  // index.html: Navbar transparent machen + Scroll-Effekt
   var tb = document.getElementById('topbar');
   if (tb) {
-    addEventListener('scroll', function() { tb.classList.toggle('solid', scrollY > 60); }, { passive: true });
+    tb.classList.add('transparent');
+    addEventListener('scroll', function() {
+      tb.classList.toggle('transparent', scrollY <= 60);
+    }, { passive: true });
   }
 });
 
 // Footer laden
 loadPartial('/footer.html', 'footer-placeholder', function() {
-  applyLang(sfLang); // Footer-Texte auch übersetzen
+  applyLang(sfLang);
+});
+
+// Modal laden
+loadPartial('/modal.html', 'modal-placeholder', function() {
+  applyLang(sfLang);
+  // Form-Validation nach Modal-Load initialisieren
+  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f) {
+    f.addEventListener('blur', function() { validateField(f); });
+    f.addEventListener('input', function() { if (f.classList.contains('invalid')) validateField(f); });
+  });
 });
 
 // ── CMS ──
