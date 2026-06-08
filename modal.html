@@ -56,11 +56,11 @@
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
   <div class="modal">
     <button class="modal-close" onclick="closeFormModal()" aria-label="Schliessen">✕</button>
+    <div id="formContent">
     <h2 data-de="Termin anfragen" data-en="Book a session">Termin anfragen</h2>
     <p class="sub"
       data-de="Ich melde mich so schnell wie möglich bei dir — versprochen."
       data-en="I'll get back to you as soon as possible — promise.">Ich melde mich so schnell wie möglich bei dir — versprochen.</p>
-    <div id="formContent">
       <form name="termin-anfrage" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
         <input type="hidden" name="form-name" value="termin-anfrage">
         <p style="display:none"><input name="bot-field"></p>
