@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Business Portraits Zürich | Sabrina Fiechter</title>
+<meta name="description" id="page-desc" content="Authentische Business Portraits in Zürich — bei dir in der Firma oder im Studio. Für Website, LinkedIn und Team-Auftritte.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+var PAGE_META = {
+  de: { title: 'Business Portraits Zürich | Sabrina Fiechter', desc: 'Authentische Business Portraits in Zürich — bei dir in der Firma oder im Studio. Für Website, LinkedIn und Team-Auftritte.', lang: 'de' },
+  en: { title: 'Business Portraits Zurich | Sabrina Fiechter', desc: 'Authentic business portraits in Zurich — at your company or in the studio. For website, LinkedIn and team appearances.', lang: 'en' }
+};
+</script>
+
+<script>
+var sfLang = localStorage.getItem('sf_lang') || 'de';
+function applyLang(l) {
+  document.querySelectorAll('[data-de]').forEach(function(el) {
+    el.innerHTML = l === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-de')) : el.getAttribute('data-de');
+  });
+  var meta = PAGE_META[l] || PAGE_META.de;
+  document.getElementById('page-title').textContent = meta.title;
+  document.getElementById('page-desc').setAttribute('content', meta.desc);
+  document.getElementById('html-root').setAttribute('lang', meta.lang);
+}
+function setLang(l) {
+  sfLang = l; localStorage.setItem('sf_lang', l);
+  var btnDE = document.getElementById('btnDE'), btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', l === 'de');
+  if (btnEN) btnEN.classList.toggle('active', l === 'en');
+  applyLang(l);
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#1a1a1a;--text:#333333;--grey:#6b6b6b;--line:#e6e6e6;--bg:#ffffff;--bg-soft:#f6f5f3;--accent:#1f7a72;--accent-dark:#15605a;--gold:#e0a83d;}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-size:18px;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);line-height:1.15}
+a{color:inherit} img{display:block;max-width:100%}
+
+.page-hero{padding:8rem 2.5rem 5rem;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.page-hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.page-hero-text .eyebrow{font-family:'Jost';font-size:.82rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.page-hero-text h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:300;margin-bottom:1.5rem}
+.page-hero-text .lead{font-size:1.1rem;color:var(--grey);line-height:1.8;margin-bottom:1.2rem}
+.page-hero-img{aspect-ratio:4/5;overflow:hidden;background:var(--line);border-radius:4px}
+.page-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+.sec{padding:6rem 2.5rem;max-width:1280px;margin:0 auto}
+.sec-bg{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.eyebrow{font-family:'Jost';font-size:.82rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;margin-bottom:1.5rem}
+.section-lead{font-size:1.05rem;color:var(--grey);line-height:1.75;max-width:680px}
+
+.expect-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:2.5rem}
+.expect-item{padding:2rem;border:1px solid var(--line);border-radius:4px;background:#fff}
+.expect-item h3{font-size:1.1rem;font-weight:500;margin-bottom:.5rem}
+.expect-item p{font-size:.95rem;color:var(--grey);line-height:1.65}
+
+.process-steps{display:flex;flex-direction:column;gap:0;margin-top:2.5rem}
+.process-step{display:flex;gap:2rem;align-items:flex-start;padding:1.8rem 0;border-bottom:1px solid var(--line)}
+.process-step:last-child{border-bottom:none}
+.step-num{font-family:'Jost';font-size:2.5rem;font-weight:300;color:var(--accent);line-height:1;flex-shrink:0;width:3rem}
+.step-body h3{font-size:1.05rem;font-weight:500;margin-bottom:.3rem}
+.step-body p{font-size:.95rem;color:var(--grey);line-height:1.65}
+
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.package{border:1px solid var(--line);padding:2.4rem 2rem;background:#fff;display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s;border-radius:4px}
+.package:hover{box-shadow:0 16px 40px rgba(0,0,0,.08);transform:translateY(-4px)}
+.package.feat{background:var(--black);border-color:var(--black)}
+.package .pkg-cat{font-family:'Jost';font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.package.feat .pkg-cat{color:var(--gold)}
+.package h3{font-size:1.4rem;font-weight:400;margin-bottom:1rem}
+.package.feat h3{color:#fff}
+.package .amt{font-family:'Jost';font-size:2.6rem;font-weight:300;color:var(--black);line-height:1;margin-bottom:.3rem}
+.package.feat .amt{color:#fff}
+.package .amt .c{font-size:.9rem;vertical-align:super;color:var(--grey)}
+.package.feat .amt .c{color:rgba(255,255,255,.6)}
+.package .amt-note{font-size:.82rem;color:var(--grey);margin-bottom:1.2rem}
+.package.feat .amt-note{color:rgba(255,255,255,.5)}
+.package ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.8rem;flex:1}
+.package li{font-size:.92rem;color:var(--text);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
+.package.feat li{color:rgba(255,255,255,.85)}
+.package li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+.package.feat li::before{color:var(--gold)}
+.pkg-note{font-size:.85rem;color:var(--grey);margin-top:-.3rem;margin-bottom:1.2rem;line-height:1.55}
+.package.feat .pkg-note{color:rgba(255,255,255,.5)}
+
+.standards{background:var(--bg-soft);border:1px solid var(--line);border-radius:4px;padding:2rem 2.5rem;margin-top:2.5rem}
+.standards h3{font-size:1.1rem;font-weight:500;margin-bottom:1rem}
+.standards ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.standards li{font-size:.95rem;color:var(--text);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
+.standards li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+
+.btn-dark{display:inline-flex;align-items:center;justify-content:center;background:var(--black);color:#fff;width:220px;padding:.75rem 0;border-radius:2px;font-family:'Jost';font-weight:500;font-size:.95rem;letter-spacing:.04em;text-decoration:none;border:1.5px solid var(--black);white-space:nowrap;transition:all .3s}
+.btn-dark:hover{background:var(--accent);border-color:var(--accent)}
+.btn-white{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--black);width:220px;padding:.75rem 0;border-radius:2px;font-family:'Jost';font-weight:500;font-size:.95rem;letter-spacing:.04em;text-decoration:none;border:1.5px solid var(--black);white-space:nowrap;transition:all .3s}
+.btn-white:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.faq{display:flex;flex-direction:column;gap:0;margin-top:2.5rem}
+.faq-item{border-bottom:1px solid var(--line);padding:1.5rem 0}
+.faq-item:first-child{border-top:1px solid var(--line)}
+.faq-q{font-family:'Jost';font-size:1.05rem;font-weight:400;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.98rem;color:var(--grey);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:300px;padding-top:1rem}
+
+.cta{text-align:center;padding:6rem 2.5rem;background:var(--black);color:#fff}
+.cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#fff;margin-bottom:1rem;max-width:680px;margin-left:auto;margin-right:auto}
+.cta p{font-size:1.05rem;color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
+.cta .btn-white{margin:0 auto}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:920px){.menu{display:none}.burger{display:flex}}
+@media(max-width:900px){
+  .page-hero{padding:6rem 1.3rem 3.5rem}
+  .page-hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .page-hero-img{order:-1;aspect-ratio:16/9}
+  .sec{padding:4rem 1.3rem}
+  .packages{grid-template-columns:1fr}
+  .expect-grid{grid-template-columns:1fr}
+  .cta{padding:4rem 1.3rem}
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-text rv">
+      <span class="eyebrow" data-de="Business" data-en="Business">Business</span>
+      <h1 data-de="Business Portraits" data-en="Business Portraits">Business Portraits</h1>
+      <p class="lead" data-de="Authentische Headshots, die Persönlichkeit zeigen — klar, sympathisch und auf dich abgestimmt. Ideal für Website, LinkedIn und Team-Auftritte." data-en="Authentic headshots that show personality — clear, likeable and tailored to you. Ideal for website, LinkedIn and team appearances.">Authentische Headshots, die Persönlichkeit zeigen — klar, sympathisch und auf dich abgestimmt. Ideal für Website, LinkedIn und Team-Auftritte.</p>
+      <p class="lead" data-de="Bei dir in der Firma oder im Studio in Zürich-West." data-en="At your company or in the studio in Zurich-West.">Bei dir in der Firma oder im Studio in Zürich-West.</p>
+      <a href="#" onclick="openFormModal();return false;" class="btn-dark" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
+    </div>
+    <div class="page-hero-img rv d1">
+      <img src="/images/assets/business-portrait.jpg" alt="Business Portrait Zürich – Sabrina Fiechter">
+    </div>
+  </div>
+</section>
+
+<!-- FÜR WEN -->
+<section class="sec rv">
+  <span class="eyebrow" data-de="Für wen" data-en="For whom">Für wen</span>
+  <h2 class="section-title" data-de="Professionell auftreten — als Person und als Team" data-en="Professional presence — as individual and as team">Professionell auftreten — als Person und als Team</h2>
+  <p class="section-lead" data-de="Für Berufstätige und Teams, die professionell auftreten wollen. Ein gutes Business Portrait zeigt nicht nur, wie du aussiehst, sondern wie du wirkst. Ich fotografiere dich so, dass Persönlichkeit und Professionalität zusammenpassen — und sorge bei Teams für einen einheitlichen Auftritt." data-en="For professionals and teams who want to present themselves professionally. A good business portrait shows not only how you look, but how you come across. I photograph you so that personality and professionalism fit together — and ensure a consistent look for teams.">Für Berufstätige und Teams, die professionell auftreten wollen. Ein gutes Business Portrait zeigt nicht nur, wie du aussiehst, sondern wie du wirkst. Ich fotografiere dich so, dass Persönlichkeit und Professionalität zusammenpassen — und sorge bei Teams für einen einheitlichen Auftritt.</p>
+</section>
+
+<!-- WAS DICH ERWARTET -->
+<div class="sec-bg">
+  <section class="sec">
+    <span class="eyebrow" data-de="Was dich erwartet" data-en="What to expect">Was dich erwartet</span>
+    <h2 class="section-title" data-de="Individuell, einheitlich, auf Punkt." data-en="Individual, consistent, on point.">Individuell, einheitlich, auf Punkt.</h2>
+    <div class="expect-grid">
+      <div class="expect-item rv">
+        <h3 data-de="Abstimmung auf deinen Auftritt" data-en="Aligned to your presence">Abstimmung auf deinen Auftritt</h3>
+        <p data-de="Wir klären Look, Hintergrund und Einsatzzweck — bevor wir loslegen." data-en="We clarify look, background and purpose — before we start.">Wir klären Look, Hintergrund und Einsatzzweck — bevor wir loslegen.</p>
+      </div>
+      <div class="expect-item rv d1">
+        <h3 data-de="Vor Ort oder im Studio" data-en="On location or in the studio">Vor Ort oder im Studio</h3>
+        <p data-de="Ich komme zu euch in die Firma oder du kommst ins Studio in Zürich-West." data-en="I come to your company or you come to the studio in Zurich-West.">Ich komme zu euch in die Firma oder du kommst ins Studio in Zürich-West.</p>
+      </div>
+      <div class="expect-item rv d2">
+        <h3 data-de="Geführtes Shooting" data-en="Guided shoot">Geführtes Shooting</h3>
+        <p data-de="Ruhig angeleitet, damit der Ausdruck natürlich bleibt." data-en="Calmly guided so that the expression stays natural.">Ruhig angeleitet, damit der Ausdruck natürlich bleibt.</p>
+      </div>
+      <div class="expect-item rv d3">
+        <h3 data-de="Einheitlicher Look für Teams" data-en="Consistent look for teams">Einheitlicher Look für Teams</h3>
+        <p data-de="Gleichbleibende Qualität und Bildsprache über alle Personen hinweg." data-en="Consistent quality and visual language across all people.">Gleichbleibende Qualität und Bildsprache über alle Personen hinweg.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABLAUF -->
+<section class="sec rv">
+  <span class="eyebrow" data-de="Ablauf" data-en="Process">Ablauf</span>
+  <h2 class="section-title" data-de="So läuft dein Shooting ab" data-en="How your shoot works">So läuft dein Shooting ab</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3 data-de="Anfrage & Briefing" data-en="Request & briefing">Anfrage & Briefing</h3>
+        <p data-de="Du fragst an und nennst den Einsatzzweck — Einzelportrait oder Team-Shooting." data-en="You enquire and state the purpose — individual portrait or team shoot.">Du fragst an und nennst den Einsatzzweck — Einzelportrait oder Team-Shooting.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3 data-de="Planung" data-en="Planning">Planung</h3>
+        <p data-de="Wir legen Ort, Datum und Look fest." data-en="We set the location, date and look.">Wir legen Ort, Datum und Look fest.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3 data-de="Shooting" data-en="Shoot">Shooting</h3>
+        <p data-de="Wir shooten im Studio oder bei dir vor Ort — entspannt und in deinem Tempo." data-en="We shoot in the studio or at your location — relaxed and at your pace.">Wir shooten im Studio oder bei dir vor Ort — entspannt und in deinem Tempo.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3 data-de="Galerie & Lieferung" data-en="Gallery & delivery">Galerie & Lieferung</h3>
+        <p data-de="Du erhältst deine Galerie, triffst deine Wahl, und bekommst die fertigen Bilder." data-en="You receive your gallery, make your selection, and receive the finished images.">Du erhältst deine Galerie, triffst deine Wahl, und bekommst die fertigen Bilder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAKETE -->
+<div class="sec-bg">
+  <section class="sec">
+    <span class="eyebrow" data-de="Pakete &amp; Preise" data-en="Packages &amp; Prices">Pakete &amp; Preise</span>
+    <h2 class="section-title" data-de="Transparent, ohne Überraschungen" data-en="Transparent, no surprises">Transparent, ohne Überraschungen</h2>
+
+    <div class="standards rv">
+      <h3 data-de="Das gilt für alle Pakete" data-en="Included in all packages">Das gilt für alle Pakete</h3>
+      <ul>
+        <li data-de="Grosse Auswahl aus allen Aufnahmen in deiner persönlichen Online-Galerie" data-en="Large selection from all shots in your personal online gallery">Grosse Auswahl aus allen Aufnahmen in deiner persönlichen Online-Galerie</li>
+        <li data-de="Zusätzliches retuschiertes Bild möglich: CHF 35" data-en="Additional retouched image available: CHF 35">Zusätzliches retuschiertes Bild möglich: CHF 35</li>
+        <li data-de="Bezahlung erst nach dem Shooting" data-en="Payment only after the shoot">Bezahlung erst nach dem Shooting</li>
+        <li data-de="Fahrkosten vor Ort: 70 Rp./km ab Zürich-West" data-en="Travel costs on location: CHF 0.70/km from Zurich-West">Fahrkosten vor Ort: 70 Rp./km ab Zürich-West</li>
+      </ul>
+    </div>
+
+    <div class="packages" style="margin-top:2rem">
+      <div class="package rv">
+        <div class="pkg-cat" data-de="Einzelperson" data-en="Individual">Einzelperson</div>
+        <h3 data-de="Business Portrait" data-en="Business Portrait">Business Portrait</h3>
+        <div class="amt"><span class="c">CHF</span> 220</div>
+        <div class="amt-note" data-de="exkl. Fahrkosten" data-en="excl. travel costs">exkl. Fahrkosten</div>
+        <ul>
+          <li data-de="Beratung zu Bildsprache, Kleidung und Einsatzzweck" data-en="Consultation on visual style, clothing and purpose">Beratung zu Bildsprache, Kleidung und Einsatzzweck</li>
+          <li data-de="30 Minuten Shooting — bei dir oder im Studio" data-en="30 minutes shooting — at your location or in the studio">30 Minuten Shooting — bei dir oder im Studio</li>
+          <li data-de="1–2 Outfits, 2 Hintergründe" data-en="1–2 outfits, 2 backgrounds">1–2 Outfits, 2 Hintergründe</li>
+          <li data-de="Auf bestehenden Team-Look abstimmbar" data-en="Alignable to existing team look">Auf bestehenden Team-Look abstimmbar</li>
+          <li data-de="4 professionell retuschierte Portraits" data-en="4 professionally retouched portraits">4 professionell retuschierte Portraits</li>
+        </ul>
+        <a href="#" onclick="openFormModal();return false;" class="btn-white" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+      </div>
+      <div class="package feat rv d1">
+        <div class="pkg-cat" data-de="Team · ab 5 Personen" data-en="Team · from 5 people">Team · ab 5 Personen</div>
+        <h3 data-de="Team Portraits" data-en="Team Portraits">Team Portraits</h3>
+        <div class="amt"><span class="c">CHF</span> 250</div>
+        <div class="amt-note" data-de="Grundpauschale + CHF 120 / Person, exkl. Fahrkosten" data-en="Base fee + CHF 120 / person, excl. travel costs">Grundpauschale + CHF 120 / Person, exkl. Fahrkosten</div>
+        <ul>
+          <li data-de="Konzept zur einheitlichen Bildsprache" data-en="Concept for a consistent visual language">Konzept zur einheitlichen Bildsprache</li>
+          <li data-de="Shooting vor Ort oder im Studio — ca. 15 Min. / Person" data-en="Shoot on location or in studio — approx. 15 min / person">Shooting vor Ort oder im Studio — ca. 15 Min. / Person</li>
+          <li data-de="1 Outfit, 1 Hintergrund pro Person" data-en="1 outfit, 1 background per person">1 Outfit, 1 Hintergrund pro Person</li>
+          <li data-de="2 retuschierte Portraits pro Person" data-en="2 retouched portraits per person">2 retuschierte Portraits pro Person</li>
+          <li data-de="1 gemeinsames Teamfoto inklusive" data-en="1 joint team photo included">1 gemeinsames Teamfoto inklusive</li>
+        </ul>
+        <a href="#" onclick="openFormModal();return false;" class="btn-white" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+      </div>
+      <div class="package rv d2">
+        <div class="pkg-cat" data-de="Markenauftritt" data-en="Brand presence">Markenauftritt</div>
+        <h3 data-de="Personal Branding" data-en="Personal Branding">Personal Branding</h3>
+        <div class="amt"><span class="c">CHF</span> 790</div>
+        <div class="amt-note" data-de="exkl. Fahrkosten" data-en="excl. travel costs">exkl. Fahrkosten</div>
+        <ul>
+          <li data-de="Abstimmung zu Bildsprache, Kleidung und Umgebung" data-en="Alignment on visual style, clothing and environment">Abstimmung zu Bildsprache, Kleidung und Umgebung</li>
+          <li data-de="90–120 Minuten Shooting vor Ort" data-en="90–120 minutes on-location shoot">90–120 Minuten Shooting vor Ort</li>
+          <li data-de="3 Outfits, 3–4 Hintergründe / Locations" data-en="3 outfits, 3–4 backgrounds / locations">3 Outfits, 3–4 Hintergründe / Locations</li>
+          <li data-de="10 professionell retuschierte Bilder" data-en="10 professionally retouched images">10 professionell retuschierte Bilder</li>
+          <li data-de="Nutzungsrecht für Website, Social Media & Kommunikation" data-en="Usage rights for website, social media & communication">Nutzungsrecht für Website, Social Media & Kommunikation</li>
+        </ul>
+        <a href="#" onclick="openFormModal();return false;" class="btn-white" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FAQ -->
+<section class="sec rv">
+  <span class="eyebrow">FAQ</span>
+  <h2 class="section-title" data-de="Häufige Fragen" data-en="Frequently asked questions">Häufige Fragen</h2>
+  <div class="faq">
+    <div class="faq-item">
+      <div class="faq-q" data-de="Studio oder bei uns vor Ort?" data-en="Studio or at our location?">Studio oder bei uns vor Ort?</div>
+      <div class="faq-a" data-de="Beides möglich. Im Studio ist der Look ruhig und kontrolliert, vor Ort bleibt der Kontext eurer Firma sichtbar." data-en="Both are possible. In the studio the look is calm and controlled; on location the context of your company remains visible.">Beides möglich. Im Studio ist der Look ruhig und kontrolliert, vor Ort bleibt der Kontext eurer Firma sichtbar.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" data-de="Worin unterscheidet sich Personal Branding vom Business Portrait?" data-en="What is the difference between Personal Branding and a Business Portrait?">Worin unterscheidet sich Personal Branding vom Business Portrait?</div>
+      <div class="faq-a" data-de="Das Business Portrait ist ein einzelnes Bild für deinen Auftritt im Studio oder Unternehmen. Personal Branding ist eine ganze Serie, die deine Geschichte über mehrere Bilder erzählt." data-en="The business portrait is a single image for your presence in the studio or company. Personal branding is an entire series that tells your story across multiple images.">Das Business Portrait ist ein einzelnes Bild für deinen Auftritt im Studio oder Unternehmen. Personal Branding ist eine ganze Serie, die deine Geschichte über mehrere Bilder erzählt.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" data-de="Bekommen alle im Team den gleichen Look?" data-en="Do all team members get the same look?">Bekommen alle im Team den gleichen Look?</div>
+      <div class="faq-a" data-de="Ja. Gleiches Licht, gleicher Hintergrund, gleicher Stil — das sorgt für einen professionellen, einheitlichen Auftritt." data-en="Yes. Same light, same background, same style — this ensures a professional, consistent appearance.">Ja. Gleiches Licht, gleicher Hintergrund, gleicher Stil — das sorgt für einen professionellen, einheitlichen Auftritt.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" data-de="Wie schnell bekomme ich die Bilder?" data-en="How quickly do I get the images?">Wie schnell bekomme ich die Bilder?</div>
+      <div class="faq-a" data-de="Die Galerie folgt wenige Tage nach dem Shooting. Bei Team-Shootings stimmen wir den Liefertermin gemeinsam ab." data-en="The gallery follows a few days after the shoot. For team shoots we agree the delivery date together.">Die Galerie folgt wenige Tage nach dem Shooting. Bei Team-Shootings stimmen wir den Liefertermin gemeinsam ab.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" data-de="Was gilt bei einer Absage?" data-en="What is the cancellation policy?">Was gilt bei einer Absage?</div>
+      <div class="faq-a" data-de="Pläne ändern sich, das verstehe ich. Bis 5 Tage vor dem Termin kannst du kostenlos verschieben oder absagen. Danach verrechne ich 50 % des Preises, bei Nichterscheinen 100 %. Bei Team-Shootings vereinbaren wir die Frist individuell." data-en="Plans change, I understand that. Up to 5 days before the appointment you can reschedule or cancel free of charge. After that I charge 50 % of the price, for no-shows 100 %. For team shoots we agree the deadline individually.">Pläne ändern sich, das verstehe ich. Bis 5 Tage vor dem Termin kannst du kostenlos verschieben oder absagen. Danach verrechne ich 50 % des Preises, bei Nichterscheinen 100 %. Bei Team-Shootings vereinbaren wir die Frist individuell.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2 data-de="Bereit für deinen professionellen Auftritt?" data-en="Ready for your professional presence?">Bereit für deinen professionellen Auftritt?</h2>
+  <p data-de="Meld dich einfach — ich freue mich darauf, dich oder euer Team kennenzulernen." data-en="Just get in touch — I look forward to meeting you or your team.">Meld dich einfach — ich freue mich darauf, dich oder euer Team kennenzulernen.</p>
+  <a href="#" onclick="openFormModal();return false;" class="btn-white" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
+</section>
+
+<div id="footer-placeholder"></div>
+<div id="modal-placeholder"></div>
+
+<script>
+var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.closest('.faq-item').classList.toggle('open')})});
+function openFormModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeFormModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+function validateField(f){var g=f.closest('.form-group');var v=f.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()):f.value.trim().length>0;f.classList.toggle('invalid',!v);f.classList.toggle('valid',v);g.classList.toggle('has-error',!v);return v}
+async function handleSubmit(e){e.preventDefault();var form=e.target;var fields=form.querySelectorAll('input[required],textarea[required]');var ok=true,first=null;fields.forEach(function(f){if(!validateField(f)){ok=false;if(!first)first=f}});if(!ok){first.focus();return}try{await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});document.getElementById('formContent').style.display='none';document.getElementById('formSuccess').style.display='block';setTimeout(closeFormModal,3000)}catch(err){alert('Fehler beim Senden. Bitte versuche es nochmals.')}}
+document.addEventListener('DOMContentLoaded',function(){
+  var btnDE=document.getElementById('btnDE'),btnEN=document.getElementById('btnEN');
+  if(btnDE)btnDE.classList.toggle('active',sfLang==='de');
+  if(btnEN)btnEN.classList.toggle('active',sfLang==='en');
+  applyLang(sfLang);
+  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f){f.addEventListener('blur',function(){validateField(f)});f.addEventListener('input',function(){if(f.classList.contains('invalid'))validateField(f)})});
+});
+if(window.netlifyIdentity){window.netlifyIdentity.on('init',function(user){if(!user){window.netlifyIdentity.on('login',function(){document.location.href='/admin/'})}})}
+</script>
+</body>
+</html>

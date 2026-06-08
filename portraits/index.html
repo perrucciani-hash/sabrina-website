@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="de" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Portraits Zürich | Sabrina Fiechter</title>
+<meta name="description" id="page-desc" content="Ausdrucksstarke und ruhige Portraits in Zürich. Von zeitlos und schlicht bis farbig und mutig. Im Studio oder an deinem Wunschort.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+var PAGE_META = {
+  de: { title: 'Portraits Zürich | Sabrina Fiechter', desc: 'Ausdrucksstarke und ruhige Portraits in Zürich. Von zeitlos und schlicht bis farbig und mutig. Im Studio oder an deinem Wunschort.', lang: 'de' },
+  en: { title: 'Portraits Zurich | Sabrina Fiechter', desc: 'Expressive and calm portraits in Zurich. From timeless and simple to colourful and bold. In the studio or at your chosen location.', lang: 'en' }
+};
+</script>
+
+<script>
+var sfLang = localStorage.getItem('sf_lang') || 'de';
+function applyLang(l) {
+  document.querySelectorAll('[data-de]').forEach(function(el) {
+    el.innerHTML = l === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-de')) : el.getAttribute('data-de');
+  });
+  var meta = PAGE_META[l] || PAGE_META.de;
+  document.getElementById('page-title').textContent = meta.title;
+  document.getElementById('page-desc').setAttribute('content', meta.desc);
+  document.getElementById('html-root').setAttribute('lang', meta.lang);
+}
+function setLang(l) {
+  sfLang = l; localStorage.setItem('sf_lang', l);
+  var btnDE = document.getElementById('btnDE'), btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', l === 'de');
+  if (btnEN) btnEN.classList.toggle('active', l === 'en');
+  applyLang(l);
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#1a1a1a;--text:#333333;--grey:#6b6b6b;--line:#e6e6e6;--bg:#ffffff;--bg-soft:#f6f5f3;--accent:#1f7a72;--accent-dark:#15605a;--gold:#e0a83d;}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-size:18px;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);line-height:1.15}
+a{color:inherit} img{display:block;max-width:100%}
+
+.page-hero{padding:8rem 2.5rem 5rem;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.page-hero-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+.page-hero-text .eyebrow{font-family:'Jost';font-size:.82rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.page-hero-text h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:300;margin-bottom:1.5rem}
+.page-hero-text .lead{font-size:1.1rem;color:var(--grey);line-height:1.8;margin-bottom:1.2rem}
+.page-hero-img{aspect-ratio:4/5;overflow:hidden;background:var(--line);border-radius:4px}
+.page-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center top}
+
+.sec{padding:6rem 2.5rem;max-width:1280px;margin:0 auto}
+.sec-bg{background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.eyebrow{font-family:'Jost';font-size:.82rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;margin-bottom:1.5rem}
+.section-lead{font-size:1.05rem;color:var(--grey);line-height:1.75;max-width:680px}
+
+/* STYLE CHOOSER */
+.style-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.style-card{padding:2.2rem;border:1px solid var(--line);border-radius:4px;background:#fff;text-align:center}
+.style-icon{font-size:2rem;margin-bottom:1rem}
+.style-card h3{font-size:1.1rem;font-weight:500;margin-bottom:.5rem}
+.style-card p{font-size:.95rem;color:var(--grey);line-height:1.65}
+
+.expect-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:2.5rem}
+.expect-item{padding:2rem;border:1px solid var(--line);border-radius:4px;background:#fff}
+.expect-item h3{font-size:1.1rem;font-weight:500;margin-bottom:.5rem}
+.expect-item p{font-size:.95rem;color:var(--grey);line-height:1.65}
+
+.process-steps{display:flex;flex-direction:column;gap:0;margin-top:2.5rem}
+.process-step{display:flex;gap:2rem;align-items:flex-start;padding:1.8rem 0;border-bottom:1px solid var(--line)}
+.process-step:last-child{border-bottom:none}
+.step-num{font-family:'Jost';font-size:2.5rem;font-weight:300;color:var(--accent);line-height:1;flex-shrink:0;width:3rem}
+.step-body h3{font-size:1.05rem;font-weight:500;margin-bottom:.3rem}
+.step-body p{font-size:.95rem;color:var(--grey);line-height:1.65}
+
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.package{border:1px solid var(--line);padding:2.4rem 2rem;background:#fff;display:flex;flex-direction:column;transition:box-shadow .3s,transform .3s;border-radius:4px}
+.package:hover{box-shadow:0 16px 40px rgba(0,0,0,.08);transform:translateY(-4px)}
+.package.feat{background:var(--black);border-color:var(--black)}
+.package .pkg-cat{font-family:'Jost';font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.6rem}
+.package.feat .pkg-cat{color:var(--gold)}
+.package h3{font-size:1.4rem;font-weight:400;margin-bottom:1rem}
+.package.feat h3{color:#fff}
+.package .amt{font-family:'Jost';font-size:2.6rem;font-weight:300;color:var(--black);line-height:1;margin-bottom:1.2rem}
+.package.feat .amt{color:#fff}
+.package .amt .c{font-size:.9rem;vertical-align:super;color:var(--grey)}
+.package.feat .amt .c{color:rgba(255,255,255,.6)}
+.package ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.8rem;flex:1}
+.package li{font-size:.92rem;color:var(--text);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
+.package.feat li{color:rgba(255,255,255,.85)}
+.package li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+.package.feat li::before{color:var(--gold)}
+.pkg-note{font-size:.85rem;color:var(--grey);margin-top:-.3rem;margin-bottom:1.2rem;line-height:1.55}
+.package.feat .pkg-note{color:rgba(255,255,255,.5)}
+
+.standards{background:var(--bg-soft);border:1px solid var(--line);border-radius:4px;padding:2rem 2.5rem;margin-top:2.5rem}
+.standards h3{font-size:1.1rem;font-weight:500;margin-bottom:1rem}
+.standards ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.standards li{font-size:.95rem;color:var(--text);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5}
+.standards li::before{content:'✓';color:var(--accent);font-weight:700;flex-shrink:0}
+
+.btn-dark{display:inline-flex;align-items:center;justify-content:center;background:var(--black);color:#fff;width:220px;padding:.75rem 0;border-radius:2px;font-family:'Jost';font-weight:500;font-size:.95rem;letter-spacing:.04em;text-decoration:none;border:1.5px solid var(--black);white-space:nowrap;transition:all .3s}
+.btn-dark:hover{background:var(--accent);border-color:var(--accent)}
+.btn-white{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--black);width:220px;padding:.75rem 0;border-radius:2px;font-family:'Jost';font-weight:500;font-size:.95rem;letter-spacing:.04em;text-decoration:none;border:1.5px solid var(--black);white-space:nowrap;transition:all .3s}
+.btn-white:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+.faq{display:flex;flex-direction:column;gap:0;margin-top:2.5rem}
+.faq-item{border-bottom:1px solid var(--line);padding:1.5rem 0}
+.faq-item:first-child{border-top:1px solid var(--line)}
+.faq-q{font-family:'Jost';font-size:1.05rem;font-weight:400;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'+';font-size:1.4rem;color:var(--accent);flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.98rem;color:var(--grey);line-height:1.75;max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:300px;padding-top:1rem}
+
+.cta{text-align:center;padding:6rem 2.5rem;background:var(--black);color:#fff}
+.cta h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:#fff;margin-bottom:1rem;max-width:680px;margin-left:auto;margin-right:auto}
+.cta p{font-size:1.05rem;color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2.5rem;line-height:1.7}
+.cta .btn-white{margin:0 auto}
+
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.rv.vis{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:920px){.menu{display:none}.burger{display:flex}}
+@media(max-width:900px){
+  .page-hero{padding:6rem 1.3rem 3.5rem}
+  .page-hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .page-hero-img{order:-1;aspect-ratio:16/9}
+  .sec{padding:4rem 1.3rem}
+  .packages{grid-template-columns:1fr}
+  .expect-grid{grid-template-columns:1fr}
+  .style-grid{grid-template-columns:1fr}
+  .cta{padding:4rem 1.3rem}
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-text rv">
+      <span class="eyebrow" data-de="Privatkunden" data-en="Private clients">Privatkunden</span>
+      <h1 data-de="Portraits" data-en="Portraits">Portraits</h1>
+      <p class="lead" data-de="Zeit, dich so zu zeigen, wie du wirklich bist. Ausdrucksstarke Portraits mit Konzept oder ruhig und zeitlos — ganz wie es zu dir passt." data-en="Time to show yourself as you truly are. Expressive portraits with concept or calm and timeless — just as it suits you.">Zeit, dich so zu zeigen, wie du wirklich bist. Ausdrucksstarke Portraits mit Konzept oder ruhig und zeitlos — ganz wie es zu dir passt.</p>
+      <p class="lead" data-de="Im Studio in Zürich-West oder an deinem Wunschort." data-en="In the studio in Zurich-West or at your chosen location.">Im Studio in Zürich-West oder an deinem Wunschort.</p>
+      <a href="#" onclick="openFormModal();return false;" class="btn-dark" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
+    </div>
+    <div class="page-hero-img rv d1">
+      <img src="/images/assets/kreativ-portrait.jpg" alt="Portrait Zürich – Sabrina Fiechter">
+    </div>
+  </div>
+</section>
+
+<!-- FÜR WEN -->
+<section class="sec rv">
+  <span class="eyebrow" data-de="Für wen" data-en="For whom">Für wen</span>
+  <h2 class="section-title" data-de="Für alle, die ein Portrait von sich möchten" data-en="For everyone who wants a portrait">Für alle, die ein Portrait von sich möchten</h2>
+  <p class="section-lead" data-de="Nicht an einen beruflichen Zweck gebunden — als Erinnerung, Geschenk oder einfach für dich. Manche wollen ein ruhiges, zeitloses Bild, andere Farbe und Konzept. Beides ist hier möglich. Du wählst zuerst, wie lange wir Zeit haben, den Stil legen wir gemeinsam fest." data-en="Not tied to a professional purpose — as a memory, gift or simply for yourself. Some want a calm, timeless image, others want colour and concept. Both are possible here. You first choose how much time we have; we work out the style together.">Nicht an einen beruflichen Zweck gebunden — als Erinnerung, Geschenk oder einfach für dich. Manche wollen ein ruhiges, zeitloses Bild, andere Farbe und Konzept. Beides ist hier möglich. Du wählst zuerst, wie lange wir Zeit haben, den Stil legen wir gemeinsam fest.</p>
+</section>
+
+<!-- DEIN LOOK -->
+<div class="sec-bg">
+  <section class="sec">
+    <span class="eyebrow" data-de="Dein Look" data-en="Your look">Dein Look</span>
+    <h2 class="section-title" data-de="Du bestimmst den Stil" data-en="You choose the style">Du bestimmst den Stil</h2>
+    <div class="style-grid">
+      <div class="style-card rv">
+        <div class="style-icon">🖤</div>
+        <h3 data-de="Ruhig und zeitlos" data-en="Calm and timeless">Ruhig und zeitlos</h3>
+        <p data-de="Schlicht, klar — der Fokus liegt ganz auf dir." data-en="Simple, clear — the focus is entirely on you.">Schlicht, klar — der Fokus liegt ganz auf dir.</p>
+      </div>
+      <div class="style-card rv d1">
+        <div class="style-icon">🌸</div>
+        <h3 data-de="Kreativ und farbig" data-en="Creative and colourful">Kreativ und farbig</h3>
+        <p data-de="Konzept, Kulisse und Farbe in meinem Studio — hier lebe ich mich aus." data-en="Concept, backdrop and colour in my studio — this is where I let loose creatively.">Konzept, Kulisse und Farbe in meinem Studio — hier lebe ich mich aus.</p>
+      </div>
+      <div class="style-card rv d2">
+        <div class="style-icon">🌿</div>
+        <h3 data-de="Draussen" data-en="Outdoors">Draussen</h3>
+        <p data-de="An einem Ort, der zu dir passt — bei Midi und Maxi buchbar." data-en="At a location that suits you — bookable with Midi and Maxi sessions.">An einem Ort, der zu dir passt — bei Midi und Maxi buchbar.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WAS DICH ERWARTET -->
+<section class="sec rv">
+  <span class="eyebrow" data-de="Was dich erwartet" data-en="What to expect">Was dich erwartet</span>
+  <h2 class="section-title" data-de="Kein Programm, das abgespult wird." data-en="No programme to rattle through.">Kein Programm, das abgespult wird.</h2>
+  <div class="expect-grid">
+    <div class="expect-item rv">
+      <h3 data-de="Abstimmung vorab" data-en="Alignment beforehand">Abstimmung vorab</h3>
+      <p data-de="Wir klären Stimmung, Look und Kleidung — damit du bestens vorbereitet bist." data-en="We clarify mood, look and clothing — so you are perfectly prepared.">Wir klären Stimmung, Look und Kleidung — damit du bestens vorbereitet bist.</p>
+    </div>
+    <div class="expect-item rv d1">
+      <h3 data-de="Zeit zum Ankommen" data-en="Time to settle in">Zeit zum Ankommen</h3>
+      <p data-de="Du brauchst keine Erfahrung vor der Kamera. Ich nehme den Druck raus." data-en="You don't need experience in front of the camera. I take the pressure off.">Du brauchst keine Erfahrung vor der Kamera. Ich nehme den Druck raus.</p>
+    </div>
+    <div class="expect-item rv d2">
+      <h3 data-de="Geführtes Shooting" data-en="Guided shoot">Geführtes Shooting</h3>
+      <p data-de="Ich leite dich an — Pose, Ausdruck, Stimmung. Der Rest kommt von selbst." data-en="I guide you — pose, expression, mood. The rest comes naturally.">Ich leite dich an — Pose, Ausdruck, Stimmung. Der Rest kommt von selbst.</p>
+    </div>
+    <div class="expect-item rv d3">
+      <h3 data-de="Bearbeitung mit Handschrift" data-en="Retouching with character">Bearbeitung mit Handschrift</h3>
+      <p data-de="Passend zum Look — authentisch und mit Gefühl." data-en="Matched to the look — authentic and with feeling.">Passend zum Look — authentisch und mit Gefühl.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PAKETE -->
+<div class="sec-bg">
+  <section class="sec">
+    <span class="eyebrow" data-de="Pakete &amp; Preise" data-en="Packages &amp; Prices">Pakete &amp; Preise</span>
+    <h2 class="section-title" data-de="Wähle deine Session-Grösse" data-en="Choose your session size">Wähle deine Session-Grösse</h2>
+
+    <div class="standards rv">
+      <h3 data-de="Das gilt für alle Sessions" data-en="Included in all sessions">Das gilt für alle Sessions</h3>
+      <ul>
+        <li data-de="Grosse Auswahl aus allen Aufnahmen in deiner persönlichen Online-Galerie" data-en="Large selection from all shots in your personal online gallery">Grosse Auswahl aus allen Aufnahmen in deiner persönlichen Online-Galerie</li>
+        <li data-de="Zusätzliches retuschiertes Bild möglich: CHF 35" data-en="Additional retouched image available: CHF 35">Zusätzliches retuschiertes Bild möglich: CHF 35</li>
+        <li data-de="Bezahlung erst nach dem Shooting" data-en="Payment only after the shoot">Bezahlung erst nach dem Shooting</li>
+      </ul>
+    </div>
+
+    <div class="packages" style="margin-top:2rem">
+      <div class="package rv">
+        <div class="pkg-cat" data-de="Kompakt" data-en="Compact">Kompakt</div>
+        <h3 data-de="Mini-Session" data-en="Mini Session">Mini-Session</h3>
+        <div class="amt"><span class="c">CHF</span> 190</div>
+        <ul>
+          <li data-de="Kurze Abstimmung zu Bildsprache und Kleidung" data-en="Brief alignment on visual style and clothing">Kurze Abstimmung zu Bildsprache und Kleidung</li>
+          <li data-de="20–25 Minuten Shooting im Studio" data-en="20–25 minutes shooting in the studio">20–25 Minuten Shooting im Studio</li>
+          <li data-de="1–2 Hintergründe" data-en="1–2 backgrounds">1–2 Hintergründe</li>
+          <li data-de="3 professionell retuschierte Portraits" data-en="3 professionally retouched portraits">3 professionell retuschierte Portraits</li>
+        </ul>
+        <a href="#" onclick="openFormModal();return false;" class="btn-white" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+      </div>
+      <div class="package feat rv d1">
+        <div class="pkg-cat" data-de="Mehr Zeit, mehr Vielfalt" data-en="More time, more variety">Mehr Zeit, mehr Vielfalt</div>
+        <h3 data-de="Midi-Session" data-en="Midi Session">Midi-Session</h3>
+        <div class="amt"><span class="c">CHF</span> 480</div>
+        <ul>
+          <li data-de="Abstimmung zu Bildsprache und Kleidung" data-en="Alignment on visual style and clothing">Abstimmung zu Bildsprache und Kleidung</li>
+          <li data-de="90 Minuten Shooting" data-en="90 minutes shooting">90 Minuten Shooting</li>
+          <li data-de="2 Outfits, 1–2 Hintergründe" data-en="2 outfits, 1–2 backgrounds">2 Outfits, 1–2 Hintergründe</li>
+          <li data-de="Studio, in Studionähe oder Wunschort (exkl. Fahrkosten)" data-en="Studio, near studio or chosen location (excl. travel costs)">Studio, in Studionähe oder Wunschort (exkl. Fahrkosten)</li>
+          <li data-de="10 professionell retuschierte Portraits" data-en="10 professionally retouched portraits">10 professionell retuschierte Portraits</li>
+        </ul>
+        <a href="#" onclick="openFormModal();return false;" class="btn-white" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+      </div>
+      <div class="package rv d2">
+        <div class="pkg-cat" data-de="Grosser Spielraum" data-en="Maximum scope">Grosser Spielraum</div>
+        <h3 data-de="Maxi-Session" data-en="Maxi Session">Maxi-Session</h3>
+        <div class="amt"><span class="c">CHF</span> 720</div>
+        <ul>
+          <li data-de="Abstimmung zu Bildsprache und Kleidung" data-en="Alignment on visual style and clothing">Abstimmung zu Bildsprache und Kleidung</li>
+          <li data-de="2,5 Stunden Shooting" data-en="2.5 hours shooting">2,5 Stunden Shooting</li>
+          <li data-de="3–4 Outfits, 2–3 Hintergründe" data-en="3–4 outfits, 2–3 backgrounds">3–4 Outfits, 2–3 Hintergründe</li>
+          <li data-de="Studio, in Studionähe oder Wunschort (exkl. Fahrkosten)" data-en="Studio, near studio or chosen location (excl. travel costs)">Studio, in Studionähe oder Wunschort (exkl. Fahrkosten)</li>
+          <li data-de="15 professionell retuschierte Portraits" data-en="15 professionally retouched portraits">15 professionell retuschierte Portraits</li>
+        </ul>
+        <a href="#" onclick="openFormModal();return false;" class="btn-white" data-de="Termin anfragen" data-en="Book now">Termin anfragen</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABLAUF -->
+<section class="sec rv">
+  <span class="eyebrow" data-de="Ablauf" data-en="Process">Ablauf</span>
+  <h2 class="section-title" data-de="So läuft dein Shooting ab" data-en="How your shoot works">So läuft dein Shooting ab</h2>
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3 data-de="Session-Grösse wählen" data-en="Choose session size">Session-Grösse wählen</h3>
+        <p data-de="Du wählst die Session-Grösse und fragst einen Termin an." data-en="You choose the session size and request an appointment.">Du wählst die Session-Grösse und fragst einen Termin an.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3 data-de="Stil festlegen" data-en="Define your style">Stil festlegen</h3>
+        <p data-de="Wir legen den Stil fest und besprechen kurz die Outfits." data-en="We define the style and briefly discuss the outfits.">Wir legen den Stil fest und besprechen kurz die Outfits.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3 data-de="Shooting" data-en="Shoot">Shooting</h3>
+        <p data-de="Wir shooten im Studio oder draussen — entspannt und in deinem Tempo." data-en="We shoot in the studio or outdoors — relaxed and at your pace.">Wir shooten im Studio oder draussen — entspannt und in deinem Tempo.</p>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3 data-de="Galerie & Auswahl" data-en="Gallery & selection">Galerie & Auswahl</h3>
+        <p data-de="Du erhältst deine Galerie, triffst deine Wahl und bekommst die fertigen Bilder." data-en="You receive your gallery, make your selection and receive the finished images.">Du erhältst deine Galerie, triffst deine Wahl und bekommst die fertigen Bilder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="sec-bg">
+  <section class="sec rv">
+    <span class="eyebrow">FAQ</span>
+    <h2 class="section-title" data-de="Häufige Fragen" data-en="Frequently asked questions">Häufige Fragen</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-q" data-de="Ich habe keine eigene Idee — geht das trotzdem?" data-en="I have no idea of my own — is that okay?">Ich habe keine eigene Idee — geht das trotzdem?</div>
+        <div class="faq-a" data-de="Ja. Wir entwickeln den Stil zusammen. Du musst nichts mitbringen ausser Offenheit." data-en="Yes. We develop the style together. You just need to bring an open mind.">Ja. Wir entwickeln den Stil zusammen. Du musst nichts mitbringen ausser Offenheit.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-de="Worin unterscheidet sich das vom Bewerbungsfoto?" data-en="What is the difference from an application photo?">Worin unterscheidet sich das vom Bewerbungsfoto?</div>
+        <div class="faq-a" data-de="Das Bewerbungsfoto ist auf einen Zweck zugeschnitten. Ein Portrait ist ein persönliches Bild von dir — ohne Verwendungszweck." data-en="The application photo is tailored to a purpose. A portrait is a personal image of you — without any specific use.">Das Bewerbungsfoto ist auf einen Zweck zugeschnitten. Ein Portrait ist ein persönliches Bild von dir — ohne Verwendungszweck.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-de="Wie farbig darf es werden?" data-en="How colourful can it get?">Wie farbig darf es werden?</div>
+        <div class="faq-a" data-de="So weit du magst — von dezent bis richtig mutig. Du gibst das Tempo vor." data-en="As far as you like — from subtle to really bold. You set the pace.">So weit du magst — von dezent bis richtig mutig. Du gibst das Tempo vor.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-de="Wie schnell bekomme ich die Bilder?" data-en="How quickly do I get the images?">Wie schnell bekomme ich die Bilder?</div>
+        <div class="faq-a" data-de="Die Galerie folgt wenige Tage nach dem Shooting. Bei grösseren Sessions vereinbaren wir den Liefertermin zusammen, damit deine Bilder die nötige Zeit bekommen." data-en="The gallery follows a few days after the shoot. For larger sessions we agree the delivery date together so your images get the time they need.">Die Galerie folgt wenige Tage nach dem Shooting. Bei grösseren Sessions vereinbaren wir den Liefertermin zusammen, damit deine Bilder die nötige Zeit bekommen.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-de="Was kostet die Anfahrt?" data-en="What does travel cost?">Was kostet die Anfahrt?</div>
+        <div class="faq-a" data-de="Im Studio und in Studionähe fallen keine Fahrkosten an. Für einen Wunschort weiter weg kommen 70 Rappen pro Kilometer ab Zürich-West dazu." data-en="In the studio and near the studio there are no travel costs. For a location further away, CHF 0.70 per kilometre from Zurich-West is added.">Im Studio und in Studionähe fallen keine Fahrkosten an. Für einen Wunschort weiter weg kommen 70 Rappen pro Kilometer ab Zürich-West dazu.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" data-de="Was gilt bei einer Absage?" data-en="What is the cancellation policy?">Was gilt bei einer Absage?</div>
+        <div class="faq-a" data-de="Pläne ändern sich, das verstehe ich. Bis 5 Tage vor dem Termin kannst du kostenlos verschieben oder absagen. Danach verrechne ich 50 % des Preises, bei Nichterscheinen 100 %." data-en="Plans change, I understand that. Up to 5 days before the appointment you can reschedule or cancel free of charge. After that I charge 50 % of the price, for no-shows 100 %.">Pläne ändern sich, das verstehe ich. Bis 5 Tage vor dem Termin kannst du kostenlos verschieben oder absagen. Danach verrechne ich 50 % des Preises, bei Nichterscheinen 100 %.</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+  <h2 data-de="Bereit für dein Portrait?" data-en="Ready for your portrait?">Bereit für dein Portrait?</h2>
+  <p data-de="Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam den richtigen Look zu finden." data-en="Just get in touch — I look forward to meeting you and finding the right look together.">Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam den richtigen Look zu finden.</p>
+  <a href="#" onclick="openFormModal();return false;" class="btn-white" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
+</section>
+
+<div id="footer-placeholder"></div>
+<div id="modal-placeholder"></div>
+
+<script>
+var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.closest('.faq-item').classList.toggle('open')})});
+function openFormModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeFormModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+function validateField(f){var g=f.closest('.form-group');var v=f.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()):f.value.trim().length>0;f.classList.toggle('invalid',!v);f.classList.toggle('valid',v);g.classList.toggle('has-error',!v);return v}
+async function handleSubmit(e){e.preventDefault();var form=e.target;var fields=form.querySelectorAll('input[required],textarea[required]');var ok=true,first=null;fields.forEach(function(f){if(!validateField(f)){ok=false;if(!first)first=f}});if(!ok){first.focus();return}try{await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});document.getElementById('formContent').style.display='none';document.getElementById('formSuccess').style.display='block';setTimeout(closeFormModal,3000)}catch(err){alert('Fehler beim Senden. Bitte versuche es nochmals.')}}
+document.addEventListener('DOMContentLoaded',function(){
+  var btnDE=document.getElementById('btnDE'),btnEN=document.getElementById('btnEN');
+  if(btnDE)btnDE.classList.toggle('active',sfLang==='de');
+  if(btnEN)btnEN.classList.toggle('active',sfLang==='en');
+  applyLang(sfLang);
+  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f){f.addEventListener('blur',function(){validateField(f)});f.addEventListener('input',function(){if(f.classList.contains('invalid'))validateField(f)})});
+});
+if(window.netlifyIdentity){window.netlifyIdentity.on('init',function(user){if(!user){window.netlifyIdentity.on('login',function(){document.location.href='/admin/'})}})}
+</script>
+</body>
+</html>
