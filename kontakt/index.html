@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="de" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Kontakt | Sabrina Fiechter Photography</title>
+<meta name="description" id="page-desc" content="Nimm Kontakt auf mit Sabrina Fiechter Photography in Zürich – für Fragen, Buchungen und Anfragen.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<script>
+var PAGE_META = {
+  de: { title: 'Kontakt | Sabrina Fiechter Photography', desc: 'Nimm Kontakt auf mit Sabrina Fiechter Photography in Zürich – für Fragen, Buchungen und Anfragen.', lang: 'de' },
+  en: { title: 'Contact | Sabrina Fiechter Photography', desc: 'Get in touch with Sabrina Fiechter Photography in Zurich – for questions, bookings and enquiries.', lang: 'en' }
+};
+</script>
+
+<script>
+var sfLang = localStorage.getItem('sf_lang') || 'de';
+function applyLang(l) {
+  document.querySelectorAll('[data-de]').forEach(function(el) {
+    el.innerHTML = l === 'en' ? (el.getAttribute('data-en') || el.getAttribute('data-de')) : el.getAttribute('data-de');
+  });
+  var meta = PAGE_META[l] || PAGE_META.de;
+  document.getElementById('page-title').textContent = meta.title;
+  document.getElementById('page-desc').setAttribute('content', meta.desc);
+  document.getElementById('html-root').setAttribute('lang', meta.lang);
+}
+function setLang(l) {
+  sfLang = l; localStorage.setItem('sf_lang', l);
+  var btnDE = document.getElementById('btnDE'), btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', l === 'de');
+  if (btnEN) btnEN.classList.toggle('active', l === 'en');
+  applyLang(l);
+}
+</script>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#1a1a1a;--text:#333333;--grey:#6b6b6b;--line:#e6e6e6;--bg:#ffffff;--bg-soft:#f6f5f3;--accent:#1f7a72;}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;font-size:18px;line-height:1.7;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:'Jost',sans-serif;font-weight:400;color:var(--black);line-height:1.2}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+img{display:block;max-width:100%}
+
+/* PAGE HEADER */
+.page-header{padding:8rem 2.5rem 5rem;background:var(--bg-soft);border-bottom:1px solid var(--line)}
+.page-header-inner{max-width:1100px;margin:0 auto}
+.eyebrow{font-family:'Jost';font-size:.82rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
+.page-header h1{font-size:clamp(2.4rem,4.5vw,3.4rem);font-weight:300}
+.page-header .sub{margin-top:1.1rem;font-size:1.08rem;color:var(--grey);max-width:520px;line-height:1.7}
+
+/* CONTACT LAYOUT */
+.contact-section{max-width:1100px;margin:0 auto;padding:6rem 2.5rem 8rem;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start}
+
+/* INFO COLUMN */
+.contact-info{}
+.info-card{display:flex;flex-direction:column;gap:2.2rem}
+.info-item{}
+.info-label{font-family:'Jost';font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);margin-bottom:.4rem}
+.info-value{font-size:1rem;color:var(--black);line-height:1.6}
+.info-value a{color:var(--black);text-decoration:none;transition:color .2s}
+.info-value a:hover{color:var(--accent);text-decoration:none}
+.social-links{display:flex;gap:1rem;margin-top:.2rem}
+.social-link{display:inline-flex;align-items:center;gap:.45rem;font-size:.93rem;color:var(--grey);text-decoration:none;transition:color .2s}
+.social-link:hover{color:var(--accent);text-decoration:none}
+.social-link svg{flex-shrink:0}
+.avail-badge{display:inline-flex;align-items:center;gap:.5rem;background:#e8f5f3;color:var(--accent);font-size:.88rem;font-weight:600;padding:.45rem .9rem;border-radius:2px;font-family:'Jost';letter-spacing:.04em}
+.avail-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+/* FORM COLUMN */
+.contact-form-wrap h2{font-size:1.5rem;font-weight:400;margin-bottom:2rem}
+.cform{display:flex;flex-direction:column;gap:1.2rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.field{display:flex;flex-direction:column;gap:.4rem}
+.field label{font-family:'Jost';font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--grey)}
+.field input,.field select,.field textarea{
+  font-family:'Manrope';font-size:.97rem;color:var(--black);
+  border:1.5px solid var(--line);border-radius:3px;
+  padding:.85rem 1rem;background:#fff;transition:border-color .2s;
+  outline:none;resize:none;
+}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}
+.field textarea{min-height:140px;line-height:1.6}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
+.submit-btn{
+  font-family:'Jost';font-size:.9rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--black);color:#fff;border:none;border-radius:3px;
+  padding:1rem 2rem;cursor:pointer;transition:background .25s;align-self:flex-start;
+}
+.submit-btn:hover{background:var(--accent)}
+.form-note{font-size:.82rem;color:var(--grey);line-height:1.6}
+
+/* FOOTER */
+footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
+.foot-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem}
+.foot-logo{font-family:'Jost';font-size:1.4rem;font-weight:500;color:#fff;text-decoration:none;display:block;margin-bottom:1rem}
+.foot-tag{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7}
+.foot-ct{font-family:'Jost';font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem}
+.foot-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.foot-links a{font-size:.96rem;color:rgba(255,255,255,.85);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--accent)}
+.foot-copy{max-width:1280px;margin:2.5rem auto 0;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(255,255,255,.35)}
+
+@media(max-width:920px){.menu{display:none}.burger{display:flex}}
+@media(max-width:820px){
+  .contact-section{grid-template-columns:1fr;gap:3.5rem;padding:4rem 1.3rem 6rem}
+  .page-header{padding:6rem 1.3rem 3.5rem}
+  .form-row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr;gap:2rem}
+}
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <span class="eyebrow" data-de="Lass uns reden" data-en="Let's talk">Lass uns reden</span>
+    <h1 data-de="Kontakt" data-en="Contact">Kontakt</h1>
+    <p class="sub" data-de="Hast du Fragen, möchtest ein Shooting buchen oder hast ein Anliegen? Ich freue mich von dir zu hören." data-en="Do you have questions, want to book a shoot or have an enquiry? I look forward to hearing from you.">Hast du Fragen, möchtest ein Shooting buchen oder hast ein Anliegen? Ich freue mich von dir zu hören.</p>
+  </div>
+</div>
+
+<div class="contact-section">
+
+  <!-- INFO -->
+  <div class="contact-info">
+    <div class="info-card">
+
+      <div class="info-item">
+        <div class="info-label" data-de="Verfügbarkeit" data-en="Availability">Verfügbarkeit</div>
+        <div class="avail-badge" data-de="Aktuell buchbar" data-en="Currently available">Aktuell buchbar</div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-label" data-de="Telefon" data-en="Phone">Telefon</div>
+        <div class="info-value"><a href="tel:+41762701117">+41 76 270 11 17</a></div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-label" data-de="E-Mail" data-en="Email">E-Mail</div>
+        <div class="info-value"><a href="mailto:info@sabrinafiechter.ch">info@sabrinafiechter.ch</a></div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-label" data-de="Standort" data-en="Location">Standort</div>
+        <div class="info-value">Hardturmstrasse 124a<br>8005 Zürich</div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-label" data-de="Social" data-en="Social">Social</div>
+        <div class="social-links">
+          <a href="https://www.instagram.com/sabrinafiechter" target="_blank" rel="noopener" class="social-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="contact-form-wrap">
+    <h2 data-de="Schreib mir" data-en="Send me a message">Schreib mir</h2>
+    <form class="cform" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="kontakt">
+      <input type="hidden" name="bot-field" style="display:none">
+
+      <div class="form-row">
+        <div class="field">
+          <label for="vorname" data-de="Vorname" data-en="First name">Vorname</label>
+          <input type="text" id="vorname" name="vorname" required placeholder="Anna">
+        </div>
+        <div class="field">
+          <label for="nachname" data-de="Nachname" data-en="Last name">Nachname</label>
+          <input type="text" id="nachname" name="nachname" required placeholder="Müller">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email" data-de="E-Mail-Adresse" data-en="Email address">E-Mail-Adresse</label>
+        <input type="email" id="email" name="email" required placeholder="anna@beispiel.ch">
+      </div>
+
+      <div class="field">
+        <label for="anliegen" data-de="Art des Anliegens" data-en="Type of enquiry">Art des Anliegens</label>
+        <select id="anliegen" name="anliegen">
+          <option value="" data-de="Bitte wählen…" data-en="Please select…">Bitte wählen…</option>
+          <option value="bewerbungsfotos" data-de="Bewerbungsfotos" data-en="Application photos">Bewerbungsfotos</option>
+          <option value="business-portrait" data-de="Business Portrait" data-en="Business Portrait">Business Portrait</option>
+          <option value="portrait" data-de="Portrait" data-en="Portrait">Portrait</option>
+          <option value="auftragsarbeit" data-de="Auftragsarbeit" data-en="Commissioned work">Auftragsarbeit</option>
+          <option value="allgemein" data-de="Allgemeine Frage" data-en="General question">Allgemeine Frage</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="nachricht" data-de="Deine Nachricht" data-en="Your message">Deine Nachricht</label>
+        <textarea id="nachricht" name="nachricht" required placeholder="Hallo Sabrina…"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" data-de="Nachricht senden" data-en="Send message">Nachricht senden</button>
+
+      <p class="form-note" data-de="Ich melde mich in der Regel innerhalb von 1–2 Werktagen bei dir." data-en="I usually get back to you within 1–2 working days.">Ich melde mich in der Regel innerhalb von 1–2 Werktagen bei dir.</p>
+    </form>
+  </div>
+
+</div>
+
+<div id="footer-placeholder"></div>
+<div id="modal-placeholder"></div>
+
+<script>
+function openFormModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeFormModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var btnDE = document.getElementById('btnDE'), btnEN = document.getElementById('btnEN');
+  if (btnDE) btnDE.classList.toggle('active', sfLang === 'de');
+  if (btnEN) btnEN.classList.toggle('active', sfLang === 'en');
+  applyLang(sfLang);
+});
+
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', function(user) {
+    if (!user) { window.netlifyIdentity.on('login', function() { document.location.href = '/admin/'; }); }
+  });
+}
+</script>
+</body>
+</html>
