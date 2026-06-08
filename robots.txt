@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Rechtliche Seiten von Indexierung ausschliessen
+Disallow: /impressum/
+Disallow: /datenschutz/
+Disallow: /admin/
+
+Sitemap: https://www.sabrinafiechter.ch/sitemap.xml
