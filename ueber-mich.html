@@ -391,7 +391,6 @@ async function handleSubmit(e){
     await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});
     document.getElementById('formContent').style.display='none';
     document.getElementById('formSuccess').style.display='block';
-    setTimeout(closeFormModal,3000);
   }catch(err){alert('Fehler beim Senden. Bitte versuche es nochmals.')}
 }
 
