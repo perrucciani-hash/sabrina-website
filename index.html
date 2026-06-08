@@ -563,12 +563,6 @@ function validateField(f) {
   f.classList.toggle('invalid', !v); f.classList.toggle('valid', v);
   g.classList.toggle('has-error', !v); return v;
 }
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f) {
-    f.addEventListener('blur', function() { validateField(f); });
-    f.addEventListener('input', function() { if (f.classList.contains('invalid')) validateField(f); });
-  });
-});
 async function handleSubmit(e) {
   e.preventDefault();
   var form = e.target;
@@ -584,27 +578,16 @@ async function handleSubmit(e) {
   } catch(err) { alert('Fehler beim Senden. Bitte versuche es nochmals.'); }
 }
 
-// ── NAVBAR + FOOTER laden ──
-function loadPartial(url, placeholderId, callback) {
-  fetch(url)
-    .then(function(r) { return r.text(); })
-    .then(function(html) {
-      document.getElementById(placeholderId).innerHTML = html;
-      if (callback) callback();
-    })
-    .catch(function(err) { console.error('Fehler beim Laden von ' + url, err); });
-}
-
-// Navbar laden → danach Sprache + Scroll-Listener initialisieren
-loadPartial('/navbar.html', 'nav-placeholder', function() {
-  // Sprache auf Navbar anwenden
+// ── INIT (Partials werden jetzt durch Edge Function serverseitig eingebettet) ──
+document.addEventListener('DOMContentLoaded', function() {
+  // Sprache anwenden (Navbar/Footer/Modal sind bereits im DOM)
   var btnDE = document.getElementById('btnDE');
   var btnEN = document.getElementById('btnEN');
   if (btnDE) btnDE.classList.toggle('active', sfLang === 'de');
   if (btnEN) btnEN.classList.toggle('active', sfLang === 'en');
   applyLang(sfLang);
 
-  // index.html: Navbar transparent machen + Scroll-Effekt
+  // index.html: Navbar transparent + Scroll-Effekt
   var tb = document.getElementById('topbar');
   if (tb) {
     tb.classList.add('transparent');
@@ -612,21 +595,14 @@ loadPartial('/navbar.html', 'nav-placeholder', function() {
       tb.classList.toggle('transparent', scrollY <= 60);
     }, { passive: true });
   }
-});
 
-// Footer laden
-loadPartial('/footer.html', 'footer-placeholder', function() {
-  applyLang(sfLang);
-});
-
-// Modal laden
-loadPartial('/modal.html', 'modal-placeholder', function() {
-  applyLang(sfLang);
-  // Form-Validation nach Modal-Load initialisieren
+  // Form-Validation initialisieren
   document.querySelectorAll('#modalOverlay input,#modalOverlay textarea').forEach(function(f) {
     f.addEventListener('blur', function() { validateField(f); });
     f.addEventListener('input', function() { if (f.classList.contains('invalid')) validateField(f); });
   });
+
+  loadCMSData();
 });
 
 // ── CMS ──
