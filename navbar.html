@@ -1,3 +1,99 @@
+<style>
+/* ── NAVBAR — alle Styles hier, gilt für alle Seiten ── */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2.5rem;height:80px;
+  background:#fff;
+  box-shadow:0 2px 20px rgba(0,0,0,.06);
+  transition:background .35s,box-shadow .35s;
+}
+/* Transparenter Modus — nur index.html via JS aktiviert */
+.topbar.transparent{
+  background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 100%);
+  box-shadow:none;
+}
+.logo{text-decoration:none;display:flex;align-items:center;line-height:0}
+/* Logo: standardmässig schwarz (solid navbar) */
+/* index.html schaltet auf weiss via .transparent + filter */
+.logo-img{
+  height:64px;width:auto;display:block;
+  filter:invert(1);
+  transition:filter .35s;
+}
+.topbar.transparent .logo-img{filter:none;}
+
+/* Menü-Links: standardmässig schwarz */
+.menu{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.menu a{
+  font-family:'Jost',sans-serif;font-size:.95rem;font-weight:400;
+  letter-spacing:.02em;color:var(--black);text-decoration:none;
+  transition:color .25s;position:relative;padding-bottom:3px;white-space:nowrap;
+}
+.topbar.transparent .menu a{color:#fff;}
+.menu a::after{
+  content:'';position:absolute;left:0;bottom:0;
+  width:0;height:1.5px;background:currentColor;transition:width .3s;
+}
+.menu a:hover::after{width:100%}
+
+/* CTA-Button Navbar */
+.menu .termin{
+  background:var(--black);color:#fff !important;
+  padding:.75rem 0;border-radius:2px;font-weight:500;
+  width:220px;text-align:center;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:background .25s,color .25s;white-space:nowrap;
+  font-family:'Jost';font-size:.95rem;letter-spacing:.04em;
+  border:1.5px solid var(--black);
+}
+.menu .termin::after{display:none}
+.topbar.transparent .menu .termin{background:#fff;color:var(--black) !important;border-color:#fff;}
+.menu .termin:hover{background:var(--accent) !important;border-color:var(--accent) !important;color:#fff !important}
+
+/* Burger (mobile) */
+.burger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer}
+.burger span{width:26px;height:2px;background:var(--black);display:block;transition:background .35s}
+.topbar.transparent .burger span{background:#fff;}
+
+/* Mobile Menu */
+.mobile{
+  position:fixed;inset:0;z-index:290;background:#fff;
+  display:none;flex-direction:column;justify-content:center;
+  padding:3rem;gap:.4rem;
+}
+.mobile.open{display:flex}
+.mobile a{
+  font-family:'Jost';font-size:1.6rem;color:var(--black);
+  text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--line);
+}
+.mobile .close{
+  position:absolute;top:1.8rem;right:2.5rem;
+  font-size:2rem;background:none;border:none;cursor:pointer;
+}
+
+/* Lang Toggle */
+.lang-toggle{display:flex;align-items:center;gap:4px}
+.lang-li{list-style:none;display:flex;align-items:center;margin-left:.5rem}
+.lang-btn{
+  padding:.35rem .65rem;font-family:'Jost',sans-serif;
+  font-size:.78rem;font-weight:600;letter-spacing:.08em;
+  cursor:pointer;border:1.5px solid #d0d0d0;
+  border-radius:2px;background:#fff;color:#666;
+  transition:all .2s;line-height:1;
+}
+.lang-btn.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.topbar.transparent .lang-btn{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);}
+.topbar.transparent .lang-btn.active{background:#fff;color:#1a1a1a;border-color:#fff;}
+
+/* Mobile: Immer 920px */
+@media(max-width:920px){
+  .topbar{padding:0 1.3rem}
+  .menu{display:none}
+  .burger{display:flex}
+}
+</style>
+
 <header class="topbar" id="topbar">
   <a href="/" class="logo">
     <img src="/images/logos/logo-weiss.png" alt="Sabrina Fiechter Photography" class="logo-img">
@@ -5,7 +101,7 @@
   <ul class="menu">
     <li><a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a></li>
     <li><a href="/shooting/" data-de="Shooting" data-en="Shooting">Shooting</a></li>
-    <li><a href="ueber-mich.html" data-de="Über mich" data-en="About me">Über mich</a></li>
+    <li><a href="/ueber-mich.html" data-de="Über mich" data-en="About me">Über mich</a></li>
     <li><a href="/blog/" data-de="Blog" data-en="Blog">Blog</a></li>
     <li class="lang-li">
       <div class="lang-toggle">
@@ -27,7 +123,7 @@
   <button class="close" onclick="document.querySelector('.mobile').classList.remove('open')">✕</button>
   <a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a>
   <a href="/shooting/" data-de="Shooting" data-en="Shooting">Shooting</a>
-  <a href="ueber-mich.html" data-de="Über mich" data-en="About me">Über mich</a>
+  <a href="/ueber-mich.html" data-de="Über mich" data-en="About me">Über mich</a>
   <a href="/blog/" data-de="Blog" data-en="Blog">Blog</a>
   <a href="#" onclick="openFormModal();return false;" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
 </div>
