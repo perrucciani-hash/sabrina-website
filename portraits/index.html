@@ -504,7 +504,13 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 <script>
 var io = new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px'});
 document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
-document.querySelectorAll('.faq-q').forEach(function(q){q.addEventListener('click',function(){q.closest('.faq-item').classList.toggle('open')})});
+document.querySelectorAll('.faq-q').forEach(function(q,i){
+  q.setAttribute('role','button');q.setAttribute('tabindex','0');q.setAttribute('aria-expanded','false');
+  var a=q.nextElementSibling;if(a){a.id='faq-a-'+i;q.setAttribute('aria-controls','faq-a-'+i)}
+  function toggle(){var open=q.closest('.faq-item').classList.toggle('open');q.setAttribute('aria-expanded',open?'true':'false')}
+  q.addEventListener('click',toggle);
+  q.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
+});
 function openFormModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
 function closeFormModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
 function validateField(f){var g=f.closest('.form-group');var v=f.type==='email'?/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim()):f.value.trim().length>0;f.classList.toggle('invalid',!v);f.classList.toggle('valid',v);g.classList.toggle('has-error',!v);return v}

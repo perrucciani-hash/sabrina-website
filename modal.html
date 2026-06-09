@@ -54,10 +54,10 @@
 </style>
 
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeFormModal()">
-  <div class="modal">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <button class="modal-close" onclick="closeFormModal()" aria-label="Schliessen">✕</button>
     <div id="formContent">
-    <h2 data-de="Termin anfragen" data-en="Book a session">Termin anfragen</h2>
+    <h2 id="modal-title" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</h2>
     <p class="sub"
       data-de="Ich melde mich so schnell wie möglich bei dir — versprochen."
       data-en="I'll get back to you as soon as possible — promise.">Ich melde mich so schnell wie möglich bei dir — versprochen.</p>
