@@ -68,7 +68,7 @@
   text-decoration:none;padding:.7rem 0;border-bottom:1px solid var(--line);
 }
 .mobile .close{
-  position:absolute;top:1.8rem;right:2.5rem;
+  position:fixed;top:1.8rem;right:2.5rem;
   font-size:2rem;background:none;border:none;cursor:pointer;
 }
 
@@ -161,13 +161,13 @@
         data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
     </li>
   </ul>
-  <button class="burger" onclick="document.querySelector('.mobile').classList.toggle('open')" aria-label="Menü">
+  <button class="burger" onclick="document.querySelector('.mobile').classList.toggle('open');document.body.style.overflow=document.querySelector('.mobile').classList.contains('open')?'hidden':'';" aria-label="Menü">
     <span></span><span></span><span></span>
   </button>
 </header>
 
 <div class="mobile">
-  <button class="close" onclick="document.querySelector('.mobile').classList.remove('open')">✕</button>
+  <button class="close" onclick="document.querySelector('.mobile').classList.remove('open');document.body.style.overflow='';">✕</button>
   <a href="/portfolio/" data-de="Portfolio" data-en="Portfolio">Portfolio</a>
   <a href="/bewerbungsfotos/" data-de="Bewerbungsfotos" data-en="Application Photos" style="font-size:1.2rem;padding-left:1rem;color:#888;border-bottom-color:#f0f0f0">Bewerbungsfotos</a>
   <a href="/business-portraits/" data-de="Business Portraits" data-en="Business Portraits" style="font-size:1.2rem;padding-left:1rem;color:#888;border-bottom-color:#f0f0f0">Business Portraits</a>
