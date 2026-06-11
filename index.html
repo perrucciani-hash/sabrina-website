@@ -274,6 +274,32 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   .loc-map{height:350px;min-height:350px}
   .loc-info{padding:3rem 1.3rem}
 }
+
+/* ── STICKY CTA ── */
+.sticky-bar{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:#fff;border-top:1px solid var(--line);
+  padding:.85rem 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  box-shadow:0 -4px 24px rgba(0,0,0,.07);
+  transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);
+}
+.sticky-bar.visible{transform:translateY(0)}
+.sticky-bar p{margin:0;font-family:'Jost';font-size:.9rem;color:var(--grey);white-space:nowrap}
+.sticky-bar .sticky-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Jost';font-size:.9rem;font-weight:500;letter-spacing:.04em;
+  padding:.65rem 1.8rem;border-radius:2px;
+  background:var(--black);color:#fff;border:1.5px solid var(--black);
+  text-decoration:none;white-space:nowrap;
+  transition:background .25s,border-color .25s;flex-shrink:0;
+}
+.sticky-bar .sticky-btn:hover{background:var(--accent);border-color:var(--accent)}
+@media(max-width:600px){
+  .sticky-bar{padding:.75rem 1.3rem;justify-content:center}
+  .sticky-bar p{display:none}
+  .sticky-bar .sticky-btn{width:100%;justify-content:center}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -506,6 +532,12 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   <div class="cta-detail" data-de="Studio Zürich-West · 8 Min. vom Hauptbahnhof" data-en="Studio Zurich-West · 8 min from main station">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
 </section>
 
+<!-- ── STICKY CTA BAR ── -->
+<div class="sticky-bar" id="stickyBar">
+  <p data-de="Bereit für dein Shooting?" data-en="Ready for your shoot?">Bereit für dein Shooting?</p>
+  <a href="#" onclick="openFormModal();return false;" class="sticky-btn" data-de="Termin anfragen" data-en="Book a session">Termin anfragen</a>
+</div>
+
 <!-- ── FOOTER (aus footer.html) ── -->
 <div id="footer-placeholder"></div>
 
@@ -513,6 +545,21 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
 <div id="modal-placeholder"></div>
 
 <script>
+// ── STICKY CTA ──
+(function(){
+  var bar = document.getElementById('stickyBar');
+  var heroCta = document.querySelector('.hero-cta');
+  var finalCta = document.querySelector('section.cta');
+  var heroVisible = true, finalVisible = false;
+  function update(){ bar.classList.toggle('visible', !heroVisible && !finalVisible); }
+  if(heroCta) new IntersectionObserver(function(es){
+    heroVisible = es[0].isIntersecting; update();
+  },{threshold:0}).observe(heroCta);
+  if(finalCta) new IntersectionObserver(function(es){
+    finalVisible = es[0].isIntersecting; update();
+  },{threshold:0.2}).observe(finalCta);
+})();
+
 // ── REVEAL ──
 var io = new IntersectionObserver(function(es) {
   es.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
