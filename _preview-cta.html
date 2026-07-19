@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preview — CTA Accent</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--black:#1a1a1a;--text:#333333;--grey:#6b6b6b;--accent:#1f7a72;--accent-dark:#15605a;--line:#e6e6e6;--bg:#ffffff;--bg-soft:#f6f5f3}
+body{font-family:'Manrope',sans-serif;background:#f0f0f0}
+
+.label{font-family:'Jost';font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#999;text-align:center;padding:2rem 0 .75rem;display:block}
+
+/* VORHER — Schwarz */
+.cta-before{text-align:center;padding:7rem 2.5rem;background:var(--black);color:#fff}
+/* NACHHER — Akzentgrün */
+.cta-after{text-align:center;padding:7rem 2.5rem;background:var(--accent);color:#fff}
+
+.cta-before h2,.cta-after h2{
+  font-family:'Jost';font-size:clamp(2.2rem,4.5vw,3.6rem);font-weight:300;color:#fff;
+  margin-bottom:1.2rem;max-width:760px;margin-left:auto;margin-right:auto
+}
+.cta-before p{font-size:1.1rem;color:rgba(255,255,255,.65);max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
+.cta-after p{font-size:1.1rem;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
+
+.btn{
+  display:inline-block;font-family:'Jost';font-size:.95rem;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;padding:.95rem 2.4rem;
+  border-radius:2px;text-decoration:none;border:1.5px solid;transition:all .25s;cursor:pointer
+}
+/* Vorher: weisser Button */
+.cta-before .btn{background:#fff;color:var(--black);border-color:#fff}
+.cta-before .btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* Nachher Option A: weisser Button */
+.cta-after .btn-a{background:#fff;color:var(--accent);border-color:#fff}
+.cta-after .btn-a:hover{background:transparent;color:#fff;border-color:#fff}
+
+/* Nachher Option B: transparenter Outline-Button */
+.cta-after .btn-b{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.cta-after .btn-b:hover{background:#fff;color:var(--accent);border-color:#fff}
+
+.cta-detail{margin-top:2rem;font-family:'Jost';font-size:.85rem;letter-spacing:.08em;text-transform:uppercase}
+.cta-before .cta-detail{color:rgba(255,255,255,.4)}
+.cta-after .cta-detail{color:rgba(255,255,255,.6)}
+
+.divider{border:none;border-top:4px solid #ddd;margin:0}
+.options{display:flex;gap:0}
+.options > div{flex:1}
+.opt-label{font-family:'Jost';font-size:.68rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:1.5rem;display:block}
+</style>
+</head>
+<body>
+
+<span class="label">VORHER — Schwarz</span>
+<section class="cta-before">
+  <h2>Bereit für dein Shooting?</h2>
+  <p>Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt.</p>
+  <a class="btn">Termin anfragen</a>
+  <div class="cta-detail">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
+</section>
+
+<hr class="divider">
+
+<span class="label">NACHHER — Akzentgrün · Button-Variante A (weiss gefüllt) vs B (Outline)</span>
+<div class="options">
+  <section class="cta-after" style="border-right:2px solid rgba(255,255,255,.2)">
+    <h2>Bereit für dein Shooting?</h2>
+    <p>Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt.</p>
+    <a class="btn btn-a">Termin anfragen</a>
+    <div class="cta-detail">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
+    <span class="opt-label">Variante A — weisser Button</span>
+  </section>
+  <section class="cta-after">
+    <h2>Bereit für dein Shooting?</h2>
+    <p>Meld dich einfach — ich freue mich darauf, dich kennenzulernen und gemeinsam ein Konzept zu entwickeln, das wirklich zu dir passt.</p>
+    <a class="btn btn-b">Termin anfragen</a>
+    <div class="cta-detail">Studio Zürich-West · 8 Min. vom Hauptbahnhof</div>
+    <span class="opt-label">Variante B — Outline Button</span>
+  </section>
+</div>
+
+</body>
+</html>
