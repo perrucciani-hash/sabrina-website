@@ -138,19 +138,19 @@ a{color:inherit}
 .section-lead{font-size:1.1rem;color:var(--grey);line-height:1.7}
 
 /* ── ANGEBOT ── */
-.offers{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem;max-width:580px;margin-left:auto;margin-right:auto}
+.offers{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem}
 .offer{display:flex;flex-direction:column;text-decoration:none;color:inherit}
-.offer-img{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--bg-soft);margin-bottom:1.5rem}
+.offer-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--bg-soft);margin-bottom:1rem}
 .offer-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.16,1,.3,1)}
 .offer:hover .offer-img img{transform:scale(1.06)}
 .offer-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;background:#eceae6}
 .offer-ph svg{width:40px;height:40px;stroke:#b4b0a8;fill:none;stroke-width:1}
 .offer-ph span{font-family:'Jost';font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:#a8a39a}
-.offer-cat{font-family:'Jost';font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
-.offer h3{font-size:1.5rem;font-weight:400;margin-bottom:.8rem;transition:color .25s}
+.offer-cat{font-family:'Jost';font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
+.offer h3{font-size:1.15rem;font-weight:400;margin-bottom:.5rem;transition:color .25s}
 .offer:hover h3{color:var(--accent)}
-.offer p{font-size:.98rem;color:var(--grey);line-height:1.65;margin-bottom:1.1rem;flex:1}
-.offer-link{font-family:'Jost';font-size:.92rem;font-weight:500;letter-spacing:.03em;color:var(--black);display:inline-flex;align-items:center;gap:.45rem;transition:gap .25s,color .25s}
+.offer p{font-size:.88rem;color:var(--grey);line-height:1.6;margin-bottom:.8rem;flex:1}
+.offer-link{font-family:'Jost';font-size:.88rem;font-weight:500;letter-spacing:.03em;color:var(--black);display:inline-flex;align-items:center;gap:.45rem;transition:gap .25s,color .25s}
 .offer:hover .offer-link{gap:.8rem;color:var(--accent)}
 
 /* ── ABOUT ── */
@@ -262,7 +262,7 @@ footer{background:#111;color:#fff;padding:3.5rem 2.5rem 2.5rem}
   .hero{height:78vh}
   .hero-badges{gap:1.2rem}
   .section{padding:4rem 1.3rem}
-  .offers{grid-template-columns:1fr;gap:2.5rem}
+  .offers{grid-template-columns:repeat(2,1fr);gap:1.2rem}
   .about{grid-template-columns:1fr;gap:2.5rem}
   .about-img{order:-1}
   .refs{grid-template-columns:1fr}
